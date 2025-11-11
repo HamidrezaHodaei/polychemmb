@@ -73,9 +73,9 @@
               <button class="nav-link text-[13px] font-medium px-8 h-full text-white relative overflow-hidden">
                 <span class="relative z-10">EN</span>
               </button>
-              <button class="nav-link text-[13px] font-medium px-8 h-full text-white relative overflow-hidden w-40 border-l border-r border-white">
-                <span class="relative z-10">LOG IN</span>
-              </button>
+               <NuxtLink to="/login" class="nav-link text-[13px] font-medium px-8 h-full text-white relative overflow-hidden w-40 border-l border-r border-white flex items-center justify-center">
+                  <span class="relative z-10">LOG IN</span>
+                </NuxtLink>
             </div>
   
             <!-- Mobile Menu Button -->
