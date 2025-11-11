@@ -1,8 +1,0 @@
-@import "tailwindcss";
-body {
-  font-family: 'Montserrat';
-}
-
-html, body, #__nuxt {
-  background-color: #faf7f5;
-}
