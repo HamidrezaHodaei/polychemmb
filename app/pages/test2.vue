@@ -1,322 +1,263 @@
 <template>
-    <div class="hero-container">
-      <!-- First Section -->
-      <picture class="bg-picture">
-        <img src="/white-plastic-polymer.jpg" width="3840" height="2160" alt="background" />
-      </picture>
-      <figure class="content-box">
-        <h1>Welcome to my website</h1>
-        <figcaption>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        </figcaption>
-      </figure>
+  <!-- 
+    کامپوننت Nuxt 3 با استفاده از Tailwind CSS و GSAP
+    تبدیل از HTML/CSS/JS به Vue 3 Composition API
+    
+    تغییرات اصلی:
+    1. تمام استایل‌ها با Tailwind جایگزین شدند
+    2. انیمیشن‌ها با GSAP Timeline بهینه شدند
+    3. از ScrollTrigger برای پین کردن و اسکرول استفاده شد
+    4. ساختار Vue 3 <script setup> برای راحتی و بهینه‌سازی
+  -->
+  <div class="container mx-auto px-4">
+    <div class="w-full">
+      <!-- Cards Container: نسبت به viewport پین می‌شود و 70vh ارتفاع دارد -->
+      <div 
+        ref="cardsContainer" 
+        class="relative flex justify-center items-center h-[70vh] mb-24"
+      >
+        <!-- Card 1: پایه‌ای‌ترین کارت با z-index کمتر -->
+        <div
+          ref="card1"
+          class="absolute w-4/5 h-[70vh] rounded-[50px] shadow-2xl flex justify-center items-center text-white text-4xl font-bold"
+          style="
+            top: 0px;
+            z-index: 2;
+            background: linear-gradient(-40deg, #d754ad 0%, #f96785 67%, #fe7333 100%);
+          "
+        >
+          <h1>Slide 1</h1>
+        </div>
+
+        <!-- Card 2: 30px پایین‌تر از Card 1 -->
+        <div
+          ref="card2"
+          class="absolute w-4/5 h-[70vh] rounded-[50px] shadow-2xl flex justify-center items-center text-white text-4xl font-bold"
+          style="
+            top: 30px;
+            z-index: 3;
+            background: linear-gradient(-40deg, #4facfe 0%, #00f2fe 100%);
+          "
+        >
+          <h1>Slide 2</h1>
+        </div>
+
+        <!-- Card 3: 60px پایین‌تر -->
+        <div
+          ref="card3"
+          class="absolute w-4/5 h-[70vh] rounded-[50px] shadow-2xl flex justify-center items-center text-white text-4xl font-bold"
+          style="
+            top: 60px;
+            z-index: 4;
+            background: linear-gradient(-40deg, #43e97b 0%, #38f9d7 100%);
+          "
+        >
+          <h1>Slide 3</h1>
+        </div>
+
+        <!-- Card 4: 90px پایین‌تر - بالاترین لایه -->
+        <div
+          ref="card4"
+          class="absolute w-4/5 h-[70vh] rounded-[50px] shadow-2xl flex justify-center items-center text-white text-4xl font-bold"
+          style="
+            top: 90px;
+            z-index: 5;
+            background: linear-gradient(-40deg, #fa709a 0%, #fee140 100%);
+          "
+        >
+          <h1>Slide 4</h1>
+        </div>
+      </div>
     </div>
-  </template>
-  
-  <script setup>
-  // No script needed for pure visual component
-  </script>
-  
-  <style scoped>
-  /* Reset */
-  *:not(head, script, svg, svg *),
-  *:not(head, script, svg, svg *)::before,
-  *:not(head, script, svg, svg *)::after {
-    all: unset;
-    box-sizing: border-box;
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+
+// ثبت پلاگین‌های GSAP
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+
+// refs برای المنت‌های DOM
+const cardsContainer = ref(null)
+const card1 = ref(null)
+const card2 = ref(null)
+const card3 = ref(null)
+const card4 = ref(null)
+
+let tl = null
+
+onMounted(() => {
+  // ایجاد یک Timeline اصلی با ScrollTrigger
+  // بهبود: استفاده از ease برای انیمیشن‌های نرم‌تر
+  tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: cardsContainer.value,
+      pin: true, // پین کردن کانتینر هنگام اسکرول
+      pinSpacing: true,
+      markers: false, // برای دیباگ می‌توان true کرد
+      start: 'top-=50px top',
+      end: '+=2000', // 2000px اسکرول برای تمام انیمیشن
+      scrub: 1, // انیمیشن با اسکرول همگام می‌شود (1 ثانیه تاخیر برای نرمی)
+    },
+  })
+
+  // --- انیمیشن Card 1: شروع با opacity کامل ---
+  tl.addLabel('card1')
+  tl.to(card1.value, {
+    yPercent: 0,
+    opacity: 1,
+    duration: 0.5,
+    ease: 'power2.out',
+  })
+
+  // --- انیمیشن Card 2: ورود از پایین ---
+  tl.from(
+    card2.value,
+    {
+      yPercent: 75, // 75% از ارتفاع خودش پایین‌تر
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power2.out',
+    },
+    '+=0.2' // تاخیر کوچک برای روانی
+  )
+
+  tl.addLabel('card2')
+
+  // بهبود: انیمیشن همزمان Card 1 و Card 2 برای تاثیر بهتر
+  tl.to(
+    card1.value,
+    {
+      scale: 0.925, // کوچک‌تر شدن
+      yPercent: -0.75, // کمی بالا رفتن
+      opacity: 0.85, // کمی محو شدن
+      duration: 0.6,
+      ease: 'power2.inOut',
+    },
+    '-=0.4' // همپوشانی با انیمیشن قبل
+  )
+
+  tl.to(
+    card2.value,
+    {
+      yPercent: 0,
+      opacity: 1,
+      duration: 0.6,
+      ease: 'power2.out',
+    },
+    '-=0.6'
+  )
+
+  // --- انیمیشن Card 3: ورود از پایین ---
+  tl.from(
+    card3.value,
+    {
+      yPercent: 75,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power2.out',
+    },
+    '+=0.2'
+  )
+
+  tl.addLabel('card3')
+
+  // Card 2 کوچک‌تر می‌شود و Card 3 جای آن را می‌گیرد
+  tl.to(
+    card2.value,
+    {
+      scale: 0.95,
+      yPercent: -0.5,
+      opacity: 0.85,
+      duration: 0.6,
+      ease: 'power2.inOut',
+    },
+    '-=0.4'
+  )
+
+  tl.to(
+    card3.value,
+    {
+      yPercent: 0,
+      opacity: 1,
+      duration: 0.6,
+      ease: 'power2.out',
+    },
+    '-=0.6'
+  )
+
+  // --- انیمیشن Card 4: ورود از پایین ---
+  tl.from(
+    card4.value,
+    {
+      yPercent: 75,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power2.out',
+    },
+    '+=0.2'
+  )
+
+  tl.addLabel('card4')
+
+  // Card 3 کوچک‌تر می‌شود و Card 4 جای آن را می‌گیرد
+  tl.to(
+    card3.value,
+    {
+      scale: 0.975,
+      yPercent: -0.4,
+      opacity: 0.85,
+      duration: 0.6,
+      ease: 'power2.inOut',
+    },
+    '-=0.4'
+  )
+
+  tl.to(
+    card4.value,
+    {
+      yPercent: 0,
+      opacity: 1,
+      duration: 0.6,
+      ease: 'power2.out',
+    },
+    '-=0.6'
+  )
+
+  // --- بهبود: انیمیشن‌های نهایی برای تمام کارت‌ها با stagger ---
+  // تمام کارت‌های قبلی را به صورت هماهنگ کوچک‌تر و محو می‌کنیم
+  tl.to(
+    [card1.value, card2.value, card3.value],
+    {
+      scale: (index) => 0.9 + index * 0.025, // هر کدام مقداری متفاوت
+      yPercent: (index) => -(1.5 - index * 0.375),
+      opacity: 0.7,
+      duration: 0.8,
+      stagger: 0.1, // تاخیر بین هر المنت برای جذابیت بیشتر
+      ease: 'power2.inOut',
+    },
+    '-=0.4'
+  )
+})
+
+// پاک کردن ScrollTrigger هنگام از بین رفتن کامپوننت
+onUnmounted(() => {
+  if (tl && tl.scrollTrigger) {
+    tl.scrollTrigger.kill()
   }
-  
-  /* Body & Layout */
-  .hero-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh; /* single full-screen section */
-    margin: 0;
-    background: black;
-    color: white;
-    overflow: hidden;
+  if (tl) {
+    tl.kill()
   }
-  
-  /* Picture & Image */
-  .bg-picture {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  .bg-picture img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  /* Overlay Animations */
-  .bg-picture::before,
-  .bg-picture::after {
-    position: absolute;
-    content: "";
-    background-image: linear-gradient(
-      135deg,
-      rgba(255, 208, 0, 0.18),
-      rgba(138, 138, 138, 0.18)
-    ); /* yellow + gray overlay */
-  }
-  
-  .bg-picture::before {
-    top: 0;
-    left: 0;
-    width: 25%;
-    height: 25%;
-    animation: a 20s ease infinite;
-  }
-  
-  .bg-picture::after {
-    top: 0;
-    left: 0;
-    width: 25%;
-    height: 25%;
-    animation: b 10s ease infinite;
-  }
-  
-  /* Keyframes a */
-  @keyframes a {
-    0% {
-      width: 25%;
-      height: 25%;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      backdrop-filter: blur(2vmin);
-      -webkit-backdrop-filter: blur(2vmin);
-    }
-    12.49% { left: 0; }
-    12.5% {
-      width: 100%;
-      left: unset;
-      backdrop-filter: blur(0vmin);
-      -webkit-backdrop-filter: blur(0vmin);
-    }
-    25% {
-      width: 25%;
-      height: 25%;
-      backdrop-filter: blur(2vmin);
-      -webkit-backdrop-filter: blur(2vmin);
-    }
-    37.49% { top: 0; bottom: 0; }
-    37.5% {
-      top: unset;
-      height: 100%;
-      backdrop-filter: blur(0vmin);
-      -webkit-backdrop-filter: blur(0vmin);
-    }
-    50% {
-      width: 25%;
-      height: 25%;
-      backdrop-filter: blur(2vmin);
-      -webkit-backdrop-filter: blur(2vmin);
-    }
-    62.49% { left: unset; right: 0; }
-    62.5% {
-      right: unset;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(0vmin);
-      -webkit-backdrop-filter: blur(0vmin);
-    }
-    74.9% { top: unset; bottom: 0; }
-    75% {
-      width: 25%;
-      height: 25%;
-      backdrop-filter: blur(2vmin);
-      -webkit-backdrop-filter: blur(2vmin);
-    }
-    87.49% { top: unset; bottom: 0; }
-    87.5% {
-      height: 100%;
-      top: 0;
-      backdrop-filter: blur(0vmin);
-      -webkit-backdrop-filter: blur(0vmin);
-    }
-    100% {
-      width: 25%;
-      height: 25%;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      backdrop-filter: blur(2vmin);
-      -webkit-backdrop-filter: blur(2vmin);
-    }
-  }
-  
-  /* Keyframes b */
-  @keyframes b {
-    0% {
-      width: 25%;
-      height: 25%;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      backdrop-filter: blur(2vmin);
-      -webkit-backdrop-filter: blur(2vmin);
-    }
-    12.49% { top: 0; }
-    12.5% {
-      height: 100%;
-      top: unset;
-      backdrop-filter: blur(0vmin);
-      -webkit-backdrop-filter: blur(0vmin);
-    }
-    25% {
-      width: 25%;
-      height: 25%;
-      backdrop-filter: blur(2vmin);
-      -webkit-backdrop-filter: blur(2vmin);
-    }
-    37.49% { left: 0; right: 0; }
-    37.5% {
-      left: unset;
-      width: 100%;
-      backdrop-filter: blur(0vmin);
-      -webkit-backdrop-filter: blur(0vmin);
-    }
-    50% {
-      width: 25%;
-      height: 25%;
-      backdrop-filter: blur(2vmin);
-      -webkit-backdrop-filter: blur(2vmin);
-    }
-    62.49% { top: unset; bottom: 0; }
-    62.5% {
-      top: 0;
-      height: 100%;
-      backdrop-filter: blur(0vmin);
-      -webkit-backdrop-filter: blur(0vmin);
-    }
-    74.9% { bottom: unset; right: 0; }
-    75% {
-      width: 25%;
-      height: 25%;
-      left: unset;
-      backdrop-filter: blur(2vmin);
-      -webkit-backdrop-filter: blur(2vmin);
-    }
-    87.49% { left: unset; right: 0; }
-    87.5% {
-      width: 100%;
-      left: 0;
-      backdrop-filter: blur(0vmin);
-      -webkit-backdrop-filter: blur(0vmin);
-    }
-    100% {
-      width: 25%;
-      height: 25%;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      backdrop-filter: blur(2vmin);
-      -webkit-backdrop-filter: blur(2vmin);
-    }
-  }
-  
-  /* Content Box */
-  .content-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 700px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 1;
-    animation: c 10s linear infinite;
-  }
-  
-  @keyframes c {
-    from {
-      backdrop-filter: blur(2vmin);
-      -webkit-backdrop-filter: blur(2vmin);
-    }
-    to {
-      backdrop-filter: blur(2vmin);
-      -webkit-backdrop-filter: blur(2vmin);
-    }
-  }
-  
-  .content-box::after {
-    position: absolute;
-    bottom: -10px;
-    right: -10px;
-    width: 60px;
-    height: 60px;
-    background-color: #ffd000; /* single yellow */
-    content: "";
-    z-index: -1;
-    animation: d 5s linear infinite;
-  }
-  
-  @keyframes d {
-    from {
-      transform: rotateZ(0deg);
-      border-radius: 0;
-    }
-    50% {
-      border-radius: 49%;
-    }
-    to {
-      transform: rotateZ(360deg);
-      border-radius: 0;
-    }
-  }
-  
-  /* Typography */
-  h1 {
-    font-family: "Major Mono Display", monospace;
-    font-size: 40px;
-    line-height: 1.5cap;
-    text-wrap: balance;
-    color: white;
-    margin-bottom: 20px;
-  }
-  
-  figcaption {
-    font-family: "Figtree", sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 2cap;
-    text-wrap: pretty;
-    padding-left: 30px;
-    border-left: 1px solid white;
-    color: #bbb;
-  }
-  
-  /* Responsive */
-  @media (max-width: 780px) {
-    .content-box {
-      max-width: 90%;
-    }
-  }
-  
-  @media (max-width: 600px) {
-    h1 {
-      font-size: 32px;
-    }
-    figcaption {
-      font-size: 16px;
-    }
-  }
-  </style>
+})
+</script>
+
+<style scoped>
+/* 
+  استایل‌های سفارشی فقط برای چیزهایی که Tailwind پوشش نمی‌دهد
+  در اینجا از Tailwind برای تمام استایل‌ها استفاده شده است
+*/
+</style>
