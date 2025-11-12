@@ -171,7 +171,7 @@
         <div class="w-full max-w-[480px] mt-6 flex items-center justify-between">
           <button
             type="button"
-            class="px-3 py-1.5 text-sm border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50"
+            class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50"
             :disabled="currentStep === 1"
             @click="onBack"
           >
@@ -180,7 +180,7 @@
           <button
             v-if="currentStep < totalSteps"
             type="button"
-            class="btn-slide-down h-9 px-4 text-sm rounded-md relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors"
+            class="btn-slide-down h-11 px-6 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors"
             @click="onNext"
           >
             <span class="relative z-10">Next</span>
@@ -188,7 +188,7 @@
           <button
             v-else
             type="submit"
-            class="btn-slide-down h-9 px-4 text-sm rounded-md relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors"
+            class="btn-slide-down h-11 px-6 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors"
           >
             <span class="relative z-10">Create Account</span>
           </button>

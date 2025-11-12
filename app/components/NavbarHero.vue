@@ -1,67 +1,66 @@
 <template>
   <div>
-    <nav class="bg-[#848484] fixed top-0 inset-x-0 z-50 border-b" style="border-bottom-color: #f1f2f2;">
-      <div class="max-w-7xl mx-auto">
+    <nav class="bg-[#848484] fixed top-0 inset-x-0 z-50">
+      <div class="max-w-2xl mx-auto">
         <div class="flex items-center h-20">
           <!-- Logo & Brand -->
           <div class="flex items-center justify-start border-r border-l border-white pl-8 pr-8 h-full w-[200px] flex-shrink-0">
-              <img src="/english logo W.png" alt="POLYCHEM Logo" class="w-40 h-40 object-contain" />
+            <img src="/english logo W.png" alt="POLYCHEM Logo" class="w-40 h-40 object-contain" />
           </div>
 
           <!-- USE CASES with border and hover effect -->
           <div class="hidden md:flex items-center h-full border-r border-white">
-            <button 
+            <button
               @click="toggleFullscreenMenu"
               class="nav-link flex items-center gap-2 text-[13px] text-white font-medium px-8 h-full text-white relative overflow-hidden"
               :class="{ active: isMenuOpen }"
             >
               <span class="relative z-10">PRODUCTS</span>
               <svg class="w-4 h-4 relative z-10" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
               </svg>
             </button>
           </div>
 
           <!-- Main Menu with hover effects -->
           <div class="hidden md:flex items-center flex-1 justify-center h-full">
-            <NuxtLink 
-              to="/" 
+            <NuxtLink
+              to="/"
               class="nav-link text-[13px] font-medium px-8 text-white relative overflow-hidden h-full flex items-center"
             >
               <span class="relative z-10">HOME</span>
             </NuxtLink>
 
-            <NuxtLink 
-              to="/about" 
+            <NuxtLink
+              to="/about"
               class="nav-link flex items-center justify-center gap-2 text-[13px] font-medium px-8 text-white relative overflow-hidden h-full w-40 "
             >
               <span class="relative z-10">ABOUT US</span>
             </NuxtLink>
 
-
-            <NuxtLink 
-              to="/applications" 
+            <NuxtLink
+              to="/applications"
               class="nav-link text-[14px] font-medium px-8 text-white relative overflow-hidden h-full flex items-center"
             >
               <span class="relative z-10">Applications</span>
             </NuxtLink>
 
-            <NuxtLink 
-              to="/news" 
+            <NuxtLink
+              to="/news"
               class="nav-link text-[13px] font-medium px-8 text-white relative overflow-hidden h-full flex items-center"
             >
               <span class="relative z-10">NEWS</span>
             </NuxtLink>
 
-            <NuxtLink 
-              to="/careers" 
+            <NuxtLink
+              to="/careers"
               class="nav-link text-[13px] font-medium px-8 text-white relative overflow-hidden h-full flex items-center"
             >
               <span class="relative z-10">CAREERS</span>
             </NuxtLink>
 
-            <NuxtLink 
-              to="/contact" 
+            <NuxtLink
+              to="/contact"
               class="nav-link text-[13px] font-medium px-8 text-white relative overflow-hidden h-full flex items-center w-40"
             >
               <span class="relative z-10">CONTACT US</span>
@@ -73,29 +72,32 @@
             <button class="nav-link text-[13px] font-medium px-8 h-full text-white relative overflow-hidden">
               <span class="relative z-10">EN</span>
             </button>
-             <NuxtLink to="/login" class="nav-link text-[13px] font-medium px-8 h-full text-white relative overflow-hidden w-40 border-l border-r border-white flex items-center justify-center">
-                <span class="relative z-10">LOG IN</span>
-              </NuxtLink>
+            <NuxtLink
+              to="/login"
+              class="nav-link text-[13px] font-medium px-8 h-full text-white relative overflow-hidden w-40 border-l border-r border-white flex items-center justify-center"
+            >
+              <span class="relative z-10">LOG IN</span>
+            </NuxtLink>
           </div>
 
           <!-- Mobile Menu Button -->
-          <button 
+          <button
             @click="mobileMenuOpen = !mobileMenuOpen"
             class="md:hidden text-white hover:text-gray-200 px-4"
           >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path 
+              <path
                 v-if="!mobileMenuOpen"
-                stroke-linecap="round" 
-                stroke-linejoin="round" 
-                stroke-width="2" 
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
                 d="M4 6h16M4 12h16M4 18h16"
               />
-              <path 
+              <path
                 v-else
-                stroke-linecap="round" 
-                stroke-linejoin="round" 
-                stroke-width="2" 
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
                 d="M6 18L18 6M6 6l12 12"
               />
             </svg>
@@ -106,7 +108,7 @@
         <transition name="mobile-menu">
           <div v-if="mobileMenuOpen" class="md:hidden pb-4 border-t border-white/30 mt-2">
             <div class="flex flex-col gap-3 pt-4 px-4">
-              <button 
+              <button
                 @click="toggleFullscreenMenu"
                 class="nav-link-mobile text-[13px] font-medium text-white hover:text-gray-200 py-2 px-4 rounded relative overflow-hidden text-left"
                 :class="{ active: isMenuOpen }"
@@ -148,39 +150,49 @@
         </transition>
       </div>
     </nav>
-    <!-- Spacer to offset fixed navbar height -->
-    <div class="h-20"></div>
+
+    <section class="hero-container">
+      <picture class="hero-bg">
+        <img src="/white-plastic-polymer.jpg" width="3840" height="2160" alt="background" />
+      </picture>
+
+      <figure class="hero-content">
+        <h1>Welcome to my website</h1>
+        <figcaption>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        </figcaption>
+      </figure>
+    </section>
 
     <!-- Fullscreen Menu -->
-    <div 
-      v-show="isMenuOpen"
+    <div
       ref="fullscreenMenu"
-      class="fixed inset-0 z-40 overflow-hidden"
+      class="fixed inset-0 z-40 overflow-hidden pointer-events-none"
     >
       <div class="h-full flex">
         <!-- Left Side - Preview Box (40%) -->
         <div class="w-[40%] bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-          <div 
+          <div
             ref="previewBox"
             class="absolute inset-0 flex items-center justify-center p-12 opacity-0"
           >
             <div class="text-center space-y-6">
-              <div 
+              <div
                 ref="previewIcon"
                 class="w-32 h-32 mx-auto bg-yellow-400/20 rounded-2xl flex items-center justify-center transform scale-0"
               >
                 <svg class="w-16 h-16 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <div 
+              <div
                 ref="previewTitle"
                 class="opacity-0 transform translate-y-4"
               >
                 <h3 class="text-3xl font-bold text-gray-900 mb-3">{{ hoveredItem?.title || 'Cyber Solutions' }}</h3>
                 <p class="text-xl text-gray-600">{{ hoveredItem?.code || 'Select a use case' }}</p>
               </div>
-              <p 
+              <p
                 ref="previewDesc"
                 class="text-gray-700 text-lg max-w-md mx-auto opacity-0 transform translate-y-4"
               >
@@ -196,7 +208,7 @@
             </div>
 
             <!-- Glowing Orb -->
-            <div 
+            <div
               ref="glowingOrb"
               class="absolute w-96 h-96 bg-yellow-400/20 rounded-full blur-3xl opacity-0"
               style="top: 50%; left: 50%; transform: translate(-50%, -50%);"
@@ -206,23 +218,23 @@
 
         <!-- Right Side - Menu Items (60%) -->
         <div class="w-[60%] bg-white relative">
-          <div 
+          <div
             ref="menuContainer"
             class="h-full flex flex-col justify-center px-16 opacity-0 transform translate-y-[-100%]"
           >
             <!-- Close Button -->
-            <button 
+            <button
               @click="toggleFullscreenMenu"
               ref="closeButton"
               class="absolute top-8 right-8 text-gray-700 hover:text-gray-900 transition-colors opacity-0"
             >
               <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
 
             <!-- Title -->
-            <div 
+            <div
               ref="menuTitle"
               class="mb-12 mt-16 opacity-0 transform translate-y-[-20px]"
             >
@@ -232,8 +244,8 @@
 
             <!-- Menu Items -->
             <div class="space-y-1 max-h-[70vh] overflow-y-auto pr-4 custom-scrollbar">
-              <a 
-                v-for="(item, index) in useCases" 
+              <a
+                v-for="(item, index) in useCases"
                 :key="index"
                 :ref="el => { if (el) menuItems[index] = el }"
                 href="#"
@@ -246,7 +258,7 @@
                   <h3 class="text-gray-900 text-xl font-semibold group-hover:translate-x-2 transition-transform">{{ item.title }}</h3>
                 </div>
                 <svg class="w-6 h-6 text-gray-400 group-hover:text-yellow-500 group-hover:translate-x-2 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
             </div>
@@ -258,7 +270,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 
 const mobileMenuOpen = ref(false)
@@ -292,26 +304,24 @@ const useCases = [
 
 const handleHover = (item, index) => {
   hoveredItem.value = item
-  
+
   const tl = gsap.timeline()
-  
-  // Animate preview content change
+
   tl.to([previewTitle.value, previewDesc.value], {
     opacity: 0,
     y: -10,
     duration: 0.2
   })
-  .set([previewTitle.value, previewDesc.value], {
-    opacity: 0
-  })
-  .to([previewTitle.value, previewDesc.value], {
-    opacity: 1,
-    y: 0,
-    duration: 0.4,
-    stagger: 0.1
-  })
-  
-  // Pulse the glowing orb
+    .set([previewTitle.value, previewDesc.value], {
+      opacity: 0
+    })
+    .to([previewTitle.value, previewDesc.value], {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      stagger: 0.1
+    })
+
   gsap.to(glowingOrb.value, {
     scale: 1.2,
     opacity: 0.6,
@@ -329,56 +339,44 @@ const handleLeave = () => {
   })
 }
 
-const toggleFullscreenMenu = async () => {
+const toggleFullscreenMenu = () => {
   if (!fullscreenMenu.value) return
-  
+
   if (isMenuOpen.value) {
-    // run closing animation, then hide DOM after animation completes
     closeMenu()
-    // hide the element after the close animation (adjust if you change durations)
-    setTimeout(() => {
-      isMenuOpen.value = false
-    }, 800)
   } else {
-    // make the DOM visible first, then run animations
-    isMenuOpen.value = true
-    await nextTick()
     openMenu()
   }
+
+  isMenuOpen.value = !isMenuOpen.value
 }
 
 const openMenu = () => {
   const menu = fullscreenMenu.value
-  
-  // Enable pointer events
+
   menu.style.pointerEvents = 'auto'
-  
-  // Create timeline
+
   const tl = gsap.timeline()
-  
-  // Animate menu container sliding down from top
+
   tl.to(menuContainer.value, {
     y: 0,
     opacity: 1,
     duration: 0.8,
     ease: 'power3.out'
   })
-  
-  // Animate title
+
   tl.to(menuTitle.value, {
     opacity: 1,
     y: 0,
     duration: 0.5,
     ease: 'power2.out'
   }, '-=0.5')
-  
-  // Animate close button
+
   tl.to(closeButton.value, {
     opacity: 1,
     duration: 0.3
   }, '-=0.3')
-  
-  // Animate menu items
+
   tl.to(menuItems.value, {
     opacity: 1,
     y: 0,
@@ -386,26 +384,25 @@ const openMenu = () => {
     ease: 'power2.out',
     stagger: 0.04
   }, '-=0.5')
-  
-  // Animate preview box
+
   tl.to(previewBox.value, {
     opacity: 1,
     duration: 0.6
   }, '-=0.8')
-  
+
   tl.to(previewIcon.value, {
     scale: 1,
     duration: 0.6,
     ease: 'back.out(1.7)'
   }, '-=0.4')
-  
+
   tl.to([previewTitle.value, previewDesc.value], {
     opacity: 1,
     y: 0,
     duration: 0.5,
     stagger: 0.1
   }, '-=0.3')
-  
+
   tl.to(glowingOrb.value, {
     opacity: 0.3,
     scale: 1,
@@ -416,11 +413,9 @@ const openMenu = () => {
 
 const closeMenu = () => {
   const menu = fullscreenMenu.value
-  
-  // Create timeline
+
   const tl = gsap.timeline()
-  
-  // Animate menu items out
+
   tl.to(menuItems.value, {
     opacity: 0,
     y: -20,
@@ -428,40 +423,36 @@ const closeMenu = () => {
     ease: 'power2.in',
     stagger: 0.02
   })
-  
-  // Animate title out
+
   tl.to(menuTitle.value, {
     opacity: 0,
     y: -20,
     duration: 0.3
   }, '-=0.2')
-  
-  // Animate preview box out
+
   tl.to([previewTitle.value, previewDesc.value, previewIcon.value], {
     opacity: 0,
     scale: 0.9,
     duration: 0.3
   }, '-=0.3')
-  
+
   tl.to(glowingOrb.value, {
     opacity: 0,
     duration: 0.3
   }, '-=0.3')
-  
-  // Animate close button out
+
   tl.to(closeButton.value, {
     opacity: 0,
     duration: 0.2
   }, '-=0.2')
-  
-  // Slide menu container up
+
   tl.to(menuContainer.value, {
     y: '-100%',
     opacity: 0,
     duration: 0.6,
     ease: 'power3.in'
   }, '-=0.2')
-  
+
   tl.to(previewBox.value, {
     opacity: 0,
     duration: 0.3,
@@ -473,7 +464,6 @@ const closeMenu = () => {
 }
 
 onMounted(() => {
-  // Set initial state
   gsap.set(menuItems.value, { y: -30, opacity: 0 })
   gsap.set(menuTitle.value, { y: -20, opacity: 0 })
   gsap.set([previewTitle.value, previewDesc.value], { y: 4, opacity: 0 })
@@ -481,16 +471,15 @@ onMounted(() => {
   gsap.set(glowingOrb.value, { scale: 0.8, opacity: 0 })
 })
 
-// Close menu on Escape key
 onMounted(() => {
   const handleEscape = (e) => {
     if (e.key === 'Escape' && isMenuOpen.value) {
       toggleFullscreenMenu()
     }
   }
-  
+
   window.addEventListener('keydown', handleEscape)
-  
+
   onUnmounted(() => {
     window.removeEventListener('keydown', handleEscape)
   })
@@ -498,7 +487,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* Button 2 Hover Effect - Desktop */
+/* Navbar styles --------------------------------------------------------- */
 .nav-link::before {
   content: '';
   position: absolute;
@@ -521,15 +510,11 @@ onMounted(() => {
   transition: transform 0.6s cubic-bezier(0.08, 0.35, 0.13, 1.02), opacity 0.4s;
 }
 
-.nav-link:hover {
-  color: #000000 !important;
-}
-
+.nav-link:hover,
 .nav-link:hover span {
   color: #000000 !important;
 }
 
-/* Mobile Menu Links Hover Effect */
 .nav-link-mobile::before {
   content: '';
   position: absolute;
@@ -552,42 +537,21 @@ onMounted(() => {
   transition: transform 0.6s cubic-bezier(0.08, 0.35, 0.13, 1.02), opacity 0.4s;
 }
 
-.nav-link-mobile:hover {
-  color: #030303 !important;
-}
-
+.nav-link-mobile:hover,
 .nav-link-mobile:hover span {
-  color: #000000 !important;
-}
-
-/* Active state matches hover appearance */
-.nav-link.active::before {
-  opacity: 1;
-  background-color: #ffffff;
-  transform: scaleY(1);
-}
-.nav-link.active,
-.nav-link.active span {
-  color: #000000 !important;
-}
-
-.nav-link-mobile.active::before {
-  opacity: 1;
-  background-color: #ffffff;
-  transform: scaleY(1);
-}
-.nav-link-mobile.active,
-.nav-link-mobile.active span {
   color: #030303 !important;
 }
 
-/* Nuxt router active states (desktop) */
+.nav-link.active::before,
 .router-link-active.nav-link::before,
 .router-link-exact-active.nav-link::before {
   opacity: 1;
   background-color: #ffffff;
   transform: scaleY(1);
 }
+
+.nav-link.active,
+.nav-link.active span,
 .router-link-active.nav-link,
 .router-link-active.nav-link span,
 .router-link-exact-active.nav-link,
@@ -595,13 +559,16 @@ onMounted(() => {
   color: #000000 !important;
 }
 
-/* Nuxt router active states (mobile) */
+.nav-link-mobile.active::before,
 .router-link-active.nav-link-mobile::before,
 .router-link-exact-active.nav-link-mobile::before {
   opacity: 1;
-  background-color: #ffcd05;
+  background-color: #ffffff;
   transform: scaleY(1);
 }
+
+.nav-link-mobile.active,
+.nav-link-mobile.active span,
 .router-link-active.nav-link-mobile,
 .router-link-active.nav-link-mobile span,
 .router-link-exact-active.nav-link-mobile,
@@ -609,29 +576,22 @@ onMounted(() => {
   color: #030303 !important;
 }
 
-/* Mobile Menu Animation */
 .mobile-menu-enter-active,
 .mobile-menu-leave-active {
   transition: all 0.3s ease;
 }
 
-.mobile-menu-enter-from {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
+.mobile-menu-enter-from,
 .mobile-menu-leave-to {
   opacity: 0;
   transform: translateY(-10px);
 }
 
-/* Menu Item Hover Effect */
 .menu-item {
   transform: translateZ(0);
   backface-visibility: hidden;
 }
 
-/* Custom Scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
@@ -649,4 +609,303 @@ onMounted(() => {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(234, 179, 8, 0.5);
 }
+
+/* Hero styles ----------------------------------------------------------- */
+.hero-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: calc(100vh - 80px);
+  margin-top: 80px;
+  background: black;
+  color: white;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-bg::before,
+.hero-bg::after {
+  position: absolute;
+  content: "";
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 208, 0, 0.18),
+    rgba(138, 138, 138, 0.18)
+  );
+}
+
+.hero-bg::before {
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 25%;
+  animation: hero-a 20s ease infinite;
+}
+
+.hero-bg::after {
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 25%;
+  animation: hero-b 10s ease infinite;
+}
+
+@keyframes hero-a {
+  0% {
+    width: 25%;
+    height: 25%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    backdrop-filter: blur(2vmin);
+    -webkit-backdrop-filter: blur(2vmin);
+  }
+  12.49% { left: 0; }
+  12.5% {
+    width: 100%;
+    left: unset;
+    backdrop-filter: blur(0vmin);
+    -webkit-backdrop-filter: blur(0vmin);
+  }
+  25% {
+    width: 25%;
+    height: 25%;
+    backdrop-filter: blur(2vmin);
+    -webkit-backdrop-filter: blur(2vmin);
+  }
+  37.49% { top: 0; bottom: 0; }
+  37.5% {
+    top: unset;
+    height: 100%;
+    backdrop-filter: blur(0vmin);
+    -webkit-backdrop-filter: blur(0vmin);
+  }
+  50% {
+    width: 25%;
+    height: 25%;
+    backdrop-filter: blur(2vmin);
+    -webkit-backdrop-filter: blur(2vmin);
+  }
+  62.49% { left: unset; right: 0; }
+  62.5% {
+    right: unset;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(0vmin);
+    -webkit-backdrop-filter: blur(0vmin);
+  }
+  74.9% { top: unset; bottom: 0; }
+  75% {
+    width: 25%;
+    height: 25%;
+    backdrop-filter: blur(2vmin);
+    -webkit-backdrop-filter: blur(2vmin);
+  }
+  87.49% { top: unset; bottom: 0; }
+  87.5% {
+    height: 100%;
+    top: 0;
+    backdrop-filter: blur(0vmin);
+    -webkit-backdrop-filter: blur(0vmin);
+  }
+  100% {
+    width: 25%;
+    height: 25%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    backdrop-filter: blur(2vmin);
+    -webkit-backdrop-filter: blur(2vmin);
+  }
+}
+
+@keyframes hero-b {
+  0% {
+    width: 25%;
+    height: 25%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    backdrop-filter: blur(2vmin);
+    -webkit-backdrop-filter: blur(2vmin);
+  }
+  12.49% { top: 0; }
+  12.5% {
+    height: 100%;
+    top: unset;
+    backdrop-filter: blur(0vmin);
+    -webkit-backdrop-filter: blur(0vmin);
+  }
+  25% {
+    width: 25%;
+    height: 25%;
+    backdrop-filter: blur(2vmin);
+    -webkit-backdrop-filter: blur(2vmin);
+  }
+  37.49% { left: 0; right: 0; }
+  37.5% {
+    left: unset;
+    width: 100%;
+    backdrop-filter: blur(0vmin);
+    -webkit-backdrop-filter: blur(0vmin);
+  }
+  50% {
+    width: 25%;
+    height: 25%;
+    backdrop-filter: blur(2vmin);
+    -webkit-backdrop-filter: blur(2vmin);
+  }
+  62.49% { top: unset; bottom: 0; }
+  62.5% {
+    top: 0;
+    height: 100%;
+    backdrop-filter: blur(0vmin);
+    -webkit-backdrop-filter: blur(0vmin);
+  }
+  74.9% { bottom: unset; right: 0; }
+  75% {
+    width: 25%;
+    height: 25%;
+    left: unset;
+    backdrop-filter: blur(2vmin);
+    -webkit-backdrop-filter: blur(2vmin);
+  }
+  87.49% { left: unset; right: 0; }
+  87.5% {
+    width: 100%;
+    left: 0;
+    backdrop-filter: blur(0vmin);
+    -webkit-backdrop-filter: blur(0vmin);
+  }
+  100% {
+    width: 25%;
+    height: 25%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    backdrop-filter: blur(2vmin);
+    -webkit-backdrop-filter: blur(2vmin);
+  }
+}
+
+.hero-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 700px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  animation: hero-c 10s linear infinite;
+}
+
+@keyframes hero-c {
+  from {
+    backdrop-filter: blur(2vmin);
+    -webkit-backdrop-filter: blur(2vmin);
+  }
+  to {
+    backdrop-filter: blur(2vmin);
+    -webkit-backdrop-filter: blur(2vmin);
+  }
+}
+
+.hero-content::after {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 60px;
+  height: 60px;
+  background-color: #ffd000;
+  content: "";
+  z-index: -1;
+  animation: hero-d 5s linear infinite;
+}
+
+@keyframes hero-d {
+  from {
+    transform: rotateZ(0deg);
+    border-radius: 0;
+  }
+  50% {
+    border-radius: 49%;
+  }
+  to {
+    transform: rotateZ(360deg);
+    border-radius: 0;
+  }
+}
+
+.hero-content h1 {
+  font-family: "Major Mono Display", monospace;
+  font-size: 40px;
+  line-height: 1.5;
+  color: white;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.hero-content figcaption {
+  font-family: "Figtree", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.8;
+  padding-left: 30px;
+  border-left: 1px solid white;
+  color: #bbb;
+  display: block;
+}
+
+@media (max-width: 780px) {
+  .hero-container {
+    height: calc(100vh - 80px);
+  }
+
+  .hero-content {
+    max-width: 90%;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-content figcaption {
+    font-size: 16px;
+    padding-left: 20px;
+  }
+}
 </style>
+

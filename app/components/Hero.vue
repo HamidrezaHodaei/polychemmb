@@ -285,7 +285,7 @@
   
   /* Typography */
   h1 {
-    font-family: "Major Mono Display", monospace;
+    font-family: "Montserrat", sans-serif;
     font-size: 40px;
     line-height: 1.5cap;
     text-wrap: balance;
