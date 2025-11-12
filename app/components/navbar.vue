@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="bg-[#848484] fixed top-0 inset-x-0 z-50 border-b" style="border-bottom-color: #f1f2f2;">
+    <nav class="bg-[#808285] fixed top-0 inset-x-0 z-50 border-b" style="border-bottom-color: #f1f2f2;">
       <div class="max-w-7xl mx-auto">
         <div class="flex items-center h-20">
           <!-- Logo & Brand -->
@@ -526,7 +526,7 @@ onMounted(() => {
 }
 
 .nav-link:hover span {
-  color: #000000 !important;
+  color: #808285 !important;
 }
 
 /* Mobile Menu Links Hover Effect */
@@ -592,7 +592,7 @@ onMounted(() => {
 .router-link-active.nav-link span,
 .router-link-exact-active.nav-link,
 .router-link-exact-active.nav-link span {
-  color: #000000 !important;
+  color: #808285 !important;
 }
 
 /* Nuxt router active states (mobile) */

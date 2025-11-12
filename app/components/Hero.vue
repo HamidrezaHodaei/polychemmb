@@ -2,7 +2,7 @@
     <div class="hero-container">
       <!-- First Section -->
       <picture class="bg-picture">
-        <img src="/white-plastic-polymer.jpg" width="3840" height="2160" alt="background" />
+        <img src="/polychem.jpg"  alt="background" />
       </picture>
       <figure class="content-box">
         <h1>Welcome to my website</h1>
@@ -33,8 +33,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100vw;
-    height: 100vh; /* single full-screen section */
+    width: 100%;
+    height: calc(100vh - 5rem); /* adjusted to subtract navbar height (h-20 = 5rem) */
     margin: 0;
     background: black;
     color: white;
@@ -45,13 +45,13 @@
   .bg-picture {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 5rem); /* keep consistent with hero-container */
     overflow: hidden;
   }
   
   .bg-picture img {
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 5rem); /* keep consistent with hero-container */
     object-fit: cover;
   }
   
@@ -62,7 +62,7 @@
     content: "";
     background-image: linear-gradient(
       135deg,
-      rgba(255, 208, 0, 0.18),
+      rgba(119, 118, 115, 0.18),
       rgba(138, 138, 138, 0.18)
     ); /* yellow + gray overlay */
   }
@@ -241,7 +241,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.2);
     z-index: 1;
     animation: c 10s linear infinite;
   }
@@ -301,7 +301,7 @@
     text-wrap: pretty;
     padding-left: 30px;
     border-left: 1px solid white;
-    color: #bbb;
+    color: #ffffff;
   }
   
   /* Responsive */
