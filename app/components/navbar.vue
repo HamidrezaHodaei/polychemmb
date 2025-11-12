@@ -578,7 +578,7 @@ onMounted(() => {
 }
 .nav-link-mobile.active,
 .nav-link-mobile.active span {
-  color: #a09f9f !important;
+  color: #030303 !important;
 }
 
 /* Nuxt router active states (desktop) */
