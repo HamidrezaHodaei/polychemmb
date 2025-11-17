@@ -19,7 +19,7 @@
           <!-- Right: Content (40% on desktop) -->
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
             <h2 class="text-3xl md:text-4xl font-semibold text-[#848484]}">Product One</h2>
-            <p class="text-base md:text-lg text-gray-700">A short description that highlights the main feature of this product in one or two lines.</p>
+            <p class="text-base md:text-lg text-[#848484]">A short description that highlights the main feature of this product in one or two lines.</p>
             <div class="text-2xl font-semibold text-[#848484]">€19.99</div>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
               <span class="relative z-10 font-medium">Buy Now</span>
@@ -39,7 +39,7 @@
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
             <h2 class="text-3xl md:text-4xl font-semibold text-[#848484]">Product Two</h2>
-            <p class="text-base md:text-lg text-gray-700">Concise description that communicates value and key use-cases.</p>
+            <p class="text-base md:text-lg text-[#848484]">Concise description that communicates value and key use-cases.</p>
             <div class="text-2xl font-semibold text-[#848484]">€29.99</div>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
               <span class="relative z-10 font-medium">Buy Now</span>
@@ -59,7 +59,7 @@
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
             <h2 class="text-3xl md:text-4xl font-semibold text-[#848484]">Product Three</h2>
-            <p class="text-base md:text-lg text-gray-700">Short, punchy description emphasizing benefits and uniqueness.</p>
+            <p class="text-base md:text-lg text-[#848484]">Short, punchy description emphasizing benefits and uniqueness.</p>
             <div class="text-2xl font-semibold text-[#848484]">€39.99</div>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
               <span class="relative z-10 font-medium">Buy Now</span>
@@ -79,7 +79,7 @@
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
             <h2 class="text-3xl md:text-4xl font-semibold text-[#848484]">Product Four</h2>
-            <p class="text-base md:text-lg text-gray-700">One-liner that explains why this product stands out.</p>
+            <p class="text-base md:text-lg text-[#848484]">One-liner that explains why this product stands out.</p>
             <div class="text-2xl font-semibold text-[#848484]">€49.99</div>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
               <span class="relative z-10 font-medium">Buy Now</span>

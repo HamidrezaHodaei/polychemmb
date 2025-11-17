@@ -1,349 +1,322 @@
 <template>
-  <div class="container mx-auto px-4">
-    <div class="w-full">
-      <div
-        ref="cardsContainer"
-        class="relative flex justify-center items-center h-[80vh] mb-24"
-      >
-        <!-- Card 1 -->
-        <div
-          ref="card1"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch text-white text-4xl font-bold overflow-hidden"
-          style="top: 0px; z-index: 2;"
-        >
-          <!-- Left: Image (60% on desktop, 100% on mobile) -->
-          <div class="w-full md:w-3/5 overflow-hidden rounded-t-[50px] md:rounded-tl-[50px] md:rounded-bl-[50px] md:rounded-tr-[0px] md:rounded-br-[0px]">
-            <img src="/white-plastic-polymer.jpg" alt="Product 1" class="w-full h-full object-cover" />
-          </div>
-
-          <!-- Right: Content (40% on desktop) -->
-          <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
-            <h2 class="text-3xl md:text-4xl font-bold">Product One</h2>
-            <p class="text-base md:text-lg text-gray-700">A short description that highlights the main feature of this product in one or two lines.</p>
-            <div class="text-2xl font-semibold text-gray-900">€19.99</div>
-            <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
-              <span class="relative z-10 font-medium">Buy Now</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div
-          ref="card2"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch text-white text-4xl font-bold overflow-hidden"
-          style="top: 30px; z-index: 3;"
-        >
-          <div class="w-full md:w-3/5 overflow-hidden rounded-t-[50px] md:rounded-tl-[50px] md:rounded-bl-[50px] md:rounded-tr-[0px] md:rounded-br-[0px]">
-            <img src="/white-plastic-polymer.jpg" alt="Product 2" class="w-full h-full object-cover" />
-          </div>
-
-          <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Product Two</h2>
-            <p class="text-base md:text-lg text-gray-700">Concise description that communicates value and key use-cases.</p>
-            <div class="text-2xl font-semibold text-gray-900">€29.99</div>
-            <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
-              <span class="relative z-10 font-medium">Buy Now</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div
-          ref="card3"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch text-white text-4xl font-bold overflow-hidden"
-          style="top: 60px; z-index: 4;"
-        >
-          <div class="w-full md:w-3/5 overflow-hidden rounded-t-[50px] md:rounded-tl-[50px] md:rounded-bl-[50px] md:rounded-tr-[0px] md:rounded-br-[0px]">
-            <img src="/white-plastic-polymer.jpg" alt="Product 3" class="w-full h-full object-cover" />
-          </div>
-
-          <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Product Three</h2>
-            <p class="text-base md:text-lg text-gray-700">Short, punchy description emphasizing benefits and uniqueness.</p>
-            <div class="text-2xl font-semibold text-gray-900">€39.99</div>
-            <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
-              <span class="relative z-10 font-medium">Buy Now</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div
-          ref="card4"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch text-white text-4xl font-bold overflow-hidden"
-          style="top: 90px; z-index: 5;"
-        >
-          <div class="w-full md:w-3/5 overflow-hidden rounded-t-[50px] md:rounded-tl-[50px] md:rounded-bl-[50px] md:rounded-tr-[0px] md:rounded-br-[0px]">
-            <img src="/white-plastic-polymer.jpg" alt="Product 4" class="w-full h-full object-cover" />
-          </div>
-
-          <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Product Four</h2>
-            <p class="text-base md:text-lg text-gray-700">One-liner that explains why this product stands out.</p>
-            <div class="text-2xl font-semibold text-gray-900">€49.99</div>
-            <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
-              <span class="relative z-10 font-medium">Buy Now</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="w-full h-screen bg-black overflow-hidden relative">
+    <canvas ref="globeCanvas" class="w-full h-full"></canvas>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
-
-const cardsContainer = ref(null)
-const card1 = ref(null)
-const card2 = ref(null)
-const card3 = ref(null)
-const card4 = ref(null)
-
-let tl = null
+const globeCanvas = ref(null)
 
 onMounted(() => {
-  tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: cardsContainer.value,
-      pin: true,
-      pinSpacing: true,
-      markers: false,
-      start: 'top-=50px top',
-      end: '+=3500',
-      scrub: 1,
-    },
-  })
+  if (!globeCanvas.value) return
 
-  tl.addLabel('card1')
-  tl.to(card1.value, {
-    yPercent: 0,
-    opacity: 1,
-    duration: 1,
-    ease: 'power2.out',
-  })
-
-  tl.from(
-    card2.value,
-    {
-      yPercent: 75,
-      opacity: 0,
-      duration: 1.5,
-      ease: 'power2.out',
-    },
-    '+=0.2'
-  )
-
-  tl.addLabel('card2')
-
-  tl.to(
-    card1.value,
-    {
-      scale: 0.925,
-      yPercent: -0.75,
-      opacity: 0.85,
-      duration: 1.2,
-      ease: 'power2.inOut',
-    },
-    '-=0.4'
-  )
-
-  tl.to(
-    card2.value,
-    {
-      yPercent: 0,
-      opacity: 1,
-      duration: 1.2,
-      ease: 'power2.out',
-    },
-    '-=0.6'
-  )
-
-  tl.from(
-    card3.value,
-    {
-      yPercent: 75,
-      opacity: 0,
-      duration: 1.5,
-      ease: 'power2.out',
-    },
-    '+=0.2'
-  )
-
-  tl.addLabel('card3')
-
-  tl.to(
-    card2.value,
-    {
-      scale: 0.95,
-      yPercent: -0.5,
-      opacity: 0.85,
-      duration: 1.2,
-      ease: 'power2.inOut',
-    },
-    '-=0.4'
-  )
-
-  tl.to(
-    card3.value,
-    {
-      yPercent: 0,
-      opacity: 1,
-      duration: 1.2,
-      ease: 'power2.out',
-    },
-    '-=0.6'
-  )
-
-  tl.from(
-    card4.value,
-    {
-      yPercent: 75,
-      opacity: 0,
-      duration: 1.5,
-      ease: 'power2.out',
-    },
-    '+=0.2'
-  )
-
-  tl.addLabel('card4')
-
-  tl.to(
-    card3.value,
-    {
-      scale: 0.975,
-      yPercent: -0.4,
-      opacity: 0.85,
-      duration: 1.2,
-      ease: 'power2.inOut',
-    },
-    '-=0.4'
-  )
-
-  tl.to(
-    card4.value,
-    {
-      yPercent: 0,
-      opacity: 1,
-      duration: 1.2,
-      ease: 'power2.out',
-    },
-    '-=0.6'
-  )
-
-  tl.to(
-    [card1.value, card2.value, card3.value],
-    {
-      scale: (index) => 0.9 + index * 0.025,
-      yPercent: (index) => -(1.5 - index * 0.375),
-      opacity: 0.7,
-      duration: 1.5,
-      stagger: 0.1,
-      ease: 'power2.inOut',
-    },
-    '-=0.4'
-  )
-})
-
-onUnmounted(() => {
-  if (tl && tl.scrollTrigger) {
-    tl.scrollTrigger.kill()
+  const canvas = globeCanvas.value
+  const ctx = canvas.getContext('2d')
+  
+  let width = canvas.width = window.innerWidth
+  let height = canvas.height = window.innerHeight
+  
+  // Mouse tracking
+  let isDragging = false
+  let lastMouseX = 0
+  let lastMouseY = 0
+  
+  // Globe rotation
+  let rotationX = 0.2
+  let rotationY = 0
+  let targetRotationX = 0.2
+  let targetRotationY = 0
+  let velocityX = 0.003
+  let velocityY = 0
+  
+  // Globe settings
+  const radius = Math.min(width, height) * 0.35
+  const centerX = width / 2
+  const centerY = height / 2
+  
+  // بارگذاری تصویر texture
+  const earthTexture = new Image()
+  earthTexture.crossOrigin = "anonymous"
+  let textureLoaded = false
+  let dots = []
+  
+  // استفاده از تصویر واقعی نقشه زمین (سیاه و سفید)
+  earthTexture.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Equirectangular_projection_SW.jpg/1280px-Equirectangular_projection_SW.jpg'
+  
+  earthTexture.onload = () => {
+    textureLoaded = true
+    generateDotsFromTexture()
   }
-  if (tl) {
-    tl.kill()
+  
+  // در صورت عدم بارگذاری، از texture دستی استفاده می‌کنیم
+  earthTexture.onerror = () => {
+    console.log('Using fallback texture')
+    generateFallbackTexture()
   }
+  
+  function generateDotsFromTexture() {
+    const tempCanvas = document.createElement('canvas')
+    const tempCtx = tempCanvas.getContext('2d')
+    
+    const texWidth = 512
+    const texHeight = 256
+    tempCanvas.width = texWidth
+    tempCanvas.height = texHeight
+    
+    // رسم تصویر روی canvas موقت
+    tempCtx.drawImage(earthTexture, 0, 0, texWidth, texHeight)
+    const imageData = tempCtx.getImageData(0, 0, texWidth, texHeight)
+    
+    dots = []
+    const numLat = 100
+    const numLon = 200
+    
+    for (let lat = 0; lat < numLat; lat++) {
+      for (let lon = 0; lon < numLon; lon++) {
+        const theta = (lat / numLat) * Math.PI
+        const phi = (lon / numLon) * Math.PI * 2
+        
+        // خواندن رنگ پیکسل از texture
+        const texX = Math.floor((lon / numLon) * texWidth)
+        const texY = Math.floor((lat / numLat) * texHeight)
+        const pixelIndex = (texY * texWidth + texX) * 4
+        
+        const r = imageData.data[pixelIndex]
+        const g = imageData.data[pixelIndex + 1]
+        const b = imageData.data[pixelIndex + 2]
+        
+        // محاسبه روشنایی
+        const brightness = (r + g + b) / 3
+        
+        // فقط نقاط روشن (خشکی) را نگه می‌داریم
+        if (brightness > 100) {
+          dots.push({
+            theta,
+            phi,
+            brightness: brightness / 255
+          })
+        }
+      }
+    }
+  }
+  
+  function generateFallbackTexture() {
+    // تولید texture ساده در صورت عدم بارگذاری تصویر
+    const tempCanvas = document.createElement('canvas')
+    const tempCtx = tempCanvas.getContext('2d')
+    const texSize = 512
+    tempCanvas.width = texSize
+    tempCanvas.height = texSize / 2
+    
+    tempCtx.fillStyle = '#000000'
+    tempCtx.fillRect(0, 0, texSize, texSize / 2)
+    
+    // رسم قاره‌های ساده
+    tempCtx.fillStyle = '#FFFFFF'
+    
+    // آمریکا
+    tempCtx.fillRect(50, 80, 120, 150)
+    // اروپا و آسیا
+    tempCtx.fillRect(200, 60, 280, 120)
+    // آفریقا
+    tempCtx.fillRect(220, 140, 80, 100)
+    // استرالیا
+    tempCtx.fillRect(420, 200, 60, 50)
+    
+    const imageData = tempCtx.getImageData(0, 0, texSize, texSize / 2)
+    
+    dots = []
+    const numLat = 80
+    const numLon = 160
+    
+    for (let lat = 0; lat < numLat; lat++) {
+      for (let lon = 0; lon < numLon; lon++) {
+        const theta = (lat / numLat) * Math.PI
+        const phi = (lon / numLon) * Math.PI * 2
+        
+        const texX = Math.floor((lon / numLon) * texSize)
+        const texY = Math.floor((lat / numLat) * (texSize / 2))
+        const pixelIndex = (texY * texSize + texX) * 4
+        
+        const brightness = imageData.data[pixelIndex]
+        
+        if (brightness > 128) {
+          dots.push({
+            theta,
+            phi,
+            brightness: 1
+          })
+        }
+      }
+    }
+  }
+  
+  function project3DTo2D(theta, phi, rotX, rotY) {
+    let x = Math.sin(theta) * Math.cos(phi)
+    let y = Math.cos(theta)
+    let z = Math.sin(theta) * Math.sin(phi)
+    
+    const cosY = Math.cos(rotY)
+    const sinY = Math.sin(rotY)
+    const tempX = x * cosY - z * sinY
+    const tempZ = x * sinY + z * cosY
+    x = tempX
+    z = tempZ
+    
+    const cosX = Math.cos(rotX)
+    const sinX = Math.sin(rotX)
+    const tempY = y * cosX - z * sinX
+    z = y * sinX + z * cosX
+    y = tempY
+    
+    const scale = radius / (radius + z * 0.5)
+    const x2d = centerX + x * radius * scale
+    const y2d = centerY + y * radius * scale
+    
+    return { x: x2d, y: y2d, z, scale, visible: z > -radius * 0.3 }
+  }
+  
+  function drawGlobe() {
+    ctx.fillStyle = '#000000'
+    ctx.fillRect(0, 0, width, height)
+    
+    if (dots.length === 0) return
+    
+    const allPoints = []
+    
+    dots.forEach(dot => {
+      const pos = project3DTo2D(dot.theta, dot.phi, rotationX, rotationY)
+      if (pos.visible) {
+        allPoints.push({
+          x: pos.x,
+          y: pos.y,
+          z: pos.z,
+          brightness: dot.brightness * pos.scale,
+          size: 2.5 * pos.scale
+        })
+      }
+    })
+    
+    allPoints.sort((a, b) => a.z - b.z)
+    
+    allPoints.forEach(point => {
+      const alpha = Math.max(0, Math.min(1, point.brightness))
+      ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`
+      ctx.beginPath()
+      ctx.arc(point.x, point.y, point.size, 0, Math.PI * 2)
+      ctx.fill()
+    })
+    
+    // درخشش لبه
+    const gradient = ctx.createRadialGradient(centerX, centerY, radius * 0.85, centerX, centerY, radius * 1.05)
+    gradient.addColorStop(0, 'rgba(255, 255, 255, 0)')
+    gradient.addColorStop(0.85, 'rgba(255, 255, 255, 0.12)')
+    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
+    ctx.fillStyle = gradient
+    ctx.beginPath()
+    ctx.arc(centerX, centerY, radius * 1.05, 0, Math.PI * 2)
+    ctx.fill()
+  }
+  
+  function animate() {
+    rotationX += (targetRotationX - rotationX) * 0.1
+    rotationY += (targetRotationY - rotationY) * 0.1
+    
+    if (!isDragging) {
+      targetRotationY += velocityX
+      targetRotationX += velocityY
+      velocityX *= 0.95
+      velocityY *= 0.95
+    }
+    
+    drawGlobe()
+    requestAnimationFrame(animate)
+  }
+  
+  function handleMouseDown(e) {
+    isDragging = true
+    lastMouseX = e.clientX
+    lastMouseY = e.clientY
+    velocityX = 0
+    velocityY = 0
+  }
+  
+  function handleMouseMove(e) {
+    if (isDragging) {
+      const deltaX = e.clientX - lastMouseX
+      const deltaY = e.clientY - lastMouseY
+      
+      velocityX = deltaX * 0.005
+      velocityY = deltaY * 0.005
+      
+      targetRotationY += deltaX * 0.005
+      targetRotationX += deltaY * 0.005
+      
+      lastMouseX = e.clientX
+      lastMouseY = e.clientY
+    }
+  }
+  
+  function handleMouseUp() {
+    isDragging = false
+  }
+  
+  function handleResize() {
+    width = canvas.width = window.innerWidth
+    height = canvas.height = window.innerHeight
+  }
+  
+  function handleTouchStart(e) {
+    e.preventDefault()
+    const touch = e.touches[0]
+    handleMouseDown({ clientX: touch.clientX, clientY: touch.clientY })
+  }
+  
+  function handleTouchMove(e) {
+    e.preventDefault()
+    const touch = e.touches[0]
+    handleMouseMove({ clientX: touch.clientX, clientY: touch.clientY })
+  }
+  
+  function handleTouchEnd(e) {
+    e.preventDefault()
+    handleMouseUp()
+  }
+  
+  canvas.addEventListener('mousedown', handleMouseDown)
+  canvas.addEventListener('mousemove', handleMouseMove)
+  canvas.addEventListener('mouseup', handleMouseUp)
+  canvas.addEventListener('mouseleave', handleMouseUp)
+  canvas.addEventListener('touchstart', handleTouchStart, { passive: false })
+  canvas.addEventListener('touchmove', handleTouchMove, { passive: false })
+  canvas.addEventListener('touchend', handleTouchEnd, { passive: false })
+  window.addEventListener('resize', handleResize)
+  
+  // شروع با texture fallback تا زمان بارگذاری تصویر
+  generateFallbackTexture()
+  animate()
+  
+  onUnmounted(() => {
+    canvas.removeEventListener('mousedown', handleMouseDown)
+    canvas.removeEventListener('mousemove', handleMouseMove)
+    canvas.removeEventListener('mouseup', handleMouseUp)
+    canvas.removeEventListener('mouseleave', handleMouseUp)
+    canvas.removeEventListener('touchstart', handleTouchStart)
+    canvas.removeEventListener('touchmove', handleTouchMove)
+    canvas.removeEventListener('touchend', handleTouchEnd)
+    window.removeEventListener('resize', handleResize)
+  })
 })
 </script>
 
 <style scoped>
-/* اطمینان از سفید بودن پس‌زمینه‌ی ورودی‌ها (حتی در حالت autofill مرورگر) */
-input {
-  background-color: #ffffff !important;
+canvas {
+  cursor: grab;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
-  box-shadow: 0 0 0 1000px #ffffff inset !important;
-  -webkit-text-fill-color: #111111 !important;
-  caret-color: #111111;
-  transition: background-color 5000s ease-in-out 0s;
-}
-
-/* Reuse button slide-down effect (same visual as login.vue) */
-.btn-slide-down {
-  background-color: transparent;
-}
-.btn-slide-down::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #FFCD05;
-  transform: translateY(-100%);
-  transition: transform 300ms ease;
-  z-index: 0;
-}
-.btn-slide-down:hover::before,
-.btn-slide-down:focus-visible::before {
-  transform: translateY(0);
-}
-.btn-slide-down:hover,
-.btn-slide-down:focus-visible {
-  color: #ffffff;
-  outline: none;
-}
-
-/* Card content neutral background with yellow accent */
-.card-content {
-  background: linear-gradient(180deg, #ffffff 0%, #f3f4f5 100%);
-  position: relative;
-  z-index: 1;
-  color: #111827;
-}
-/* ensure text sits above accent */
-.card-content > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* Vertical yellow accent on the left for desktop, top bar for mobile */
-.card-content::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 6px;
-  height: 100%;
-  background: #FFCD05;
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
-  z-index: 1;
-}
-
-/* Mobile: convert accent to top thin bar and ensure rounded corners look correct */
-@media (max-width: 767px) {
-  .card-content::before {
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 6px;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  /* fallback for rounded classes on small screens */
-  .rounded-tl-\[50px\], .rounded-bl-\[50px\], .rounded-tr-\[50px\], .rounded-br-\[50px\] {
-    border-radius: 50px;
-  }
+canvas:active {
+  cursor: grabbing;
 }
 </style>
