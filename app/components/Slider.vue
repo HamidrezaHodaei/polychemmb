@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-4 font-sans text-red-100]">
     <div class="w-full">
       <div
         ref="cardsContainer"
@@ -8,7 +8,7 @@
         <!-- Card 1 -->
         <div
           ref="card1"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch text-white text-4xl font-bold overflow-hidden"
+          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
           style="top: 0px; z-index: 2;"
         >
           <!-- Left: Image (60% on desktop, 100% on mobile) -->
@@ -18,9 +18,9 @@
 
           <!-- Right: Content (40% on desktop) -->
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
-            <h2 class="text-3xl md:text-4xl font-bold">Product One</h2>
+            <h2 class="text-3xl md:text-4xl font-semibold text-[#848484]}">Product One</h2>
             <p class="text-base md:text-lg text-gray-700">A short description that highlights the main feature of this product in one or two lines.</p>
-            <div class="text-2xl font-semibold text-gray-900">€19.99</div>
+            <div class="text-2xl font-semibold text-[#848484]">€19.99</div>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
               <span class="relative z-10 font-medium">Buy Now</span>
             </button>
@@ -30,7 +30,7 @@
         <!-- Card 2 -->
         <div
           ref="card2"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch text-white text-4xl font-bold overflow-hidden"
+          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
           style="top: 30px; z-index: 3;"
         >
           <div class="w-full md:w-3/5 overflow-hidden rounded-t-[50px] md:rounded-tl-[50px] md:rounded-bl-[50px] md:rounded-tr-[0px] md:rounded-br-[0px]">
@@ -38,9 +38,9 @@
           </div>
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Product Two</h2>
+            <h2 class="text-3xl md:text-4xl font-semibold text-[#848484]">Product Two</h2>
             <p class="text-base md:text-lg text-gray-700">Concise description that communicates value and key use-cases.</p>
-            <div class="text-2xl font-semibold text-gray-900">€29.99</div>
+            <div class="text-2xl font-semibold text-[#848484]">€29.99</div>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
               <span class="relative z-10 font-medium">Buy Now</span>
             </button>
@@ -50,7 +50,7 @@
         <!-- Card 3 -->
         <div
           ref="card3"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch text-white text-4xl font-bold overflow-hidden"
+          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
           style="top: 60px; z-index: 4;"
         >
           <div class="w-full md:w-3/5 overflow-hidden rounded-t-[50px] md:rounded-tl-[50px] md:rounded-bl-[50px] md:rounded-tr-[0px] md:rounded-br-[0px]">
@@ -58,9 +58,9 @@
           </div>
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Product Three</h2>
+            <h2 class="text-3xl md:text-4xl font-semibold text-[#848484]">Product Three</h2>
             <p class="text-base md:text-lg text-gray-700">Short, punchy description emphasizing benefits and uniqueness.</p>
-            <div class="text-2xl font-semibold text-gray-900">€39.99</div>
+            <div class="text-2xl font-semibold text-[#848484]">€39.99</div>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
               <span class="relative z-10 font-medium">Buy Now</span>
             </button>
@@ -70,7 +70,7 @@
         <!-- Card 4 -->
         <div
           ref="card4"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch text-white text-4xl font-bold overflow-hidden"
+          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
           style="top: 90px; z-index: 5;"
         >
           <div class="w-full md:w-3/5 overflow-hidden rounded-t-[50px] md:rounded-tl-[50px] md:rounded-bl-[50px] md:rounded-tr-[0px] md:rounded-br-[0px]">
@@ -78,9 +78,9 @@
           </div>
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Product Four</h2>
+            <h2 class="text-3xl md:text-4xl font-semibold text-[#848484]">Product Four</h2>
             <p class="text-base md:text-lg text-gray-700">One-liner that explains why this product stands out.</p>
-            <div class="text-2xl font-semibold text-gray-900">€49.99</div>
+            <div class="text-2xl font-semibold text-[#848484]">€49.99</div>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
               <span class="relative z-10 font-medium">Buy Now</span>
             </button>
@@ -302,12 +302,12 @@ input:-webkit-autofill:focus {
   outline: none;
 }
 
-/* Card content neutral background with yellow accent */
+/* Card content neutral background matching login page */
 .card-content {
-  background: linear-gradient(180deg, #ffffff 0%, #f3f4f5 100%);
+  background: linear-gradient(180deg, #f1f2f2 0%, #e8e9e9 100%);
   position: relative;
   z-index: 1;
-  color: #111827;
+  color: #808285;
 }
 /* ensure text sits above accent */
 .card-content > * {
@@ -344,6 +344,27 @@ input:-webkit-autofill:focus {
   /* fallback for rounded classes on small screens */
   .rounded-tl-\[50px\], .rounded-bl-\[50px\], .rounded-tr-\[50px\], .rounded-br-\[50px\] {
     border-radius: 50px;
+  }
+}
+
+/* Slider specific styles */
+.slider {
+  transition: all 0.6s ease-in-out;
+}
+
+.slider.scroll-active {
+  /* انیمیشن دلخواه خود را اینجا اضافه کنید */
+  animation: slideInUp 0.6s ease-in-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>
