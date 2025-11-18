@@ -123,29 +123,7 @@ const cards = ref([
   }
 ])
 
-// معادلات شیمیایی
-const chemicalEquations = [
-  '2H₂ + O₂ → 2H₂O',
-  'CH₄ + 2O₂ → CO₂ + 2H₂O',
-  'N₂ + 3H₂ → 2NH₃',
-  'CaCO₃ → CaO + CO₂',
-  '2Na + Cl₂ → 2NaCl',
-  'H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O',
-  'Fe + S → FeS',
-  'C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O',
-  '2KClO₃ → 2KCl + 3O₂',
-  'Zn + 2HCl → ZnCl₂ + H₂',
-  'Mg + O₂ → MgO',
-  'AgNO₃ + NaCl → AgCl + NaNO₃',
-  'C₃H₈ + 5O₂ → 3CO₂ + 4H₂O',
-  '2Al + 3Cl₂ → 2AlCl₃',
-  'Cu + 2AgNO₃ → Cu(NO₃)₂ + 2Ag',
-  'NH₄NO₃ → N₂O + 2H₂O',
-  'C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O',
-  'Ca(OH)₂ + CO₂ → CaCO₃ + H₂O',
-  '2Mg + O₂ → 2MgO',
-  'PCl₅ → PCl₃ + Cl₂'
-]
+
 
 const charactersRefs = ref([])
 
@@ -324,7 +302,7 @@ const handleTouchEnd = (index) => {
 
 .card-badge {
   display: inline-block;
-  background: #2a2a2a;
+  background: #555555;
   color: #ffffff;
   padding: 6px 14px;
   border-radius: 4px;
@@ -335,7 +313,7 @@ const handleTouchEnd = (index) => {
 }
 
 .card-title {
-  color: #1a1a1a;
+  color: #808285;
   font-size: 24px;
   font-weight: 600;
   line-height: 1.3;

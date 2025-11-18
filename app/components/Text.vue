@@ -2,7 +2,7 @@
   <div class="min-h-screen w-full flex justify-center items-center" style="background-color: #f1f2f2;">
     <div ref="textEl" class="font-mono font-thin text-5xl text-[#848484]"></div>
   </div>
-  <div><p>zz</p></div>
+  <div></div>
 </template>
 
 <script setup>
