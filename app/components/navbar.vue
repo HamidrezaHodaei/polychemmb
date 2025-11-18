@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="bg-[#808285] fixed top-0 inset-x-0 z-50 border-b" style="border-bottom-color: #f1f2f2;">
-      <div class="max-w-7xl mx-auto">
+      <div class="max-w-7xl mx-auto navbar-inner">
         <div class="flex items-center h-20">
           <!-- Logo & Brand -->
           <div class="flex items-center justify-start border-r border-l border-white pl-8 pr-8 h-full w-[200px] flex-shrink-0">
@@ -81,7 +81,7 @@
           <!-- Mobile Menu Button -->
           <button 
             @click="mobileMenuOpen = !mobileMenuOpen"
-            class="md:hidden text-white hover:text-gray-200 px-4"
+            class="md:hidden hide-desktop text-white hover:text-gray-200 px-4"
           >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path 
@@ -522,11 +522,11 @@ onMounted(() => {
 }
 
 .nav-link:hover {
-  color: #000000 !important;
+  color: #848484 !important;
 }
 
 .nav-link:hover span {
-  color: #000000 !important;
+  color: #848484 !important;
 }
 
 /* Mobile Menu Links Hover Effect */
@@ -648,5 +648,99 @@ onMounted(() => {
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(234, 179, 8, 0.5);
+}
+
+/* ensure top yellow buttons/links always align in one row */
+.nav-link,
+.nav-link-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  white-space: nowrap; /* prevent wrapping so items stay in one line */
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* keep inner text vertically centered and above the pseudo background */
+.nav-link > span,
+.nav-link-mobile > span {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* ensure right-side buttons (EN / LOG IN) match height and alignment */
+nav .flex.items-center.h-20 > * {
+  min-height: 80px; /* match h-20 (20 * 4px = 80px) to avoid misalignment */
+  display: flex;
+  align-items: center;
+}
+
+/* Fix alignment: make nav items (including leftmost PRODUCTS button) vertically centered and same height */
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px; /* برابر h-20 */
+  box-sizing: border-box;
+  padding-top: 0;
+  padding-bottom: 0;
+  white-space: nowrap;
+}
+
+.nav-link > span {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* ensure icons inside nav-link don't shift baseline */
+.nav-link svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+/* make sure nav-link inside border wrappers fills parent's height */
+.hidden.md\:flex.items-center.h-full > .nav-link,
+.hidden.md\:flex.items-center.h-full .nav-link {
+  height: 100%;
+}
+
+/* ensure container direct children align consistently */
+.flex.items-center.h-20 > * {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* small tweak for mobile links to keep consistent touch area */
+.nav-link-mobile {
+  min-height: 44px;
+}
+
+/* hide the mobile menu button on desktop widths (force if tailwind not applied) */
+@media (min-width: 768px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+/* Navbar horizontal shift control:
+   تغییر مقدار --navbar-shift برای جابجایی کل navbar به چپ/راست
+   مقادیر پیشنهادی: -4px (کم)، -8px (معمول)، -12px (بیشتر به چپ)
+*/
+.navbar-inner {
+  --navbar-shift: -32px;
+  transform: translateX(var(--navbar-shift));
+  transition: transform 0.18s ease;
+}
+
+/* غیرفعال کردن جابجایی در موبایل برای جلوگیری از تداخل با layout موبایل */
+@media (max-width: 767px) {
+  .navbar-inner {
+    transform: none;
+  }
 }
 </style>

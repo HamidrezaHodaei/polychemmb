@@ -8,11 +8,11 @@
         <!-- Card 1 -->
         <div
           ref="card1"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
+          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
           style="top: 0px; z-index: 2;"
         >
           <!-- Left: Image (60% on desktop, 100% on mobile) -->
-          <div class="w-full md:w-3/5 overflow-hidden rounded-t-[50px] md:rounded-tl-[50px] md:rounded-bl-[50px] md:rounded-tr-[0px] md:rounded-br-[0px]">
+          <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px]">
             <img src="/white-plastic-polymer.jpg" alt="Product 1" class="w-full h-full object-cover" />
           </div>
 
@@ -30,10 +30,10 @@
         <!-- Card 2 -->
         <div
           ref="card2"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
+          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
           style="top: 30px; z-index: 3;"
         >
-          <div class="w-full md:w-3/5 overflow-hidden rounded-t-[50px] md:rounded-tl-[50px] md:rounded-bl-[50px] md:rounded-tr-[0px] md:rounded-br-[0px]">
+          <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px]">
             <img src="/white-plastic-polymer.jpg" alt="Product 2" class="w-full h-full object-cover" />
           </div>
 
@@ -50,10 +50,10 @@
         <!-- Card 3 -->
         <div
           ref="card3"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
+          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
           style="top: 60px; z-index: 4;"
         >
-          <div class="w-full md:w-3/5 overflow-hidden rounded-t-[50px] md:rounded-tl-[50px] md:rounded-bl-[50px] md:rounded-tr-[0px] md:rounded-br-[0px]">
+          <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px]">
             <img src="/white-plastic-polymer.jpg" alt="Product 3" class="w-full h-full object-cover" />
           </div>
 
@@ -70,10 +70,10 @@
         <!-- Card 4 -->
         <div
           ref="card4"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[50px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
+          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
           style="top: 90px; z-index: 5;"
         >
-          <div class="w-full md:w-3/5 overflow-hidden rounded-t-[50px] md:rounded-tl-[50px] md:rounded-bl-[50px] md:rounded-tr-[0px] md:rounded-br-[0px]">
+          <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px] bg-white-100">
             <img src="/white-plastic-polymer.jpg" alt="Product 4" class="w-full h-full object-cover" />
           </div>
 
@@ -304,12 +304,11 @@ input:-webkit-autofill:focus {
 
 /* Card content neutral background matching login page */
 .card-content {
-  background: linear-gradient(180deg, #f1f2f2 0%, #e8e9e9 100%);
+  background: #ffffff;
   position: relative;
   z-index: 1;
-  color: #808285;
+  color: #111827;
 }
-/* ensure text sits above accent */
 .card-content > * {
   position: relative;
   z-index: 2;
@@ -324,8 +323,8 @@ input:-webkit-autofill:focus {
   width: 6px;
   height: 100%;
   background: #FFCD05;
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
   z-index: 1;
 }
 
@@ -336,14 +335,14 @@ input:-webkit-autofill:focus {
     top: 0;
     width: 100%;
     height: 6px;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
   /* fallback for rounded classes on small screens */
-  .rounded-tl-\[50px\], .rounded-bl-\[50px\], .rounded-tr-\[50px\], .rounded-br-\[50px\] {
-    border-radius: 50px;
+  .rounded-tl-\[20px\], .rounded-bl-\[20px\], .rounded-tr-\[20px\], .rounded-br-\[20px\] {
+    border-radius: 20px;
   }
 }
 
@@ -366,5 +365,16 @@ input:-webkit-autofill:focus {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Ensure left image containers are solid white */
+.card-image {
+  background-color: #ffffff !important;
+}
+.card-image > img {
+  display: block;
+  background-color: #ffffff !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 </style>

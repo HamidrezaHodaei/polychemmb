@@ -24,11 +24,11 @@ onMounted(() => {
   let lastMouseY = 0
   
   // Globe rotation
-  let rotationX = 0.2
+  let rotationX = 0.3
   let rotationY = 0
-  let targetRotationX = 0.2
+  let targetRotationX = 0.3
   let targetRotationY = 0
-  let velocityX = 0.003
+  let velocityX = 0.002
   let velocityY = 0
   
   // Globe settings
@@ -36,122 +36,132 @@ onMounted(() => {
   const centerX = width / 2
   const centerY = height / 2
   
-  // بارگذاری تصویر texture
-  const earthTexture = new Image()
-  earthTexture.crossOrigin = "anonymous"
-  let textureLoaded = false
-  let dots = []
-  
-  // استفاده از تصویر واقعی نقشه زمین (سیاه و سفید)
-  earthTexture.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Equirectangular_projection_SW.jpg/1280px-Equirectangular_projection_SW.jpg'
-  
-  earthTexture.onload = () => {
-    textureLoaded = true
-    generateDotsFromTexture()
-  }
-  
-  // در صورت عدم بارگذاری، از texture دستی استفاده می‌کنیم
-  earthTexture.onerror = () => {
-    console.log('Using fallback texture')
-    generateFallbackTexture()
-  }
-  
-  function generateDotsFromTexture() {
-    const tempCanvas = document.createElement('canvas')
-    const tempCtx = tempCanvas.getContext('2d')
+  // داده‌های قاره‌ها - مختصات واقعی با دقت بالا
+  const continentData = [
+    // آمریکای شمالی
+    { lat: 40, lon: -100, size: 1 },
+    { lat: 45, lon: -95, size: 1 },
+    { lat: 50, lon: -100, size: 1 },
+    { lat: 55, lon: -105, size: 1 },
+    { lat: 60, lon: -110, size: 1 },
+    { lat: 65, lon: -115, size: 1 },
+    { lat: 70, lon: -105, size: 1 },
+    { lat: 35, lon: -105, size: 1 },
+    { lat: 30, lon: -110, size: 1 },
+    { lat: 25, lon: -100, size: 1 },
+    { lat: 40, lon: -75, size: 1 },
+    { lat: 45, lon: -80, size: 1 },
+    { lat: 50, lon: -85, size: 1 },
+    { lat: 35, lon: -85, size: 1 },
+    { lat: 30, lon: -90, size: 1 },
+    { lat: 25, lon: -80, size: 1 },
+    { lat: 50, lon: -120, size: 1 },
+    { lat: 55, lon: -125, size: 1 },
+    { lat: 60, lon: -130, size: 1 },
+    { lat: 40, lon: -120, size: 1 },
     
-    const texWidth = 512
-    const texHeight = 256
-    tempCanvas.width = texWidth
-    tempCanvas.height = texHeight
+    // آمریکای جنوبی
+    { lat: -10, lon: -60, size: 1 },
+    { lat: -15, lon: -55, size: 1 },
+    { lat: -20, lon: -60, size: 1 },
+    { lat: -25, lon: -65, size: 1 },
+    { lat: -30, lon: -65, size: 1 },
+    { lat: -35, lon: -65, size: 1 },
+    { lat: -40, lon: -70, size: 1 },
+    { lat: -45, lon: -70, size: 1 },
+    { lat: 0, lon: -60, size: 1 },
+    { lat: -5, lon: -65, size: 1 },
+    { lat: -10, lon: -70, size: 1 },
+    { lat: 5, lon: -70, size: 1 },
+    { lat: 0, lon: -75, size: 1 },
     
-    // رسم تصویر روی canvas موقت
-    tempCtx.drawImage(earthTexture, 0, 0, texWidth, texHeight)
-    const imageData = tempCtx.getImageData(0, 0, texWidth, texHeight)
+    // اروپا
+    { lat: 50, lon: 10, size: 1 },
+    { lat: 55, lon: 15, size: 1 },
+    { lat: 60, lon: 20, size: 1 },
+    { lat: 65, lon: 25, size: 1 },
+    { lat: 45, lon: 5, size: 1 },
+    { lat: 50, lon: 0, size: 1 },
+    { lat: 40, lon: -5, size: 1 },
+    { lat: 55, lon: -5, size: 1 },
+    { lat: 60, lon: 10, size: 1 },
+    { lat: 50, lon: 20, size: 1 },
+    { lat: 45, lon: 15, size: 1 },
+    { lat: 40, lon: 15, size: 1 },
     
-    dots = []
-    const numLat = 100
-    const numLon = 200
-    
-    for (let lat = 0; lat < numLat; lat++) {
-      for (let lon = 0; lon < numLon; lon++) {
-        const theta = (lat / numLat) * Math.PI
-        const phi = (lon / numLon) * Math.PI * 2
-        
-        // خواندن رنگ پیکسل از texture
-        const texX = Math.floor((lon / numLon) * texWidth)
-        const texY = Math.floor((lat / numLat) * texHeight)
-        const pixelIndex = (texY * texWidth + texX) * 4
-        
-        const r = imageData.data[pixelIndex]
-        const g = imageData.data[pixelIndex + 1]
-        const b = imageData.data[pixelIndex + 2]
-        
-        // محاسبه روشنایی
-        const brightness = (r + g + b) / 3
-        
-        // فقط نقاط روشن (خشکی) را نگه می‌داریم
-        if (brightness > 100) {
-          dots.push({
-            theta,
-            phi,
-            brightness: brightness / 255
-          })
-        }
-      }
-    }
-  }
-  
-  function generateFallbackTexture() {
-    // تولید texture ساده در صورت عدم بارگذاری تصویر
-    const tempCanvas = document.createElement('canvas')
-    const tempCtx = tempCanvas.getContext('2d')
-    const texSize = 512
-    tempCanvas.width = texSize
-    tempCanvas.height = texSize / 2
-    
-    tempCtx.fillStyle = '#000000'
-    tempCtx.fillRect(0, 0, texSize, texSize / 2)
-    
-    // رسم قاره‌های ساده
-    tempCtx.fillStyle = '#FFFFFF'
-    
-    // آمریکا
-    tempCtx.fillRect(50, 80, 120, 150)
-    // اروپا و آسیا
-    tempCtx.fillRect(200, 60, 280, 120)
     // آفریقا
-    tempCtx.fillRect(220, 140, 80, 100)
+    { lat: 10, lon: 20, size: 1 },
+    { lat: 5, lon: 25, size: 1 },
+    { lat: 0, lon: 30, size: 1 },
+    { lat: -5, lon: 30, size: 1 },
+    { lat: -10, lon: 30, size: 1 },
+    { lat: -15, lon: 30, size: 1 },
+    { lat: -20, lon: 25, size: 1 },
+    { lat: -25, lon: 25, size: 1 },
+    { lat: -30, lon: 25, size: 1 },
+    { lat: 15, lon: 15, size: 1 },
+    { lat: 20, lon: 10, size: 1 },
+    { lat: 25, lon: 15, size: 1 },
+    { lat: 30, lon: 20, size: 1 },
+    { lat: 0, lon: 15, size: 1 },
+    { lat: -10, lon: 20, size: 1 },
+    { lat: 10, lon: 35, size: 1 },
+    { lat: 5, lon: 40, size: 1 },
+    { lat: -20, lon: 35, size: 1 },
+    { lat: -25, lon: 30, size: 1 },
+    
+    // آسیا
+    { lat: 60, lon: 100, size: 1 },
+    { lat: 65, lon: 90, size: 1 },
+    { lat: 70, lon: 80, size: 1 },
+    { lat: 50, lon: 80, size: 1 },
+    { lat: 45, lon: 90, size: 1 },
+    { lat: 40, lon: 100, size: 1 },
+    { lat: 35, lon: 110, size: 1 },
+    { lat: 30, lon: 120, size: 1 },
+    { lat: 25, lon: 110, size: 1 },
+    { lat: 20, lon: 100, size: 1 },
+    { lat: 50, lon: 60, size: 1 },
+    { lat: 45, lon: 70, size: 1 },
+    { lat: 55, lon: 50, size: 1 },
+    { lat: 60, lon: 60, size: 1 },
+    { lat: 40, lon: 50, size: 1 },
+    { lat: 35, lon: 60, size: 1 },
+    { lat: 30, lon: 70, size: 1 },
+    { lat: 25, lon: 80, size: 1 },
+    { lat: 40, lon: 130, size: 1 },
+    { lat: 35, lon: 140, size: 1 },
+    
     // استرالیا
-    tempCtx.fillRect(420, 200, 60, 50)
-    
-    const imageData = tempCtx.getImageData(0, 0, texSize, texSize / 2)
-    
-    dots = []
-    const numLat = 80
-    const numLon = 160
-    
-    for (let lat = 0; lat < numLat; lat++) {
-      for (let lon = 0; lon < numLon; lon++) {
-        const theta = (lat / numLat) * Math.PI
-        const phi = (lon / numLon) * Math.PI * 2
+    { lat: -25, lon: 130, size: 1 },
+    { lat: -30, lon: 135, size: 1 },
+    { lat: -35, lon: 140, size: 1 },
+    { lat: -20, lon: 125, size: 1 },
+    { lat: -25, lon: 145, size: 1 },
+    { lat: -30, lon: 150, size: 1 },
+    { lat: -35, lon: 145, size: 1 },
+    { lat: -40, lon: 145, size: 1 },
+  ]
+  
+  // تولید نقاط بیشتر برای هر قاره
+  const dots = []
+  continentData.forEach(point => {
+    // اضافه کردن نقاط اطراف هر نقطه اصلی
+    for (let dLat = -8; dLat <= 8; dLat += 2) {
+      for (let dLon = -8; dLon <= 8; dLon += 2) {
+        const lat = point.lat + dLat
+        const lon = point.lon + dLon
+        const theta = ((90 - lat) / 180) * Math.PI
+        const phi = ((lon + 180) / 360) * Math.PI * 2
         
-        const texX = Math.floor((lon / numLon) * texSize)
-        const texY = Math.floor((lat / numLat) * (texSize / 2))
-        const pixelIndex = (texY * texSize + texX) * 4
-        
-        const brightness = imageData.data[pixelIndex]
-        
-        if (brightness > 128) {
-          dots.push({
-            theta,
-            phi,
-            brightness: 1
-          })
-        }
+        dots.push({
+          theta,
+          phi,
+          brightness: 1
+        })
       }
     }
-  }
+  })
   
   function project3DTo2D(theta, phi, rotX, rotY) {
     let x = Math.sin(theta) * Math.cos(phi)
@@ -182,8 +192,6 @@ onMounted(() => {
     ctx.fillStyle = '#000000'
     ctx.fillRect(0, 0, width, height)
     
-    if (dots.length === 0) return
-    
     const allPoints = []
     
     dots.forEach(dot => {
@@ -194,7 +202,7 @@ onMounted(() => {
           y: pos.y,
           z: pos.z,
           brightness: dot.brightness * pos.scale,
-          size: 2.5 * pos.scale
+          size: 2 * pos.scale
         })
       }
     })
@@ -212,7 +220,7 @@ onMounted(() => {
     // درخشش لبه
     const gradient = ctx.createRadialGradient(centerX, centerY, radius * 0.85, centerX, centerY, radius * 1.05)
     gradient.addColorStop(0, 'rgba(255, 255, 255, 0)')
-    gradient.addColorStop(0.85, 'rgba(255, 255, 255, 0.12)')
+    gradient.addColorStop(0.85, 'rgba(255, 255, 255, 0.1)')
     gradient.addColorStop(1, 'rgba(255, 255, 255, 0)')
     ctx.fillStyle = gradient
     ctx.beginPath()
@@ -294,8 +302,6 @@ onMounted(() => {
   canvas.addEventListener('touchend', handleTouchEnd, { passive: false })
   window.addEventListener('resize', handleResize)
   
-  // شروع با texture fallback تا زمان بارگذاری تصویر
-  generateFallbackTexture()
   animate()
   
   onUnmounted(() => {
