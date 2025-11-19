@@ -127,15 +127,19 @@ const cards = ref([
 
 const charactersRefs = ref([])
 
+// افزایش 30% دیگر روی تعداد "ذرات" (افزایش از 50000 به 65000)
+const PARTICLE_LENGTH_INITIAL = 65000   // مقدار اولیه بسیار بزرگ برای پر کردن پس‌زمینه
+const PARTICLE_LENGTH_ON_MOVE = 65000   // مقدار تولید مجدد هنگام حرکت موس/لمس
+
 // تولید رشته‌ای متشکل از نقطه‌ها به جای معادلات شیمیایی
-const randomChemicalString = (length = 2000) => {
+const randomChemicalString = (length = PARTICLE_LENGTH_ON_MOVE) => {
   const pair = '· ' // نقطه و فاصله برای بهتر خط‌شدن متن
   const repeats = Math.ceil(length / pair.length)
   return pair.repeat(repeats).substring(0, length)
 }
 
-// مقدار اولیه‌ی متون پس‌زمینه را با رشته‌های نقطه پر کن
-const randomTexts = ref(Array(cards.value.length).fill(randomChemicalString(1200)))
+// مقدار اولیه‌ی متون پس‌زمینه را با رشته‌های نقطه پر کن (بالاتر)
+const randomTexts = ref(Array(cards.value.length).fill(randomChemicalString(PARTICLE_LENGTH_INITIAL)))
 
 // مدیریت حرکت موس
 const handleMouseMove = (e, index) => {
@@ -160,8 +164,8 @@ const handleMouseMove = (e, index) => {
     charactersRefs.value[index].style.setProperty('--ty', `${ty}px`)
     charactersRefs.value[index].style.setProperty('--scale', '1.06')
 
-    // به‌روزرسانی متن (در صورت نیاز این را کاهش دهید تا بار کمتری ایجاد شود)
-    randomTexts.value[index] = randomChemicalString(2000)
+    // به‌روزرسانی متن با طول بزرگ‌تر برای افزایش "تراکم ذرات"
+    randomTexts.value[index] = randomChemicalString(PARTICLE_LENGTH_ON_MOVE)
   }
 }
 
@@ -187,7 +191,8 @@ const handleTouchMove = (e, index) => {
     charactersRefs.value[index].style.setProperty('--ty', `${ty}px`)
     charactersRefs.value[index].style.setProperty('--scale', '1.06')
 
-    randomTexts.value[index] = randomChemicalString(2000)
+    // به‌روزرسانی متن با طول بزرگ‌تر برای افزایش "تراکم ذرات"
+    randomTexts.value[index] = randomChemicalString(PARTICLE_LENGTH_ON_MOVE)
   }
 }
 

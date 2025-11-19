@@ -516,17 +516,17 @@ onMounted(() => {
 
 .nav-link:hover::before {
   opacity: 1;
-  background-color: rgb(161, 161, 161);
+  background-color: rgb(187, 187, 187);
   transform: scaleY(1);
   transition: transform 0.6s cubic-bezier(0.08, 0.35, 0.13, 1.02), opacity 0.4s;
 }
 
 .nav-link:hover {
-  color: #848484 !important;
+  color: #ffffff !important;
 }
 
 .nav-link:hover span {
-  color: #848484 !important;
+  color: #ffffff !important;
 }
 
 /* Mobile Menu Links Hover Effect */

@@ -1,31 +1,34 @@
 <template>
-  <main class="font-mono min-h-screen flex items-center justify-center bg-[#f1f2f2]">
-    <div class="flex flex-col sm:flex-row items-center justify-center text-center sm:text-left px-4 font-mono">
+  <main class="min-h-screen flex items-center justify-center bg-[#f1f2f2]">
+    <div class="flex flex-col sm:flex-row items-center justify-center text-center sm:text-left px-4">
       <p class="text-2xl sm:text-4xl md:text-5xl font-bold text-[#848484] uppercase mb-4 sm:mb-0">
-        Polychem — Where every grain of polymer becomes
+        Polychem —
       </p>
       <section class="h-12 sm:h-16 md:h-20 overflow-hidden sm:ml-4">
         <div class="animate-text-slide">
           <div class="inline-block px-3 py-1 sm:px-4 sm:py-2 h-12 sm:h-16 md:h-20 mb-12 sm:mb-16 md:mb-20 bg-[#FFD700] text-white text-lg sm:text-2xl md:text-3xl font-bold uppercase flex items-center">
-            Polymer Art
+            Where every grain of polymer becomes Polymer Art.
           </div>
           <div class="inline-block px-3 py-1 sm:px-4 sm:py-2 h-12 sm:h-16 md:h-20 mb-12 sm:mb-16 md:mb-20 bg-[#FFD700] text-white text-lg sm:text-2xl md:text-3xl font-bold uppercase flex items-center">
-            Originality
-          </div>
-          <div class="inline-block px-3 py-1 sm:px-4 sm:py-2 w-40 h-12 sm:h-16 md:h-20 mb-12 sm:mb-16 md:mb-20 bg-[#FFD700] text-white text-lg sm:text-2xl md:text-3xl font-bold uppercase flex items-center">
-            Loyalty
-          </div>
-          <div class="inline-block px-3 py-1 sm:px-4 w-45 sm:py-2 h-12 sm:h-16 md:h-20 mb-12 sm:mb-16 md:mb-20 bg-[#FFD700] text-white text-lg sm:text-2xl md:text-3xl font-bold uppercase flex items-center">
-            Creativity
+            Where every grain of polymer becomes Originality.
           </div>
           <div class="inline-block px-3 py-1 sm:px-4 sm:py-2 h-12 sm:h-16 md:h-20 mb-12 sm:mb-16 md:mb-20 bg-[#FFD700] text-white text-lg sm:text-2xl md:text-3xl font-bold uppercase flex items-center">
-            Honesty
+            Where every grain of polymer becomes Loyalty.
           </div>
           <div class="inline-block px-3 py-1 sm:px-4 sm:py-2 h-12 sm:h-16 md:h-20 mb-12 sm:mb-16 md:mb-20 bg-[#FFD700] text-white text-lg sm:text-2xl md:text-3xl font-bold uppercase flex items-center">
-            Elegance
+            Where every grain of polymer becomes Yearn.
           </div>
           <div class="inline-block px-3 py-1 sm:px-4 sm:py-2 h-12 sm:h-16 md:h-20 mb-12 sm:mb-16 md:mb-20 bg-[#FFD700] text-white text-lg sm:text-2xl md:text-3xl font-bold uppercase flex items-center">
-            Meaningful
+            Where every grain of polymer becomes Creativity.
+          </div>
+          <div class="inline-block px-3 py-1 sm:px-4 sm:py-2 h-12 sm:h-16 md:h-20 mb-12 sm:mb-16 md:mb-20 bg-[#FFD700] text-white text-lg sm:text-2xl md:text-3xl font-bold uppercase flex items-center">
+            Where every grain of polymer becomes Honesty.
+          </div>
+          <div class="inline-block px-3 py-1 sm:px-4 sm:py-2 h-12 sm:h-16 md:h-20 mb-12 sm:mb-16 md:mb-20 bg-[#FFD700] text-white text-lg sm:text-2xl md:text-3xl font-bold uppercase flex items-center">
+            Where every grain of polymer becomes Elegance.
+          </div>
+          <div class="inline-block px-3 py-1 sm:px-4 sm:py-2 h-12 sm:h-16 md:h-20 mb-12 sm:mb-16 md:mb-20 bg-[#FFD700] text-white text-lg sm:text-2xl md:text-3xl font-bold uppercase flex items-center">
+            Where every grain of polymer becomes Meaningful.
           </div>
         </div>
       </section>
@@ -37,13 +40,14 @@
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
 * {
   font-family: 'Roboto', sans-serif;
 }
 
 .animate-text-slide {
-  animation: text-animation 20s infinite;
+  animation: text-animation 32s infinite;
 }
 
 @keyframes text-animation {

@@ -21,7 +21,7 @@
             <h2 class="text-3xl md:text-4xl font-semibold text-[#848484]}">Product One</h2>
             <p class="text-base md:text-lg text-[#848484]">A short description that highlights the main feature of this product in one or two lines.</p>
             <div class="text-2xl font-semibold text-[#848484]">€19.99</div>
-            <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
+            <button class="btn-slide-down w-full md:w-auto h-12  relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
               <span class="relative z-10 font-medium">Buy Now</span>
             </button>
           </div>
