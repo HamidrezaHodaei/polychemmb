@@ -6,8 +6,11 @@
       <Slider/>
       <Text/>
       <Cards/>
+      <global/>
+      <>
       <infinityslider/>
     </div>
+    <footer1/> 
   </div>
 </template>
 
@@ -17,5 +20,7 @@
   import Hero from "~/components/Hero.vue"
   import Cards from "~/components/cards.vue"
   import Text from "~/components/Text.vue"
-  import infinityslider from "~/components/InfiniteSlider.vue";
+  import global from "~/components/world.vue"
+  import infinityslider from "~/components/InfiniteSlider.vue"
+  import footer1 from "~/components/footer.vue";
 </script>

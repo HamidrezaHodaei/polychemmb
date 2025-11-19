@@ -145,7 +145,7 @@ export default {}
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #f7dc70;
+  background-color: #ffd942;
   transform: translateY(-100%);
   transition: transform 300ms ease;
   z-index: 0;

@@ -263,7 +263,9 @@
     right: -10px;
     width: 60px;
     height: 60px;
-    background-color: #ffd000; /* single yellow */
+    /* تغییر: رنگ سفید و سایه برای کنتراست بهتر */
+    background-color: #ffd000;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
     content: "";
     z-index: -1;
     animation: d 5s linear infinite;
@@ -289,7 +291,7 @@
     font-size: 40px;
     line-height: 1.5cap;
     text-wrap: balance;
-    color: white;
+    color: #ffffff; /* تضمین سفید بودن عنوان */
     margin-bottom: 20px;
   }
   
