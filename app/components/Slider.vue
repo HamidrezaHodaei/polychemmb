@@ -8,7 +8,7 @@
         <!-- Card 1 -->
         <div
           ref="card1"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
+          class="absolute w-[90%] md:w-[85.5%] h-[76.5vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
           style="top: 0px; z-index: 2;"
         >
           <!-- Left: Image (60% on desktop, 100% on mobile) -->
@@ -30,7 +30,7 @@
         <!-- Card 2 -->
         <div
           ref="card2"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
+          class="absolute w-[90%] md:w-[85.5%] h-[76.5vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
           style="top: 30px; z-index: 3;"
         >
           <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px]">
@@ -50,7 +50,7 @@
         <!-- Card 3 -->
         <div
           ref="card3"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
+          class="absolute w-[90%] md:w-[85.5%] h-[76.5vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
           style="top: 60px; z-index: 4;"
         >
           <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px]">
@@ -70,7 +70,7 @@
         <!-- Card 4 -->
         <div
           ref="card4"
-          class="absolute w-[100%] md:w-[95%] h-[85vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
+          class="absolute w-[90%] md:w-[85.5%] h-[76.5vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
           style="top: 90px; z-index: 5;"
         >
           <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px] bg-white-100">

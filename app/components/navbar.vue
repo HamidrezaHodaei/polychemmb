@@ -516,7 +516,7 @@ onMounted(() => {
 
 .nav-link:hover::before {
   opacity: 1;
-  background-color: #ffcd05;
+  background-color: rgb(161, 161, 161);
   transform: scaleY(1);
   transition: transform 0.6s cubic-bezier(0.08, 0.35, 0.13, 1.02), opacity 0.4s;
 }
