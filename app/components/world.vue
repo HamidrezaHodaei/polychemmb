@@ -150,34 +150,48 @@ onMounted(() => {
         ctx.arc(point.x, point.y, point.size, 0, Math.PI * 2)
         ctx.fill()
       } else if (point.type === 'marker') {
-        const markerSize = 8 * point.scale
-        ctx.fillStyle = '#FFD700'
-        ctx.strokeStyle = '#FFFFFF'
-        ctx.lineWidth = 2 * point.scale
+        // changed: make markers larger and more vivid
+        const markerSize = 12 * point.scale // increased from 8 -> 12
+        ctx.fillStyle = '#FFCC00' // slightly warmer/brighter yellow
+        ctx.strokeStyle = 'rgba(255,255,255,0.9)'
+        ctx.lineWidth = 3 * point.scale // a bit thicker
+
+        // main circular head
         ctx.beginPath()
-        ctx.arc(point.x, point.y - markerSize * 0.5, markerSize * 0.6, 0, Math.PI * 2)
+        ctx.arc(point.x, point.y - markerSize * 0.5, markerSize * 0.8, 0, Math.PI * 2)
         ctx.fill()
         ctx.stroke()
+
+        // triangular pointer below
+        ctx.beginPath()
         ctx.beginPath()
         ctx.moveTo(point.x, point.y)
-        ctx.lineTo(point.x - markerSize * 0.3, point.y - markerSize * 0.8)
-        ctx.lineTo(point.x + markerSize * 0.3, point.y - markerSize * 0.8)
+        ctx.lineTo(point.x - markerSize * 0.35, point.y - markerSize * 0.95)
+        ctx.lineTo(point.x + markerSize * 0.35, point.y - markerSize * 0.95)
         ctx.closePath()
         ctx.fill()
         ctx.stroke()
+
+        // outer glow (stronger)
         const gradient = ctx.createRadialGradient(
           point.x,
           point.y - markerSize * 0.5,
           0,
           point.x,
           point.y - markerSize * 0.5,
-          markerSize * 2
+          markerSize * 2.5
         )
-        gradient.addColorStop(0, 'rgba(255, 215, 0, 0.4)')
+        gradient.addColorStop(0, 'rgba(255, 215, 0, 0.6)') // stronger inner glow
         gradient.addColorStop(1, 'rgba(255, 215, 0, 0)')
         ctx.fillStyle = gradient
         ctx.beginPath()
-        ctx.arc(point.x, point.y - markerSize * 0.5, markerSize * 2, 0, Math.PI * 2)
+        ctx.arc(point.x, point.y - markerSize * 0.5, markerSize * 2.5, 0, Math.PI * 2)
+        ctx.fill()
+
+        // small white highlight to make the marker pop
+        ctx.fillStyle = 'rgba(255,255,255,0.9)'
+        ctx.beginPath()
+        ctx.arc(point.x - markerSize * 0.18, point.y - markerSize * 0.7, markerSize * 0.18, 0, Math.PI * 2)
         ctx.fill()
       }
     })
