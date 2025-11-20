@@ -2,8 +2,15 @@
     <div class="hero-container">
       <!-- First Section -->
       <picture class="bg-picture">
-        <!-- استفاده از GIF و encode فاصله در اسم فایل -->
-        <img src="/shutterstock_vidhd_3898471189%20(2).gif" alt="background gif" loading="eager" decoding="sync" />
+        <!-- جایگزینی GIF با ویدیو MP4 -->
+        <video
+          src="/shutterstock_vidhd_3898471189.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+          style="width:100%;height:calc(100vh - 5rem);object-fit:cover;"
+        ></video>
       </picture>
       <figure class="content-box">
         <h1>Welcome to my website</h1>
