@@ -226,7 +226,7 @@
               ref="menuTitle"
               class="mb-12 mt-16 opacity-0 transform translate-y-[-20px]"
             >
-              <h2 class="text-5xl font-bold text-gray-900 mb-2">Use Cases</h2>
+              <h2 class="text-5xl font-bold text-gray-900 mb-2">Our Products</h2>
               <div class="w-20 h-1 bg-yellow-500"></div>
             </div>
 
@@ -276,18 +276,17 @@ const isMenuOpen = ref(false)
 const hoveredItem = ref(null)
 
 const useCases = [
-  { code: '/ UC_012', title: 'Team awareness', description: 'Enhance collaboration and security awareness across your team with real-time monitoring' },
-  { code: '/ UC_005', title: 'Privilege level', description: 'Manage and monitor user access privileges effectively with advanced controls' },
-  { code: '/ UC_003', title: 'Cyber regulation', description: 'Stay compliant with latest cybersecurity regulations and industry standards' },
-  { code: '/ UC_004', title: 'Data protection', description: 'Protect sensitive data with advanced encryption and security protocols' },
-  { code: '/ UC_006', title: 'Third parties exposure', description: 'Monitor and manage third-party security risks and vulnerabilities' },
-  { code: '/ UC_007', title: 'Threat Intelligence', description: 'Real-time threat detection and analysis powered by AI' },
-  { code: '/ UC_008', title: 'Security reinforcement', description: 'Strengthen your security infrastructure with proactive measures' },
-  { code: '/ UC_010', title: 'Security concerns', description: 'Address critical security vulnerabilities before they become threats' },
-  { code: '/ UC_011', title: 'Cyber crisis', description: 'Rapid response to cyber security incidents with expert support' },
-  { code: '/ UC_000', title: 'Cyber risk assessment', description: 'Comprehensive evaluation of your security posture and risk factors' },
-  { code: '/ UC_001', title: 'Test & compare', description: 'Benchmark your security against industry standards and competitors' },
-  { code: '/ UC_002', title: 'Cyber disaster readiness', description: 'Prepare for and prevent cyber disasters with disaster recovery plans' }
+  { code: ' ', title: 'POLYFIL F700', description: 'POLYFIL F700 is a high-performance polyethylene compound specifically formulated for high-density polyethylene (HDPE)' },
+  { code: '', title: 'Roto 955W', description: 'Manage and monitor user access privileges effectively with advanced controls' },
+  { code: ' ', title: 'Roto 955B', description: 'Stay compliant with latest cybersecurity regulations and industry standards' },
+  { code: '', title: 'HDCHEM4760', description: 'Protect sensitive data with advanced encryption and security protocols' },
+  { code: '', title: 'Calcichem110FRF', description: 'Monitor and manage third-party security risks and vulnerabilities' },
+  { code: '', title: 'Calcichem126FP', description: 'Real-time threat detection and analysis powered by AI' },
+  { code: '', title: 'Calcichem120FE', description: 'Strengthen your security infrastructure with proactive measures' },
+  { code: '', title: 'Slipchem E178', description: 'Address critical security vulnerabilities before they become threats' },
+  { code: '', title: 'Filcolor 2270', description: 'Rapid response to cyber security incidents with expert support' },
+  { code: '', title: '275PM', description: 'Comprehensive evaluation of your security posture and risk factors' },
+
 ]
 
 const handleHover = (item, index) => {
