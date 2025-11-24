@@ -263,7 +263,7 @@ onMounted(() => {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
 
     // recalc globe geometry using CSS pixel dimensions
-    radius = Math.min(width, height) * 0.45
+    radius = Math.min(width, height) * 0.40 // مقدار قبلی 0.45 بود
     centerX = width * 0.38
     centerY = height / 2
   }

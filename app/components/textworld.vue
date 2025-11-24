@@ -116,6 +116,8 @@ onMounted(() => {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 body {
   background-color: #848484;
   margin: 0;
@@ -124,8 +126,8 @@ body {
 
 .hero {
   padding: 60px 40px;
-  background:#f1f2f2; /* رنگ بک‌گراند درخواستی */
-  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  background:#f1f2f2;
+  font-family: 'Montserrat', sans-serif; /* تغییر فونت */
   text-transform: uppercase;
   min-height: 100vh;
   display: flex;
@@ -134,11 +136,11 @@ body {
 }
 
 .hero__title {
-  font-size: 4.5rem;
+  font-size: 2.5rem; /* قبلا 4.5rem بود */
   font-weight: bold;
   line-height: 1.2;
   margin: 0;
-  color: #848484; /* رنگ متن اصلی */
+  color: #848484;
 }
 
 .hero__label,
@@ -151,6 +153,7 @@ body {
 
 .hero__label {
   color: #848484;
+  font-family: 'Montserrat', sans-serif; /* تغییر فونت */
 }
 
 .hero__job-line {
@@ -171,6 +174,7 @@ body {
   white-space: nowrap;
   transition: width 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.75s ease-in;
   display: inline-block;
+  font-family: 'Montserrat', sans-serif; /* تغییر فونت */
 }
 
 .hero__job span {
@@ -183,9 +187,9 @@ body {
   visibility: hidden;
   white-space: nowrap;
   pointer-events: none;
-  font-size: 4.5rem;
+  font-size: 4rem; /* قبلا 4.5rem بود */
   font-weight: bold;
-  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  font-family: 'Montserrat', sans-serif; /* تغییر فونت */
   text-transform: uppercase;
   padding: 0.5rem 0;
   margin: 0 0.75rem;

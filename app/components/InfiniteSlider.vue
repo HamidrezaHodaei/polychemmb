@@ -9,23 +9,12 @@
   </template>
   
   <script setup>
-  const images = [
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png",
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png",
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png",
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png",
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png",
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png",
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png",
-    // تکرار برای اسکرول بی‌نهایت
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png",
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png",
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png",
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png",
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png",
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png",
-    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png",
+  const baseImages = [
+
+      "/logoMegabiz.jpg",
   ];
+  // تکرار آرایه برای اسکرول بی‌نهایت
+  const images = [...baseImages, ...baseImages, ...baseImages, ...baseImages];
   </script>
   
   <style scoped lang="scss">
@@ -64,7 +53,7 @@
     .slide-track {
       animation: scroll $animationSpeed linear infinite;
       display: flex;
-      width: calc(250px * 14);
+      width: calc(250px * 8); // چون 2 تصویر × 4 تکرار = 8
     }
   
     .slide {
@@ -82,4 +71,3 @@
     }
   }
   </style>
-  

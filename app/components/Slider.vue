@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4 font-sans text-red-100]">
+  <div class="container mx-auto px-4 font-[Montserrat] text-red-100]">
     <div class="w-full">
       <div
         ref="cardsContainer"
@@ -18,11 +18,10 @@
 
           <!-- Right: Content (40% on desktop) -->
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
-            <h2 class="text-3xl md:text-4xl font-semibold text-[#848484]}">Product One</h2>
-            <p class="text-base md:text-lg text-[#848484]">A short description that highlights the main feature of this product in one or two lines.</p>
-            <div class="text-2xl font-semibold text-[#848484]">€19.99</div>
-            <button class="btn-slide-down w-full md:w-auto h-12  relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
-              <span class="relative z-10 font-medium">Buy Now</span>
+            <h2 class="text-3xl md:text-4xl uppercase font-[Montserrat] text-[#848484]">Rotochem 0955W</h2>
+            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">Rotochem 0955W – White rotational molding compound based on LMDPE copolymer with narrow MWD and TiO₂. Highly durable and UV-resistant, perfect for demanding industrial and consumer applications.</p>
+            <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
+              <span class="relative z-10 font-medium">View Details</span>
             </button>
           </div>
         </div>
@@ -38,11 +37,10 @@
           </div>
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
-            <h2 class="text-3xl md:text-4xl font-semibold text-[#848484]">Product Two</h2>
-            <p class="text-base md:text-lg text-[#848484]">Concise description that communicates value and key use-cases.</p>
-            <div class="text-2xl font-semibold text-[#848484]">€29.99</div>
+            <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484]">POLYFIL F700</h2>
+            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">POLYFIL F700 – High-performance HDPE blown film compound offering superior strength, excellent film uniformity, and outstanding processability in ultra-thin gauges.</p>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
-              <span class="relative z-10 font-medium">Buy Now</span>
+              <span class="relative z-10 font-medium">View Details</span>
             </button>
           </div>
         </div>
@@ -58,11 +56,10 @@
           </div>
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
-            <h2 class="text-3xl md:text-4xl font-semibold text-[#848484]">Product Three</h2>
-            <p class="text-base md:text-lg text-[#848484]">Short, punchy description emphasizing benefits and uniqueness.</p>
-            <div class="text-2xl font-semibold text-[#848484]">€39.99</div>
+            <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484] uppercase">SlipChem-E 178</h2>
+            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">SlipChem-E 178 – Premium slip masterbatch in PE carrier. Significantly lowers COF with excellent dispersion, high thermal stability, and consistent migration for film winding and packaging.</p>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
-              <span class="relative z-10 font-medium">Buy Now</span>
+              <span class="relative z-10 font-medium">View Details</span>
             </button>
           </div>
         </div>
@@ -78,11 +75,10 @@
           </div>
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
-            <h2 class="text-3xl md:text-4xl font-semibold text-[#848484]">Product Four</h2>
-            <p class="text-base md:text-lg text-[#848484]">One-liner that explains why this product stands out.</p>
-            <div class="text-2xl font-semibold text-[#848484]">€49.99</div>
+            <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484]">HDCHEM 4760</h2>
+            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">HDCHEM 4760 – Specialized PE copolymer compound for blow molding. Excellent melt strength, balanced mechanical properties, and superior processability for industrial and consumer parts.</p>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
-              <span class="relative z-10 font-medium">Buy Now</span>
+              <span class="relative z-10 font-medium">View Details</span>
             </button>
           </div>
         </div>

@@ -7,7 +7,6 @@
       <Text/>
       <Cards/>
       <global/>
-      <>
       <infinityslider/>
     </div>
     <footer1/> 

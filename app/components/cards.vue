@@ -127,9 +127,8 @@ const cards = ref([
 
 const charactersRefs = ref([])
 
-// افزایش 30% دیگر روی تعداد "ذرات" (افزایش از 50000 به 65000)
-const PARTICLE_LENGTH_INITIAL = 65000   // مقدار اولیه بسیار بزرگ برای پر کردن پس‌زمینه
-const PARTICLE_LENGTH_ON_MOVE = 65000   // مقدار تولید مجدد هنگام حرکت موس/لمس
+const PARTICLE_LENGTH_INITIAL = 95000   // مقدار اولیه بسیار بزرگ برای پر کردن پس‌زمینه
+const PARTICLE_LENGTH_ON_MOVE = 95000   // مقدار تولید مجدد هنگام حرکت موس/لمس
 
 // تولید رشته‌ای متشکل از نقطه‌ها به جای معادلات شیمیایی
 const randomChemicalString = (length = PARTICLE_LENGTH_ON_MOVE) => {
@@ -214,6 +213,8 @@ const handleTouchEnd = (index) => {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+
 *,
 *::after,
 *::before {
@@ -229,7 +230,7 @@ const handleTouchEnd = (index) => {
   align-items: center;
   justify-content: center;
   background: #f1f2f2;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-family: 'Montserrat', sans-serif; /* changed to Montserrat */
   padding: 20px;
 }
 
@@ -286,7 +287,7 @@ const handleTouchEnd = (index) => {
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  min-height: 350px;
+  min-height: 400px;
   background: #ffffff;
   transition: transform 0.3s ease;
 }
@@ -398,10 +399,10 @@ const handleTouchEnd = (index) => {
   height: 100%;
   width: 100%;
   word-wrap: break-word;
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 0.5;
   overflow: hidden;
-  font-family: monospace;
-  line-height: 1.15;
+  font-family: 'Montserrat', sans-serif; /* changed to Montserrat */
   color: #a8a8a8;
   opacity: 0;
   transition: opacity 0.45s ease, transform 0.45s cubic-bezier(.2,.9,.3,1);
@@ -418,7 +419,6 @@ const handleTouchEnd = (index) => {
     rgba(0, 0, 0, 0.25),
     transparent
   );
-  /* حرکت و بزرگ شدن طبیعی به سمت مکان موس */
   transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(var(--scale, 1.025));
   padding: 20px;
 }
@@ -438,7 +438,7 @@ const handleTouchEnd = (index) => {
   }
   
   .card-hover-container {
-    min-height: 280px;
+    min-height: 320px;
   }
 
   .card-title {

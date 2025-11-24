@@ -1,8 +1,8 @@
 <template>
-  <main class="font-mono min-h-screen flex items-center justify-center bg-[#f1f2f2]">
-    <div class="flex flex-col sm:flex-row items-center justify-center text-center sm:text-left px-4 font-mono">
+  <main class="min-h-screen flex items-center justify-center bg-[#f1f2f2] force-font-size">
+    <div class="flex flex-col sm:flex-row items-center justify-center text-center sm:text-left px-4">
       <p class="text-2xl sm:text-4xl md:text-5xl font-bold text-[#848484] uppercase mb-4 sm:mb-0">
-        Polychem — Where every grain of polymer becomes
+        <span class="brand">Polychem</span><span class="brand-separator"> — </span><span class="brand-rest">Where every grain of polymer becomes</span>
       </p>
       <section class="h-12 sm:h-16 md:h-20 overflow-hidden sm:ml-4">
         <div class="animate-text-slide">
@@ -37,9 +37,53 @@
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
 
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.force-font-size {
+  --base-font-size: 2.2rem;
+  font-size: var(--base-font-size) !important;
+}
+
+.force-font-size *:not(.brand):not(.brand *) {
+  font-size: inherit !important;
+}
+
+.brand {
+  font-weight: 800;
+  font-size: calc(var(--base-font-size) * 1.35) !important;
+  letter-spacing: 0.02em;
+}
+
+.brand-separator {
+  font-weight: 700;
+  margin: 0 0.25rem;
+}
+
+.brand-rest {
+  font-weight: 700;
+  font-size: calc(var(--base-font-size) * 0.95);
+}
+
+@media (min-width: 640px) {
+  .brand {
+    font-size: calc(var(--base-font-size) * 1.45) !important;
+  }
+  .brand-rest {
+    font-size: calc(var(--base-font-size) * 1);
+  }
+}
+
+@media (min-width: 768px) {
+  .brand {
+    font-size: calc(var(--base-font-size) * 1.6) !important;
+  }
+  .brand-rest {
+    font-size: calc(var(--base-font-size) * 1.05);
+  }
 }
 
 .animate-text-slide {

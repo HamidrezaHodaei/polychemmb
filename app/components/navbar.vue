@@ -4,7 +4,7 @@
       <div class="max-w-7xl mx-auto navbar-inner">
         <div class="flex items-center h-20">
           <!-- Logo & Brand -->
-          <div class="flex items-center justify-start border-r border-l border-white pl-8 pr-8 h-full w-[200px] flex-shrink-0">
+          <div class="flex items-center justify-start border-r border-l border-white pl-8 pr-8 h-full w-[220px] flex-shrink-0">
               <img src="/english logo W.png" alt="POLYCHEM Logo" class="w-40 h-40 object-contain" />
           </div>
 
@@ -278,7 +278,7 @@ const hoveredItem = ref(null)
 const useCases = [
   { code: ' ', title: 'POLYFIL F700', description: 'POLYFIL F700 is a high-performance polyethylene compound specifically formulated for high-density polyethylene (HDPE)' },
   { code: '', title: 'Roto 955W', description: 'Manage and monitor user access privileges effectively with advanced controls' },
-  { code: ' ', title: 'Roto 955B', description: 'Stay compliant with latest cybersecurity regulations and industry standards' },
+  { code: ' ', title: 'Roto 955B', description: 'Stay compliant with latest cybersecurity rergulations and industry standards' },
   { code: '', title: 'HDCHEM4760', description: 'Protect sensitive data with advanced encryption and security protocols' },
   { code: '', title: 'Calcichem110FRF', description: 'Monitor and manage third-party security risks and vulnerabilities' },
   { code: '', title: 'Calcichem126FP', description: 'Real-time threat detection and analysis powered by AI' },

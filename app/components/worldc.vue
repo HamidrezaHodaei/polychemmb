@@ -1,22 +1,39 @@
 <template>
-  <div class="w-full h-screen overflow-hidden relative" style="background-color: #f1f2f2;">
-    <canvas ref="globeCanvas" class="w-full h-full"></canvas>
+  <div
+    class="w-full h-full overflow-hidden relative flex items-center justify-center"
+    style="background-color: #f1f2f2;"
+  >
+    <canvas ref="globeCanvas" class="globe-canvas"></canvas>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 
 const globeCanvas = ref(null)
+
+const props = defineProps({
+  scrollRotate: { type: Number, default: 0 }
+})
 
 onMounted(() => {
   if (!globeCanvas.value) return
 
   const canvas = globeCanvas.value
   const ctx = canvas.getContext('2d')
-  
-  let width = canvas.width = window.innerWidth
-  let height = canvas.height = window.innerHeight
+
+  // Set canvas size to fill parent element, not window
+  function resizeToParent() {
+    const parent = canvas.parentElement
+    if (parent) {
+      canvas.width = parent.offsetWidth
+      canvas.height = parent.offsetHeight
+    }
+  }
+  resizeToParent()
+
+  let width = canvas.width
+  let height = canvas.height
   
   // Mouse tracking
   let mouseX = 0
@@ -34,9 +51,13 @@ onMounted(() => {
   let velocityY = 0
   
   // Globe settings
-  const radius = Math.min(width, height) * 0.45
-  const centerX = width / 2
-  const centerY = height / 2
+  function getRadius() {
+    // Increase the globe size ratio from 0.45 to 0.49 (or higher if you want even bigger)
+    return Math.min(width, height) * 0.49
+  }
+  let radius = getRadius()
+  let centerX = width / 2
+  let centerY = height / 2
   
   // Auto-rotation speed
   const autoRotationSpeed = 0.001
@@ -102,6 +123,13 @@ onMounted(() => {
   }
   
   function drawGlobe() {
+    // Update width/height/radius/center on each draw in case of resize
+    width = canvas.width
+    height = canvas.height
+    radius = getRadius()
+    centerX = width / 2
+    centerY = height / 2
+
     ctx.fillStyle = '#f1f2f2'
     ctx.fillRect(0, 0, width, height)
     
@@ -110,7 +138,7 @@ onMounted(() => {
     
     // Regular grid dots
     dots.forEach(dot => {
-      const pos = project3DTo2D(dot.theta, dot.phi, rotationX, rotationY)
+      const pos = project3DTo2D(dot.theta, dot.phi, rotationX, rotationY + props.scrollRotate)
       if (pos.visible) {
         allPoints.push({
           x: pos.x,
@@ -125,7 +153,7 @@ onMounted(() => {
     
     // Location markers
     locationMarkers.forEach(marker => {
-      const pos = project3DTo2D(marker.theta, marker.phi, rotationX, rotationY)
+      const pos = project3DTo2D(marker.theta, marker.phi, rotationX, rotationY + props.scrollRotate)
       if (pos.visible) {
         allPoints.push({
           x: pos.x,
@@ -258,8 +286,12 @@ onMounted(() => {
   }
   
   function handleResize() {
-    width = canvas.width = window.innerWidth
-    height = canvas.height = window.innerHeight
+    resizeToParent()
+    width = canvas.width
+    height = canvas.height
+    radius = getRadius()
+    centerX = width / 2
+    centerY = height / 2
   }
   
   // Touch events for mobile
@@ -290,6 +322,15 @@ onMounted(() => {
   canvas.addEventListener('touchend', handleTouchEnd, { passive: false })
   window.addEventListener('resize', handleResize)
   
+  // Watch scrollRotate prop and update targetRotationY
+  watch(
+    () => props.scrollRotate,
+    (val) => {
+      targetRotationY = val
+    },
+    { immediate: true }
+  )
+  
   // Start animation
   animate()
   
@@ -308,11 +349,16 @@ onMounted(() => {
 </script>
 
 <style scoped>
-canvas {
+.globe-canvas {
   cursor: grab;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  aspect-ratio: 1/1;
+  max-width: 100%;
+  max-height: 100%;
 }
-
-canvas:active {
+.globe-canvas:active {
   cursor: grabbing;
 }
 </style>
