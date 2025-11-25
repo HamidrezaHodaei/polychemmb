@@ -4,7 +4,7 @@
       <div class="max-w-7xl mx-auto navbar-inner">
         <div class="flex items-center h-20">
           <!-- Logo & Brand -->
-          <div class="flex items-center justify-start border-r border-l border-white pl-8 pr-8 h-full w-[220px] flex-shrink-0">
+          <div class="flex items-center justify-start border-r border-l border-white pl-8 pr-8 h-full w-[230px] flex-shrink-0">
               <img src="/english logo W.png" alt="POLYCHEM Logo" class="w-40 h-40 object-contain" />
           </div>
 

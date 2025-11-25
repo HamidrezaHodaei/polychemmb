@@ -1,6 +1,6 @@
-<!-- Footer Component - Fully Responsive -->
+<!-- Footer Component - با نقشه Leaflet Dark Mode -->
 <template>
-  <footer class="relative w-full bg-[#848484] text-white overflow-hidden font-mono">
+  <footer class="relative w-full bg-[#808285] text-white overflow-hidden font-mono">
     <!-- Decorative Top Border -->
     <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white to-transparent opacity-30"></div>
     
@@ -10,13 +10,68 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12 lg:gap-16 mb-12 sm:mb-14 md:mb-16">
         <!-- Brand Section -->
         <div class="space-y-4 sm:space-y-5 md:space-y-6 sm:col-span-2 lg:col-span-1">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-mono tracking-tight">Polychem</h2>
+          <img 
+            src="/english logo W.png" 
+            alt="Polychem Logo" 
+            class="h-12 sm:h-14 md:h-16 w-auto object-contain"
+          >
           <p class="text-white leading-relaxed text-sm sm:text-base max-w-sm">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
           </p>
-          <!-- Social Links -->
-          <div class="flex gap-3 sm:gap-4 pt-2 sm:pt-4">
-            <!-- YouTube Icon (replaces GitHub) -->
+          
+          <!-- Contact Section -->
+          <div class="space-y-3">
+            <h3 class="text-sm sm:text-base font-semibold uppercase tracking-wider">Contact</h3>
+            
+            <!-- Email -->
+            <div class="flex items-center gap-2 sm:gap-3 text-white text-xs sm:text-sm">
+              <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              <a href="mailto:info@polychemmb.com" class="hover:text-white transition-colors break-all">
+                info@polychemmb.com
+              </a>
+            </div>
+            
+            <!-- Phone -->
+            <div class="flex items-center gap-2 sm:gap-3 text-white text-xs sm:text-sm">
+              <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              <span>+98 21 2289 8979-80</span>
+            </div>
+            
+            <!-- Instagram -->
+            <div class="flex items-center gap-2 sm:gap-3 text-white text-xs sm:text-sm">
+              <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <a href="#" class="hover:text-white transition-colors">@polychemmb</a>
+            </div>
+            
+            <!-- LinkedIn -->
+            <div class="flex items-center gap-2 sm:gap-3 text-white text-xs sm:text-sm">
+              <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              <a href="#" class="hover:text-white transition-colors">Polychem Company</a>
+            </div>
+          </div>
+          
+          <!-- Social Media Icons -->
+          <div class="flex gap-3 sm:gap-4 pt-2">
+            <!-- Instagram Icon -->
+            <a 
+              href="#" 
+              class="instagram-icon w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white flex items-center justify-center hover:border-white hover:bg-white transition-all duration-300 active:scale-95"
+              aria-label="Instagram"
+            >
+              <svg class="w-4 h-4 sm:w-5 sm:h-5 instagram-svg" fill="white" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            
+            <!-- YouTube Icon -->
             <a 
               href="#" 
               class="youtube-icon w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white flex items-center justify-center hover:border-white hover:bg-white hover:text-black transition-all duration-300 active:scale-95"
@@ -26,21 +81,24 @@
                 <path d="M23.498 6.186a2.994 2.994 0 0 0-2.108-2.117C19.633 3.5 12 3.5 12 3.5s-7.633 0-9.39.569A2.994 2.994 0 0 0 .502 6.186C0 7.943 0 12 0 12s0 4.057.502 5.814a2.994 2.994 0 0 0 2.108 2.117C4.367 20.5 12 20.5 12 20.5s7.633 0 9.39-.569a2.994 2.994 0 0 0 2.108-2.117C24 16.057 24 12 24 12s0-4.057-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
               </svg>
             </a>
+            
             <a 
               href="#" 
-              class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white flex items-center justify-center hover:border-white hover:bg-white hover:text-black transition-all duration-300 active:scale-95"
+              class="linkedin-icon w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white flex items-center justify-center hover:border-white hover:bg-white transition-all duration-300 active:scale-95"
               aria-label="LinkedIn"
             >
-              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5 linkedin-svg" fill="white" viewBox="0 0 24 24">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
             </a>
+            
+            <!-- Email Icon -->
             <a 
-              href="mailto:Hodaeiihamidreza@gmail.com" 
-              class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white flex items-center justify-center hover:border-white hover:bg-white hover:text-black transition-all duration-300 active:scale-95"
+              href="mailto:info@polychemmb.com" 
+              class="email-icon w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white flex items-center justify-center hover:border-white hover:bg-white transition-all duration-300 active:scale-95"
               aria-label="Email"
             >
-              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5 email-svg" fill="none" stroke="white" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
               </svg>
             </a>
@@ -62,26 +120,30 @@
           </div>
         </div>
 
-        <!-- Contact -->
+        <!-- Address Section -->
         <div class="sm:col-span-2 lg:col-span-1">
-          <h3 class="text-base sm:text-lg font-semibold mb-4 sm:mb-5 md:mb-6 uppercase tracking-wider">Contact</h3>
-          <ul class="space-y-3 sm:space-y-4">
+          <h3 class="text-base sm:text-lg font-semibold mb-4 sm:mb-5 md:mb-6 uppercase tracking-wider">Our Locations</h3>
+          <ul class="space-y-3 sm:space-y-4 mb-4">
             <li class="flex items-start gap-2 sm:gap-3 text-white text-sm sm:text-base">
               <svg class="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
               </svg>
-              <span>Iran, Tehran</span>
+              <span>Unit 15-NO.45 – Manzarnejad Blvd- Shariati Ave- Mirdamad Blvd- Tehran- Iran</span>
             </li>
             <li class="flex items-start gap-2 sm:gap-3 text-white text-sm sm:text-base">
               <svg class="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
               </svg>
-              <a href="mailto:info@polychemmb.com" class="hover:text-white transition-colors break-all">
-                info@polychemmb.com
-              </a>
+              <span>Aras Free Trade-Industrial Zone<br>Industrial Town Phase 2<br>South C Street, Plots 437 & 438<br>Jolfa</span>
             </li>
           </ul>
+          
+          <!-- Leaflet Map -->
+          <div class="map-container mt-4 rounded-lg overflow-hidden border border-white/20">
+            <div ref="mapElement" class="map-element"></div>
+          </div>
         </div>
       </div>
 
@@ -124,34 +186,104 @@
 </template>
 
 <script setup>
-// No script needed for this component
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
+
+const mapElement = ref(null)
+let map = null
+
+onMounted(() => {
+  // مختصات منطقه آزاد ارس (جدید)
+  const centerCoords = [38.92109766797102, 45.64923116999213]
+  
+  // ایجاد نقشه با Dark Mode
+  map = L.map(mapElement.value, {
+    center: centerCoords,
+    zoom: 5,
+    zoomControl: true,
+    scrollWheelZoom: true
+  })
+
+  // استفاده از CartoDB Dark Matter (طوسی-مشکی)
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20
+  }).addTo(map)
+
+  // آیکون سفارشی قرمز/نارنجی
+  const customIcon = L.divIcon({
+    className: 'custom-marker',
+    html: `
+      <div style="
+        background-color: #ff4444;
+        width: 30px;
+        height: 30px;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        border: 3px solid #fff;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+      ">
+        <div style="
+          width: 10px;
+          height: 10px;
+          background-color: #fff;
+          border-radius: 50%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        "></div>
+      </div>
+    `,
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30]
+  })
+
+  // افزودن مارکر با پاپ‌آپ
+  const marker = L.marker(centerCoords, { icon: customIcon }).addTo(map)
+  marker.bindPopup(`
+    <div style="text-align: center; font-family: 'Figtree', sans-serif; color: #333;">
+      <strong style="font-size: 14px; color: #ff4444;">Aras Free Trade Zone</strong><br>
+      <span style="font-size: 12px;">Polychem - Jolfa</span>
+    </div>
+  `)
+
+  // تنظیم مجدد سایز نقشه بعد از mount
+  setTimeout(() => {
+    map.invalidateSize()
+  }, 100)
+})
+
+onBeforeUnmount(() => {
+  if (map) {
+    map.remove()
+    map = null
+  }
+})
 </script>
 
 <style scoped>
-/* تغییر: ایمپورت فونت‌ها مشابه Hero */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Figtree:wght@300;400;500;600;700&display=swap');
 
-/* تنظیم فونت پیش‌فرض footer مطابق Hero (متن -> Figtree، عناوین -> Montserrat) */
 footer {
   font-family: 'Figtree', sans-serif;
 }
 
-/* عناوین داخل footer مشابه Hero */
 footer h2,
 footer h3,
 footer .text-2xl,
 footer .text-xl,
 footer .font-semibold {
   font-family: 'Montserrat', sans-serif;
-  /* در صورت نیاز وزن دلخواه را اینجا اضافه کنید */
 }
 
-/* Smooth transitions for all interactive elements */
 a, button {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* دکمه مشابه cards.vue */
 .card-button {
   background: transparent;
   color: #FFCD05;
@@ -199,8 +331,56 @@ a, button {
   z-index: 1;
 }
 
-/* YouTube icon hover: svg fill to black */
 .youtube-icon:hover .youtube-svg {
   fill: #000 !important;
+}
+
+.instagram-icon:hover .instagram-svg {
+  fill: #000 !important;
+}
+
+.linkedin-icon:hover .linkedin-svg {
+  fill: #000 !important;
+}
+
+.email-icon:hover .email-svg {
+  stroke: #000 !important;
+}
+
+/* استایل‌های نقشه */
+.map-container {
+  width: 100%;
+  height: 220px;
+  position: relative;
+}
+
+.map-element {
+  width: 100%;
+  height: 100%;
+}
+
+/* حذف لوگوی Leaflet از گوشه */
+:deep(.leaflet-control-attribution) {
+  font-size: 9px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+/* استایل پاپ‌آپ */
+:deep(.leaflet-popup-content-wrapper) {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+}
+
+:deep(.leaflet-popup-tip) {
+  background: #fff;
+}
+
+/* ریسپانسیو برای موبایل */
+@media (max-width: 640px) {
+  .map-container {
+    height: 180px;
+  }
 }
 </style>

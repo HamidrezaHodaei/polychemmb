@@ -36,7 +36,7 @@
 /* Polychem دقیقاً ۴۰px و هم‌تراز با بقیه */
 .brand {
   font-weight: 800;
-  font-size: 40px;
+  font-size: 45px;
   letter-spacing: 0.05em;
   white-space: nowrap;           /* مهم: نمی‌ذاره بشکنه */
   display: inline-block;
@@ -55,7 +55,7 @@
 /* متن ادامه‌دهنده - هم‌سایز و هم‌تراز و در یک خط */
 .brand-rest {
   font-weight: 700;
-  font-size: 40px;               /* حالا هم‌سایز Polychem */
+  font-size: 35px;               /* حالا هم‌سایز Polychem */
   white-space: nowrap;
   display: inline-block;
   vertical-align: middle;
@@ -67,7 +67,7 @@
   background: #FFD700;
   color: white;
   font-weight: 800;
-  font-size: 40px;
+  font-size: 45px;
   text-transform: uppercase;
   display: flex;
   align-items: center;
