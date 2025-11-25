@@ -136,7 +136,7 @@ body {
 }
 
 .hero__title {
-  font-size: 2.5rem; /* قبلا 4.5rem بود */
+  font-size: 3rem; /* قبلا 4.5rem بود */
   font-weight: bold;
   line-height: 1.2;
   margin: 0;
