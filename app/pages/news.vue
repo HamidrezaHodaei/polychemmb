@@ -5,30 +5,25 @@
       :class="['w-full h-full flex overflow-x-auto overflow-y-hidden scroll-smooth bg-[#ffffff] shadow-2xl', {'detail-mode': activeProductIndex !== null}]"
     >
       <!-- Navigation Sidebar -->
-      <nav class="w-[60px] lg:w-[100px] bg-gray-900 flex flex-col items-center justify-between py-7 px-4 text-white flex-shrink-0 relative z-10">
-        <div class="w-8 text-red-600">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.91 92.91" fill="currentColor">
-            <path d="M51.6 92.51v-1.63c.01-5.24.03-10.48.02-15.72 0-2.5-.94-3.53-3.47-3.52-3.63.01-7.19-.44-10.64-1.56-10.43-3.37-15.76-10.83-17.06-21.46-.19-1.57-.28-3.17-.32-4.75-.05-2.2.86-3.27 3.04-3.63.6-.1 1.21-.08 1.82-.08l33.56-.01c1.86 0 2.47-.81 1.47-2.38-2.69-4.23-6.38-7.18-11.55-7.44-4.53-.22-9.08-.04-13.62-.04-3.03 0-3.8-.75-3.83-3.81-.03-3.42-.02-6.84-.02-10.25v-1.94c-7.96.63-19.36 16.97-20.46 28.2a36.48 36.48 0 0030.58 39.65v10.4a44.47 44.47 0 01-24.01-10.1C7.3 74.38 1.53 63.99.26 51.34-2.64 22.7 19.45 2.22 41.2.36v16.55c.01 2.6.56 3 3.21 3.22 3.02.25 6.07.53 9 1.24 10.29 2.5 17.18 10.4 18.45 20.9a49 49 0 01.32 5.72c0 1.88-1.06 2.91-2.94 3.06-.7.06-1.4.03-2.1.03-10.87 0-21.73.04-32.59-.05-2.1-.02-2.85 1.22-1.68 3.06 2.53 3.94 6.13 6.38 10.77 6.77 4.18.36 8.4.23 12.61.32.8.01 1.6-.03 2.4.05 2.34.25 3.43 1.4 3.45 3.76.04 3.98.01 7.96.02 11.94 0 .53.09 1.07.15 1.8a31.76 31.76 0 008.28-5.53c6.46-5.9 10.48-13.2 11.59-21.86 1.51-11.88-2.06-22.19-10.56-30.67-5.18-5.17-11.47-8.3-18.63-9.73-.42-.08-1.08-.48-1.1-.75-.07-3.26-.04-6.52-.04-9.8 20.01 1.8 39.98 18.95 41.05 43.93a46.21 46.21 0 01-41.25 48.2z"/>
+      <nav class="w-[60px] lg:w-[100px] bg-[#848484] flex flex-col items-center justify-between py-7 px-4 text-white flex-shrink-0 relative z-10">
+        <div class="w-8 text-yellow-600">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
         </div>
         
-        <div class="hidden lg:block [writing-mode:vertical-rl] rotate-180 text-sm">
-          Specialized - Mountain Bikes
+        <div class="hidden lg:block [writing-mode:vertical-rl] -rotate-90">
+          <img src="/english logo W1.png" alt="Logo" class="w-20 h-auto object-contain">
         </div>
         
         <div class="relative flex items-center justify-center flex-col">
-          <span class="absolute -top-2 -right-1.5 bg-red-600 border-2 border-gray-900 h-5 w-5 flex items-center justify-center rounded-full text-xs font-medium text-white">3</span>
-          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
-            <circle cx="9" cy="21" r="1"/>
-            <circle cx="20" cy="21" r="1"/>
-            <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
-          </svg>
+          
         </div>
       </nav>
 
       <!-- Cover Image -->
       <div class="w-[300px] lg:w-[500px] flex items-center justify-center text-5xl text-white font-medium text-center flex-shrink-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1598322508096-5ca34544d8aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80')">
-        Mountain<br>Bikes
+        <img src="/english logo W.png" alt="Logo" class="max-w-[80%] max-h-[80%] object-contain">
       </div>
 
       <!-- Products -->
@@ -37,10 +32,7 @@
         :key="index"
         :data-index="index"
         @click="handleProductClick(index, $event)"
-        :class="[
-          'flex flex-col items-center p-9 bg-[#f1f2f2] w-[310px] overflow-y-auto scroll-smooth transition-all duration-500 flex-shrink-0 ml-1.5 relative',
-          activeProductIndex === index ? 'product-active w-full lg:w-[70%] px-8 lg:px-[70px] pb-0' : 'hover:shadow-[inset_0_-4px_0_0_#fc302b] cursor-pointer'
-        ]"
+        :class="['flex flex-col items-center p-9 bg-[#f1f2f2] w-[310px] overflow-y-auto scroll-smooth transition-all duration-500 flex-shrink-0 ml-1.5 relative', {'product-active w-full lg:w-[70%] px-8 lg:px-[70px] pb-0': activeProductIndex === index, 'hover:shadow-[inset_0_-4px_0_0_#FFCD05] cursor-pointer': activeProductIndex !== index}]"
       >
         <!-- Close Button -->
         <button
@@ -54,16 +46,6 @@
           </svg>
         </button>
 
-        <!-- NEW Badge -->
-        <div class="absolute top-9 right-9 text-xs font-medium tracking-wider">NEW</div>
-
-        <!-- Product Image -->
-        <img 
-          :src="product.img" 
-          :alt="product.title"
-          :class="['w-full object-contain my-10 max-w-[500px] transition-transform duration-300', activeProductIndex !== index && 'hover:scale-110']"
-        />
-
         <!-- Brand -->
         <div :class="['text-sm tracking-widest transition-all duration-500', activeProductIndex === index && 'text-base']">
           {{ product.brand }}
@@ -75,29 +57,25 @@
         </h2>
 
         <!-- Price -->
-        <div :class="['mb-8 transition-all duration-500', activeProductIndex === index && 'text-2xl']">
+        <div v-if="product.price" :class="['mb-8 transition-all duration-500', activeProductIndex === index && 'text-2xl']">
           {{ product.price }}
         </div>
 
         <!-- Buttons (shown when active) -->
         <div v-if="activeProductIndex === index" class="flex items-center min-w-[80%] mb-9 animate-fade-up flex-col lg:flex-row" style="animation-delay: 0.2s">
-          <div class="flex items-center">
-            <button class="bg-transparent border border-gray-900 px-5 py-3 text-sm font-medium tracking-widest -mr-px rounded-l">SML</button>
-            <button class="bg-gray-900 text-white border border-gray-900 px-5 py-3 text-sm font-medium tracking-widest -mr-px">MED</button>
-            <button class="bg-transparent border border-gray-900 px-5 py-3 text-sm font-medium tracking-widest -mr-px">LRG</button>
-            <button class="bg-transparent border border-gray-900 px-5 py-3 text-sm font-medium tracking-widest rounded-r">XLG</button>
-          </div>
-          <button class="bg-red-600 text-white px-5 py-3 text-sm font-medium tracking-widest flex-grow rounded ml-0 lg:ml-4 mt-4 lg:mt-0 w-full lg:w-auto">ADD TO CART</button>
+          <button class="btn-slide-down w-full lg:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors px-5 py-3 text-sm font-medium tracking-widest flex-grow rounded ml-0 lg:ml-4 mt-4 lg:mt-0">
+            <span class="relative z-10">ADD TO CART</span>
+          </button>
         </div>
 
         <!-- Subtitle -->
-        <p v-if="activeProductIndex !== index" class="text-gray-700 leading-relaxed text-sm mb-5">
+        <p v-if="activeProductIndex !== index" class="text-gray-700 leading-relaxed text-sm mb-5 whitespace-pre-line">
           {{ product.subtitle }}
         </p>
 
         <!-- Expanded Content (shown when active) -->
         <template v-if="activeProductIndex === index">
-          <p class="text-gray-700 leading-relaxed text-sm mb-5 animate-fade-up" style="animation-delay: 0.3s">
+          <p class="text-gray-700 leading-relaxed text-sm mb-5 animate-fade-up whitespace-pre-line" style="animation-delay: 0.3s">
             {{ product.subtitle }}
           </p>
           
@@ -107,59 +85,14 @@
             class="block mt-5 -mx-8 lg:-mx-[70px] max-w-none w-[calc(100%+64px)] lg:w-[calc(100%+140px)]"
           />
 
-          <p class="text-gray-700 leading-relaxed text-sm mb-5 animate-fade-up" style="animation-delay: 0.4s">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod, quos? Nesciunt quibusdam corporis quo repellendus sequi. Molestiae repellendus ab vitae mollitia distinctio quod molestias quis, suscipit magni id ex in?
-          </p>
-
-          <p class="text-gray-700 leading-relaxed text-sm mb-5 animate-fade-up" style="animation-delay: 0.5s">
-            Nostrum quibusdam, sunt deleniti vel sapiente modi tempore ea omnis non adipisci earum totam illo esse quo voluptatem dignissimos excepturi saepe! Minima vero consequatur eos laudantium deleniti architecto ducimus quia?
-          </p>
-
           <!-- Technical Specifications Table -->
-          <div class="flex flex-col bg-gray-900 text-white -mx-8 lg:-mx-[70px] px-8 lg:px-[100px] py-12 lg:py-[70px] w-[calc(100%+64px)] lg:w-[calc(100%+140px)]">
-            <h3 class="font-semibold tracking-widest text-xl mb-8">TECHNICAL SPECIFICATIONS</h3>
+          <div class="flex flex-col bg-[#A8A8A8] text-white -mx-8 lg:-mx-[70px] px-8 lg:px-[100px] py-12 lg:py-[70px] w-[calc(100%+64px)] lg:w-[calc(100%+140px)]">
+            <h3 class="font-semibold tracking-widest text-2xl mb-8 text-[#FFCD05]">TECHNICAL SPECIFICATIONS</h3>
             
-            <div class="flex flex-col lg:flex-row pt-3 mt-3 border-t border-white/10">
-              <div class="flex-shrink-0 font-medium tracking-widest w-full lg:w-[260px] text-white/70 mb-1 lg:mb-0">FRAME</div>
-              <div class="leading-relaxed text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae optio a illo, earum, iste doloribus, quo id itaque veniam sapiente unde officia impedit maxime facere.</div>
+            <div v-for="(spec, idx) in product.specs" :key="idx" class="flex flex-col lg:flex-row pt-4 mt-4 border-t border-white/20">
+              <div class="flex-shrink-0 font-semibold tracking-wide w-full lg:w-[280px] text-[#FFCD05] mb-2 lg:mb-0">{{ spec.label }}</div>
+              <div class="leading-relaxed text-sm text-white/90">{{ spec.value }}</div>
             </div>
-
-            <div class="flex flex-col lg:flex-row pt-3 mt-3 border-t border-white/10">
-              <div class="flex-shrink-0 font-medium tracking-widest w-full lg:w-[260px] text-white/70 mb-1 lg:mb-0">SEAT BINDER</div>
-              <div class="leading-relaxed text-sm">Lorem ipsum dolor</div>
-            </div>
-
-            <div class="flex flex-col lg:flex-row pt-3 mt-3 border-t border-white/10">
-              <div class="flex-shrink-0 font-medium tracking-widest w-full lg:w-[260px] text-white/70 mb-1 lg:mb-0">REAR SHOCK</div>
-              <div class="leading-relaxed text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae optio a illo, earum, iste doloribus.</div>
-            </div>
-
-            <div class="flex flex-col lg:flex-row pt-3 mt-3 border-t border-white/10">
-              <div class="flex-shrink-0 font-medium tracking-widest w-full lg:w-[260px] text-white/70 mb-1 lg:mb-0">FORK</div>
-              <div class="leading-relaxed text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae optio a illo, earum, iste doloribus, quo id itaque veniam sapiente unde officia placeat non libero ducimus</div>
-            </div>
-
-            <div class="flex flex-col lg:flex-row pt-3 mt-3 border-t border-white/10">
-              <div class="flex-shrink-0 font-medium tracking-widest w-full lg:w-[260px] text-white/70 mb-1 lg:mb-0">STEM</div>
-              <div class="leading-relaxed text-sm">Quae optio a illo</div>
-            </div>
-
-            <div class="flex flex-col lg:flex-row pt-3 mt-3 border-t border-white/10">
-              <div class="flex-shrink-0 font-medium tracking-widest w-full lg:w-[260px] text-white/70 mb-1 lg:mb-0">HANDLEBARS</div>
-              <div class="leading-relaxed text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae optio a illo, earum, iste doloribus.</div>
-            </div>
-
-            <div class="flex flex-col lg:flex-row pt-3 mt-3 border-t border-white/10">
-              <div class="flex-shrink-0 font-medium tracking-widest w-full lg:w-[260px] text-white/70 mb-1 lg:mb-0">GRIPS</div>
-              <div class="leading-relaxed text-sm">Iste doloribus.</div>
-            </div>
-
-            <div class="flex flex-col lg:flex-row pt-3 mt-3 border-t border-white/10">
-              <div class="flex-shrink-0 font-medium tracking-widest w-full lg:w-[260px] text-white/70 mb-1 lg:mb-0">SADDLE</div>
-              <div class="leading-relaxed text-sm">Minima vero consequatur eos laudantium iste doloribus. Lorem ipsum dolor sit amet consectetur.</div>
-            </div>
-
-            <button class="border border-gray-700 bg-gray-700 rounded px-5 py-3 text-sm font-medium tracking-widest text-center mt-8">ALL SPECIFICATIONS</button>
           </div>
 
           <!-- Image Grid -->
@@ -173,7 +106,7 @@
         </template>
 
         <!-- View Details (shown when not active) -->
-        <button v-else class="mt-auto font-medium text-sm tracking-widest">VIEW DETAILS</button>
+        <button v-else class="mt-auto font-medium text-sm tracking-widest text-[#FFCD05] hover:text-[#e6b800] transition-colors">VIEW DETAILS →</button>
       </div>
     </div>
   </div>
@@ -187,46 +120,182 @@ const activeProductIndex = ref(null);
 
 const products = [
   {
-    brand: 'TURBO LEVO',
-    title: 'Turbo Levo SL Expert Carbon',
-    price: '$13,200',
-    img: 'https://trek.scene7.com/is/image/TrekBicycleProducts/Slash98XT_21_33019_A_Primary?$responsive-pjpg$&cache=on,on&wid=640&hei=480',
-    subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id error mollitia veritatis odio repudiandae. Suscipit dolorum sunt rem aspernatur saepe sint sequi aut quis. Doloribus neque laborum fugiat officiis quae.'
+    brand: 'POLYFIL',
+    title: 'POLYFIL F700',
+    price: '',
+    subtitle: `POLYFIL F700 is a high-performance polyethylene compound specifically formulated for high-density polyethylene (HDPE) blown film applications. This grade is engineered to deliver superior mechanical properties, excellent film uniformity, and reliable processability, even in ultra-thin film applications.
+It is highly recommended for producing films with thicknesses in the range of 10–25 microns, making it suitable for a wide range of packaging and consumer products such as shopping bags, T-shirt bags, garbage bags, liner bags, and food-contact films.`,
+    specs: [
+      { label: 'MFI (190°C / 5 kg)', value: '0.19 ± 0.1 g/10min (ISO 1133)' },
+      { label: 'Density', value: '0.952 ± 0.003 kg/m³ (ISO 1183)' },
+      { label: 'Moisture Content', value: '≤ 1500 ppm' },
+      { label: 'Melting Point', value: '135 ± 5°C (ASTM D 2117)' },
+      { label: 'Vicat Softening Point', value: '124°C (ASTM D1525)' },
+      { label: 'Tensile Strength @ Yield (MD)', value: '24 MPa (ASTM D638)' },
+      { label: 'Tensile Strength @ Yield (MD, TD)', value: '30, 60 MPa (ASTM D638)' },
+      { label: 'Elongation @ Break (MD, TD)', value: '450, 240 % (ASTM D638)' },
+      { label: 'ESCR (IGEPAL 10%) (F50, 50°C)', value: '> 1000 HR (ASTM D1693)' }
+    ]
   },
   {
-    brand: 'ENDURO',
-    title: 'Powerfly FS 9 Equipped',
-    price: '$9,200',
-    img: 'https://trek.scene7.com/is/image/TrekBicycleProducts/Slash7NX_21_32992_A_Primary?$responsive-pjpg$&cache=on,on&wid=640&hei=480',
-    subtitle: 'Lorem ipsum dolor sit. Doloribus neque laborum fugiat officiis quae. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur, in delectus tempore iusto dicta odio quas a placeat earum, accusamus rem ut aut nobis, dolorem incidunt volupta.'
+    brand: 'POLYFIL',
+    title: 'POLYFIL F800',
+    price: '',
+    subtitle: 'Advanced polyethylene compound designed for superior film processing with enhanced mechanical strength and clarity for demanding packaging applications.',
+    specs: [
+      { label: 'FRAME', value: 'Carbon fiber composite' },
+      { label: 'SEAT BINDER', value: 'Aluminum alloy' },
+      { label: 'REAR SHOCK', value: 'High-performance air suspension' },
+      { label: 'FORK', value: 'Adjustable travel fork system' },
+      { label: 'STEM', value: 'CNC machined aluminum' },
+      { label: 'HANDLEBARS', value: 'Carbon fiber reinforced' },
+      { label: 'GRIPS', value: 'Ergonomic gel compound' },
+      { label: 'SADDLE', value: 'Sport comfort design' }
+    ]
   },
   {
-    brand: 'EPIC',
-    title: 'Marlin 6 Women\'s',
-    price: '$6,700',
-    img: 'https://trek.scene7.com/is/image/TrekBicycleProducts/Marlin6Womens_20_28788_A_Primary?$responsive-pjpg$&cache=on,on&wid=640&hei=480',
-    subtitle: 'Lorem ipsum dolor sit. Doloribus neque laborum fugiat officiis quae. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur, in delectus tempore iusto dicta odio quas a placeat earum, accusamus rem ut aut nobis, dolorem incidu.'
+    brand: 'POLYFIL',
+    title: 'POLYFIL F900',
+    price: '',
+    subtitle: 'Premium grade polyethylene with exceptional optical properties and processing stability for high-quality packaging solutions.',
+    specs: [
+      { label: 'FRAME', value: 'Lightweight aluminum' },
+      { label: 'SEAT BINDER', value: 'Quick-release system' },
+      { label: 'REAR SHOCK', value: 'Coil spring suspension' },
+      { label: 'FORK', value: 'Rigid carbon fork' },
+      { label: 'STEM', value: 'Adjustable angle stem' },
+      { label: 'HANDLEBARS', value: 'Flat bar design' },
+      { label: 'GRIPS', value: 'Lock-on style' },
+      { label: 'SADDLE', value: 'Racing performance' }
+    ]
   },
   {
-    brand: 'STUMPJUMPER',
-    title: 'S-Worls Enduro Epic Hard',
-    price: '$8,500',
-    img: 'https://trek.scene7.com/is/image/TrekBicycleProducts/TopFuel7SX_21_32984_B_Primary?$responsive-pjpg$&cache=on,on&wid=640&hei=480',
-    subtitle: 'Lorem ipsum dolor sit. Doloribus neque laborum fugiat officiis quae. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur, in delectus tempore iusto dicta odio quas a placeat.'
+    brand: 'POLYFIL',
+    title: 'POLYFIL F1000',
+    price: '',
+    subtitle: 'Innovative polyethylene formulation with optimized melt flow for efficient production of thin gauge films.',
+    specs: [
+      { label: 'FRAME', value: 'Full suspension carbon' },
+      { label: 'SEAT BINDER', value: 'Integrated design' },
+      { label: 'REAR SHOCK', value: 'Remote lockout air shock' },
+      { label: 'FORK', value: 'Triple-crown downhill fork' },
+      { label: 'STEM', value: 'Direct mount' },
+      { label: 'HANDLEBARS', value: 'Wide riser bar' },
+      { label: 'GRIPS', value: 'Soft compound' },
+      { label: 'SADDLE', value: 'Trail enduro saddle' }
+    ]
   },
   {
-    brand: 'TURBO LEVO',
-    title: 'Ticket DJ Frameset',
-    price: '$12,700',
-    img: 'https://trek.scene7.com/is/image/TrekBicycleProducts/XCaliber9_20_29760_B_Primary?$responsive-pjpg$&cache=on,on&wid=640&hei=480',
-    subtitle: 'Lorem ipsum dolor sit. Doloribus neque laborum fugiat officiis quae. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur, in delectus tempore iusto dicta odio quas a placeat earum, accusamus rem ut aut nobis, dolorem incidunt volu.'
+    brand: 'POLYFIL',
+    title: 'POLYFIL F1100',
+    price: '',
+    subtitle: 'High-density compound offering excellent barrier properties and thermal stability for industrial applications.',
+    specs: [
+      { label: 'FRAME', value: 'Steel hardtail' },
+      { label: 'SEAT BINDER', value: 'Standard clamp' },
+      { label: 'REAR SHOCK', value: 'N/A - Hardtail design' },
+      { label: 'FORK', value: 'Entry-level suspension' },
+      { label: 'STEM', value: 'Forged aluminum' },
+      { label: 'HANDLEBARS', value: 'Alloy riser' },
+      { label: 'GRIPS', value: 'Basic foam' },
+      { label: 'SADDLE', value: 'Comfort cruiser' }
+    ]
   },
   {
-    brand: 'EPIC',
-    title: 'Precaliber Suspension',
-    price: '$15,900',
-    img: 'https://trek.scene7.com/is/image/TrekBicycleProducts/1008601_2017_A_1_820_Womens?$responsive-pjpg$&cache=on,on&wid=640&hei=480',
-    subtitle: 'Lorem ipsum dolor sit. Doloribus neque laborum fugiat officiis quae. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur, in delectus tempore iusto dicta odio quas a placeat earum, accusamus rem ut aut'
+    brand: 'POLYFIL',
+    title: 'POLYFIL F1200',
+    price: '',
+    subtitle: 'Versatile polyethylene grade with balanced properties for multi-purpose film applications.',
+    specs: [
+      { label: 'FRAME', value: 'Titanium alloy' },
+      { label: 'SEAT BINDER', value: 'Titanium bolt' },
+      { label: 'REAR SHOCK', value: 'Custom tuned air' },
+      { label: 'FORK', value: 'Boost spacing fork' },
+      { label: 'STEM', value: 'Titanium construction' },
+      { label: 'HANDLEBARS', value: 'Carbon T800' },
+      { label: 'GRIPS', value: 'Premium leather wrap' },
+      { label: 'SADDLE', value: 'Titanium rail saddle' }
+    ]
+  },
+  {
+    brand: 'POLYFIL',
+    title: 'POLYFIL F1300',
+    price: '',
+    subtitle: 'Specialized compound for agricultural and construction film applications with superior puncture resistance.',
+    specs: [
+      { label: 'FRAME', value: 'Chromoly steel' },
+      { label: 'SEAT BINDER', value: 'Micro-adjust' },
+      { label: 'REAR SHOCK', value: 'Progressive coil' },
+      { label: 'FORK', value: 'Dual crown' },
+      { label: 'STEM', value: 'Low-profile design' },
+      { label: 'HANDLEBARS', value: 'BMX style' },
+      { label: 'GRIPS', value: 'Mushroom grip' },
+      { label: 'SADDLE', value: 'Pivotal mount' }
+    ]
+  },
+  {
+    brand: 'POLYFIL',
+    title: 'POLYFIL F1400',
+    price: '',
+    subtitle: 'Next-generation polyethylene with enhanced processability and consistent output for automated production lines.',
+    specs: [
+      { label: 'FRAME', value: 'Composite monocoque' },
+      { label: 'SEAT BINDER', value: 'Aero wedge system' },
+      { label: 'REAR SHOCK', value: 'Electronic suspension' },
+      { label: 'FORK', value: 'Aero road fork' },
+      { label: 'STEM', value: 'Integrated cockpit' },
+      { label: 'HANDLEBARS', value: 'Aero drop bar' },
+      { label: 'GRIPS', value: 'Bar tape premium' },
+      { label: 'SADDLE', value: 'Performance road' }
+    ]
+  },
+  {
+    brand: 'POLYFIL',
+    title: 'POLYFIL F1500',
+    price: '',
+    subtitle: 'Eco-friendly polyethylene formulation with recycled content for sustainable packaging solutions.',
+    specs: [
+      { label: 'FRAME', value: 'Bamboo composite' },
+      { label: 'SEAT BINDER', value: 'Eco-friendly clamp' },
+      { label: 'REAR SHOCK', value: 'Spring steel' },
+      { label: 'FORK', value: 'Recycled carbon' },
+      { label: 'STEM', value: 'Sustainable alloy' },
+      { label: 'HANDLEBARS', value: 'Natural fiber bar' },
+      { label: 'GRIPS', value: 'Cork grips' },
+      { label: 'SADDLE', value: 'Vegan leather' }
+    ]
+  },
+  {
+    brand: 'POLYFIL',
+    title: 'POLYFIL F1600',
+    price: '',
+    subtitle: 'Ultra-thin film specialist compound with exceptional clarity and gloss for premium packaging.',
+    specs: [
+      { label: 'FRAME', value: 'Magnesium alloy' },
+      { label: 'SEAT BINDER', value: 'Quick-flip lever' },
+      { label: 'REAR SHOCK', value: 'Piggyback reservoir' },
+      { label: 'FORK', value: 'Inverted design' },
+      { label: 'STEM', value: 'Precision CNC' },
+      { label: 'HANDLEBARS', value: 'Oversized tubing' },
+      { label: 'GRIPS', value: 'Tacky rubber' },
+      { label: 'SADDLE', value: 'Carbon shell' }
+    ]
+  },
+  {
+    brand: 'POLYFIL',
+    title: 'POLYFIL F1700',
+    price: '',
+    subtitle: 'Industrial-grade polyethylene with excellent chemical resistance for heavy-duty applications.',
+    specs: [
+      { label: 'FRAME', value: 'Reinforced steel' },
+      { label: 'SEAT BINDER', value: 'Industrial clamp' },
+      { label: 'REAR SHOCK', value: 'Heavy-duty coil' },
+      { label: 'FORK', value: 'Rigid steel fork' },
+      { label: 'STEM', value: 'Welded construction' },
+      { label: 'HANDLEBARS', value: 'Reinforced bar' },
+      { label: 'GRIPS', value: 'Industrial rubber' },
+      { label: 'SADDLE', value: 'Durable platform' }
+    ]
   }
 ];
 
@@ -244,12 +313,10 @@ const handleProductClick = async (index, event) => {
   
   await nextTick();
   
-  // Calculate scroll position
-  const navWidth = 60; // Approximate nav width on mobile, 100 on desktop
-  const coverWidth = 300; // Approximate cover width on mobile, 500 on desktop
+  const navWidth = 60;
+  const coverWidth = 300;
   const left = productWidth * index + coverWidth + index * 6 + navWidth - getProductOffset();
   
-  // Check if mobile device
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   
   if (isMobile) {
@@ -301,5 +368,30 @@ body {
 
 .animate-fade-up {
   animation: fade-up 0.6s both;
+}
+
+.btn-slide-down {
+  background-color: transparent;
+}
+.btn-slide-down::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFCD05;
+  transform: translateY(-100%);
+  transition: transform 300ms ease;
+  z-index: 0;
+}
+.btn-slide-down:hover::before,
+.btn-slide-down:focus-visible::before {
+  transform: translateY(0);
+}
+.btn-slide-down:hover,
+.btn-slide-down:focus-visible {
+  color: #ffffff;
+  outline: none;
 }
 </style>
