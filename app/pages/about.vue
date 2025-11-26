@@ -36,7 +36,7 @@
 
         <!-- Card 2 -->
         <div 
-          class="bg-white rounded-lg p-12 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow duration-300 card-interactive"
+          class="bg-[#E8E6E6] rounded-lg p-12 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow duration-300 card-interactive"
           @mousemove="handleCardMouseMove"
           @mouseleave="handleCardMouseLeave"
           :ref="el => { if (el) cardRefs[1] = el }"
@@ -48,7 +48,7 @@
 
         <!-- Card 3 -->
         <div 
-          class="bg-white rounded-lg p-12 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow duration-300 card-interactive"
+          class="bg-[#E8E6E6] rounded-lg p-12 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow duration-300 card-interactive"
           @mousemove="handleCardMouseMove"
           @mouseleave="handleCardMouseLeave"
           :ref="el => { if (el) cardRefs[2] = el }"
@@ -86,7 +86,7 @@
         <div 
           v-for="(card, idx) in bottomCards"
           :key="idx + 4"
-          class="bg-white rounded-lg p-12 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow duration-300 card-interactive"
+          class="bg-[#E8E6E6] rounded-lg p-12 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow duration-300 card-interactive"
           @mousemove="handleCardMouseMove"
           @mouseleave="handleCardMouseLeave"
           :ref="el => { if (el) cardRefs[idx + 4] = el }"
@@ -117,15 +117,11 @@
           <h2 class="text-5xl md:text-6xl font-light text-[#848484] mb-12">Vision</h2>
           
           <p class="text-[#848484] text-lg mb-8 leading-relaxed">
-            Guided by Arthur Bataille, NEVERHACK reinvents cybersecurity for a future where digital trust is key.
+            At PolyChem, we envision a future where advanced polymer materials inspire better products, smarter manufacturing, and a more sustainable plastics industry.
           </p>
           
           <p class="text-[#848484] text-lg mb-8 leading-relaxed">
-            For Arthur, cybersecurity goes beyond mere protection. It is a lever for growth and resilience for businesses. His vision: to enable his clients to focus on their development by providing them with a secure, proactive, and adaptable environment.
-          </p>
-          
-          <p class="text-[#848484] text-lg leading-relaxed">
-            At NEVERHACK, we firmly believe that every organization, regardless of its sector or size, deserves cutting-edge, accessible, and innovative security.
+            Our goal is to become the most trusted partner for high-performance compounds and masterbatch solutions. A company known for its innovation, integrity, and commitment to excellence.
           </p>
         </div>
         

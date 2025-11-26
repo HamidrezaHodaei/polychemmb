@@ -139,10 +139,23 @@
             </li>
           </ul>
           
-          <!-- Leaflet Map -->
-          <div class="map-container mt-4 rounded-lg overflow-hidden border border-white/20">
-            <div ref="mapElement" class="map-element"></div>
-          </div>
+          <!-- Footer Image -->
+          <!-- Footer Image - از راست چسبیده، به چپ بزرگ شود تا نزدیک CONTACT US -->
+<!-- Footer Image - بیشتر به چپ، بزرگ‌تر در طول و ارتفاع -->
+<div class="mt-6 md:mt-14 -mr-8 lg:-mr-30">
+  <img 
+    src="/Footer.png" 
+    alt="Polychem Footer Illustration"
+    class="block ml-auto"
+    style="
+      height: 440px !important;
+      width: 400px;           /* ← ارتفاع بزرگ‌تر و پرابه‌تر شد */
+      transform: scaleX(2.45) !important; /* ← خیلی بیشتر به چپ اومد و طولش کشیده‌تر شد */
+      transform-origin: right top !important;
+      max-width: none !important;
+    "
+  >
+</div>
         </div>
       </div>
 
@@ -185,83 +198,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import L from 'leaflet'
-import 'leaflet/dist/leaflet.css'
+import { ref } from 'vue'
 
 const mapElement = ref(null)
-let map = null
-
-onMounted(() => {
-  // مختصات منطقه آزاد ارس (جدید)
-  const centerCoords = [38.92109766797102, 45.64923116999213]
-  
-  // ایجاد نقشه با Dark Mode
-  map = L.map(mapElement.value, {
-    center: centerCoords,
-    zoom: 5,
-    zoomControl: true,
-    scrollWheelZoom: true
-  })
-
-  // استفاده از CartoDB Dark Matter (طوسی-مشکی)
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 20
-  }).addTo(map)
-
-  // آیکون سفارشی قرمز/نارنجی
-  const customIcon = L.divIcon({
-    className: 'custom-marker',
-    html: `
-      <div style="
-        background-color: #ff4444;
-        width: 30px;
-        height: 30px;
-        border-radius: 50% 50% 50% 0;
-        transform: rotate(-45deg);
-        border: 3px solid #fff;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-      ">
-        <div style="
-          width: 10px;
-          height: 10px;
-          background-color: #fff;
-          border-radius: 50%;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        "></div>
-      </div>
-    `,
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30]
-  })
-
-  // افزودن مارکر با پاپ‌آپ
-  const marker = L.marker(centerCoords, { icon: customIcon }).addTo(map)
-  marker.bindPopup(`
-    <div style="text-align: center; font-family: 'Figtree', sans-serif; color: #333;">
-      <strong style="font-size: 14px; color: #ff4444;">Aras Free Trade Zone</strong><br>
-      <span style="font-size: 12px;">Polychem - Jolfa</span>
-    </div>
-  `)
-
-  // تنظیم مجدد سایز نقشه بعد از mount
-  setTimeout(() => {
-    map.invalidateSize()
-  }, 100)
-})
-
-onBeforeUnmount(() => {
-  if (map) {
-    map.remove()
-    map = null
-  }
-})
 </script>
 
 <style scoped>
@@ -346,49 +285,13 @@ a, button {
   stroke: #000 !important;
 }
 
-/* استایل‌های نقشه */
-.map-container {
-  width: 100%;
-  height: 220px;
-  position: relative;
-}
-
-.map-element {
-  width: 100%;
-  height: 100%;
-}
-
-/* حذف لوگوی Leaflet از گوشه */
-:deep(.leaflet-control-attribution) {
-  font-size: 9px;
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
-}
-
-/* استایل پاپ‌آپ */
-:deep(.leaflet-popup-content-wrapper) {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 3px 14px rgba(0,0,0,0.4);
-}
-
-:deep(.leaflet-popup-tip) {
-  background: #fff;
-}
-
-/* ریسپانسیو برای موبایل */
-@media (max-width: 640px) {
-  .map-container {
-    height: 180px;
-  }
-}
-
 .footer-nav-link {
   position: relative;
   color: #fff;
   text-decoration: none;
   transition: color 0.2s;
 }
+
 .footer-nav-link::before {
   content: '';
   position: absolute;
@@ -399,10 +302,12 @@ a, button {
   background: #FFCD05;
   transition: width 0.3s;
 }
+
 .footer-nav-link:hover::before,
 .footer-nav-link:focus-visible::before {
   width: 100%;
 }
+
 .footer-nav-link:hover,
 .footer-nav-link:focus-visible {
   color: #fff;
