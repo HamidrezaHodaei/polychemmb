@@ -14,10 +14,6 @@
                   @mouseleave="handleMouseLeave(index)"
                   @touchend="handleTouchEnd(index)"
                 >
-                  <div 
-                    class="card-image"
-                    :style="{ backgroundImage: `url(${card.image})` }"
-                  ></div>
                   <div class="card-content">
                     <span class="card-badge">{{ card.badge }}</span>
                     <h3 class="card-title">{{ card.title }}</h3>
@@ -49,10 +45,6 @@
                   @mouseleave="handleMouseLeave(index + 4)"
                   @touchend="handleTouchEnd(index + 4)"
                 >
-                  <div 
-                    class="card-image"
-                    :style="{ backgroundImage: `url(${card.image})` }"
-                  ></div>
                   <div class="card-content">
                     <span class="card-badge">{{ card.badge }}</span>
                     <h3 class="card-title">{{ card.title }}</h3>
@@ -83,61 +75,55 @@ import { ref, onMounted } from 'vue'
 const cards = ref([
   {
     badge: 'News',
-    title: 'Discover the factors influencing recycled PET',
+    title: '  Discover the factors influencing recycled PET ',
     date: 'November 25, 2025',
-    link: '#',
-    image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500'
+    link: '#'
   },
   {
     badge: 'Chemical Analysis',
     title: 'Organic Chemistry Reactions Study',
     date: 'November 10, 2025',
-    link: '#',
-    image: 'https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=500'
+    link: '#'
   },
   {
     badge: 'Laboratory Report',
     title: 'Synthesis of Complex Compounds',
     date: 'November 8, 2025',
-    link: '#',
-    image: 'https://images.unsplash.com/photo-1578496480157-697fc14d2e55?w=500'
+    link: '#'
   },
   {
     badge: 'Research Paper',
     title: 'Catalytic Reactions in Chemistry',
     date: 'November 5, 2025',
-    link: '#',
-    image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=500'
+    link: '#'
   },
   {
     badge: 'Scientific Study',
     title: 'Thermodynamic Equilibrium Analysis',
     date: 'November 3, 2025',
-    link: '#',
-    image: 'https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=500'
+    link: '#'
   },
   {
     badge: 'Technical Report',
     title: 'Electrochemistry Applications',
     date: 'November 1, 2025',
-    link: '#',
-    image: 'https://images.unsplash.com/photo-1610725664285-7c57e6eeac3f?w=500'
+    link: '#'
   },
   {
     badge: 'Case Study',
     title: 'Polymer Chemistry Advances',
     date: 'October 28, 2025',
-    link: '#',
-    image: 'https://images.unsplash.com/photo-1564325724739-bae0bd08762c?w=500'
+    link: '#'
   },
   {
     badge: 'White Paper',
     title: 'Molecular Structure Investigation',
     date: 'October 25, 2025',
-    link: '#',
-    image: 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=500'
+    link: '#'
   }
 ])
+
+
 
 const charactersRefs = ref([])
 
@@ -215,6 +201,9 @@ const handleMouseLeave = (index) => {
     charactersRefs.value[index].style.setProperty('--tx', `0px`)
     charactersRefs.value[index].style.setProperty('--ty', `0px`)
     charactersRefs.value[index].style.setProperty('--scale', '1')
+    // می‌توانیم مکان نور را به مرکز برگردانیم (اختیاری)
+    // charactersRefs.value[index].style.setProperty('--x', `50%`)
+    // charactersRefs.value[index].style.setProperty('--y', `50%`)
   }
 }
 
@@ -241,7 +230,7 @@ const handleTouchEnd = (index) => {
   align-items: center;
   justify-content: center;
   background: #f1f2f2;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif; /* changed to Montserrat */
   padding: 20px;
 }
 
@@ -305,25 +294,6 @@ const handleTouchEnd = (index) => {
 
 .card-hover-container:hover {
   transform: translateY(-2px);
-}
-
-.card-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 1; /* قبلا: 0 — حالا تصویر پشت کارت همیشه نمایان است */
-  transition: opacity 0.5s ease;
-  z-index: 1;
-}
-
-/* می‌توان این قاعده را حذف کرد اما گذاشتن همان مقدار اطمینان می‌دهد که در هاور هم تغییر نکند */
-.card-hover-container:hover .card-image {
-  opacity: 0.3;
 }
 
 .card-content {
@@ -432,7 +402,7 @@ const handleTouchEnd = (index) => {
   font-size: 15px;
   line-height: 0.5;
   overflow: hidden;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif; /* changed to Montserrat */
   color: #a8a8a8;
   opacity: 0;
   transition: opacity 0.45s ease, transform 0.45s cubic-bezier(.2,.9,.3,1);

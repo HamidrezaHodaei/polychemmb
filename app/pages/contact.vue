@@ -5,13 +5,13 @@
       <!-- Globe + Contact us overlay -->
       <div class="relative flex justify-center items-center w-full" style="height: 480px; min-height: 340px;">
         <worldc
-          class="absolute left-1/2 z-0"
-          style="width: 600px; height: 480px; max-width: 100vw; filter: drop-shadow(none); top: 50%; transform: translate(-50%, -50%);"
+          class="absolute left-1/2 top-0 -translate-x-1/2 z-0"
+          style="width: 600px; height: 480px; max-width: 100vw; filter: drop-shadow(none);"
           :scroll-rotate="scrollRotate"
         />
         <div
-          class="absolute left-1/2 z-10"
-          style="top: 50%; transform: translate(-50%, -50%); pointer-events: none;"
+          class="absolute left-1/2 top-1/2 z-10"
+          style="transform: translate(-50%, -50%); pointer-events: none;"
         >
           <h1 class="text-6xl font-bold text-[#848484] mb-0 text-center select-none" style="text-shadow: 0 2px 16px #fff, 0 1px 0 #fff;">
             Contact us

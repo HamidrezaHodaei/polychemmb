@@ -19,16 +19,16 @@
           <!-- Right: Content (40% on desktop) -->
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
             <h2 class="text-3xl md:text-4xl uppercase font-[Montserrat] text-[#848484]">Rotochem 0955W</h2>
-            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">Rotochem 0955W – White rotational molding compound based on LMDPE copolymer with narrow MWD and TiO₂. Highly durable and UV-resistant, perfect for demanding industrial and consumer applications.</p>
+            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">Rotochem 0955W – White rotational molding compound based on MDPE copolymer with narrow MWD and TiO₂.Offering exceptional durability and superior UV resistance, it is the perfect choice for demanding industrial and consumer applications.</p>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
-              <span class="relative z-10 font-medium">View Details</span>
+              <span class="relative z-10 font-medium">Technical Data Sheet </span>
             </button>
           </div>
         </div>
 
         <!-- Card 2 -->
         <div
-          ref="card2"
+          ref="card2"س
           class="absolute w-[90%] md:w-[85.5%] h-[76.5vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
           style="top: 30px; z-index: 3;"
         >
@@ -38,9 +38,9 @@
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
             <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484]">POLYFIL F700</h2>
-            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">POLYFIL F700 – High-performance HDPE blown film compound offering superior strength, excellent film uniformity, and outstanding processability in ultra-thin gauges.</p>
+            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">POLYFIL F700 – High-performance HDPE blown film compound offering superior strength, excellent film uniformity, and outstanding processability.</p>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
-              <span class="relative z-10 font-medium">View Details</span>
+              <span class="relative z-10 font-medium">Technical Data Sheet </span>
             </button>
           </div>
         </div>
@@ -59,7 +59,7 @@
             <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484] uppercase">SlipChem-E 178</h2>
             <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">SlipChem-E 178 – Premium slip masterbatch in PE carrier. Significantly lowers COF with excellent dispersion, high thermal stability, and consistent migration for film winding and packaging.</p>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
-              <span class="relative z-10 font-medium">View Details</span>
+              <span class="relative z-10 font-medium">Technical Data Sheet </span>
             </button>
           </div>
         </div>
@@ -76,9 +76,28 @@
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
             <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484]">HDCHEM 4760</h2>
-            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">HDCHEM 4760 – Specialized PE copolymer compound for blow molding. Excellent melt strength, balanced mechanical properties, and superior processability for industrial and consumer parts.</p>
+            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">HDCHEM 4760 – Specialized PE copolymer compound for blow molding applications. This polymer matarials belong and good melt strength, balanced mechanical properties, and superior processability for industrial and consumer parts.</p>
             <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
-              <span class="relative z-10 font-medium">View Details</span>
+              <span class="relative z-10 font-medium">Technical Data Sheet </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div
+          ref="card5"
+          class="absolute w-[90%] md:w-[85.5%] h-[76.5vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
+          style="top: 120px; z-index: 6;"
+        >
+          <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px]">
+            <img src="/white-plastic-polymer.jpg" alt="Product 5" class="w-full h-full object-cover" />
+          </div>
+
+          <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
+            <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484]">RAFCOLOR 1560</h2>
+            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">RAFCOLOR is a high-quality white masterbatch containing a high loading of rutile titanium dioxide (TiO₂) and thermoplastic polypropylene resin. The selected TiO₂ offers excellent opacity and dispersion properties.</p>
+            <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
+              <span class="relative z-10 font-medium">Technical Data Sheet </span>
             </button>
           </div>
         </div>
@@ -100,6 +119,7 @@ const card1 = ref(null)
 const card2 = ref(null)
 const card3 = ref(null)
 const card4 = ref(null)
+const card5 = ref(null)
 
 let tl = null
 
@@ -111,7 +131,7 @@ onMounted(() => {
       pinSpacing: true,
       markers: false,
       start: 'top-=50px top',
-      end: '+=3500',
+      end: '+=4500',
       scrub: 1,
     },
   })
@@ -232,8 +252,44 @@ onMounted(() => {
     '-=0.6'
   )
 
+  tl.from(
+    card5.value,
+    {
+      yPercent: 75,
+      opacity: 0,
+      duration: 1.5,
+      ease: 'power2.out',
+    },
+    '+=0.2'
+  )
+
+  tl.addLabel('card5')
+
   tl.to(
-    [card1.value, card2.value, card3.value],
+    card4.value,
+    {
+      scale: 0.9875,
+      yPercent: -0.3,
+      opacity: 0.85,
+      duration: 1.2,
+      ease: 'power2.inOut',
+    },
+    '-=0.4'
+  )
+
+  tl.to(
+    card5.value,
+    {
+      yPercent: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: 'power2.out',
+    },
+    '-=0.6'
+  )
+
+  tl.to(
+    [card1.value, card2.value, card3.value, card4.value],
     {
       scale: (index) => 0.9 + index * 0.025,
       yPercent: (index) => -(1.5 - index * 0.375),

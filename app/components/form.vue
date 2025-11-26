@@ -37,7 +37,7 @@
             <label class="block text-sm text-[#848484] mb-3">3. EMAIL *</label>
             <input 
               type="email" 
-              placeholder="johndoe@neverhack.com"
+              placeholder="johndoe@polychemmb.com"
               class="effect-input w-full bg-transparent border-b border-[#848484] text-[#848484] placeholder-gray-400 py-3 focus:outline-none"
             />
             <span class="focus-border"></span>
@@ -46,7 +46,7 @@
             <label class="block text-sm text-[#848484] mb-3">4. PHONE *</label>
             <input 
               type="tel" 
-              placeholder="+33 1 02 03 04 05..."
+              placeholder="+21 2289 8979"
               class="effect-input w-full bg-transparent border-b border-[#848484] text-[#848484] placeholder-gray-400 py-3 focus:outline-none"
             />
             <span class="focus-border"></span>
@@ -58,7 +58,7 @@
           <label class="block text-sm text-[#848484] mb-3">5. COMPANY *</label>
           <input 
             type="text" 
-            placeholder="NEVERHACK..."
+            placeholder="POLYCHEM..."
             class="effect-input w-full bg-transparent border-b border-[#848484] text-[#848484] placeholder-gray-400 py-3 focus:outline-none"
           />
           <span class="focus-border"></span>
@@ -173,7 +173,7 @@
               class="mt-1 w-5 h-5 border-2 border-[#848484] rounded"
             />
             <label for="consent" class="text-[#848484]">
-              I consent to the use of my data for processing my request by NEVERHACK. *
+              I consent to the use of my data for processing my request by POLYCHEM. *
             </label>
           </div>
         </div>

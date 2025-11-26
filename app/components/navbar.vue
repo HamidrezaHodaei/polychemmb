@@ -5,7 +5,9 @@
         <div class="flex items-center h-20">
           <!-- Logo & Brand -->
           <div class="flex items-center justify-start border-r border-l border-white pl-8 pr-8 h-full w-[230px] flex-shrink-0">
-              <img src="/english logo W.png" alt="POLYCHEM Logo" class="w-40 h-40 object-contain" />
+              <NuxtLink to="/" aria-label="Go to home" class="block">
+                <img src="/english logo W.png" alt="POLYCHEM Logo" class="w-40 h-40 object-contain" />
+              </NuxtLink>
           </div>
 
           <!-- USE CASES with border and hover effect -->
@@ -36,14 +38,6 @@
               class="nav-link flex items-center justify-center gap-2 text-[13px] font-medium px-8 text-white relative overflow-hidden h-full w-40 "
             >
               <span class="relative z-10">ABOUT US</span>
-            </NuxtLink>
-
-
-            <NuxtLink 
-              to="/applications" 
-              class="nav-link text-[14px] font-medium px-8 text-white relative overflow-hidden h-full flex items-center"
-            >
-              <span class="relative z-10">Applications</span>
             </NuxtLink>
 
             <NuxtLink 

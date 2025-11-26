@@ -27,7 +27,8 @@ const jobs = [
   'IRAQ',
   'Azarbayejan',
   'Turkey',
-  'Armenia'
+  'Armenia',
+  'Greece'
 ]
 
 const displayedLabel = ref('')

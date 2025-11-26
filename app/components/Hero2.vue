@@ -13,9 +13,12 @@
         ></video>
       </picture>
       <figure class="content-box">
-        <h1>Engineering Compounds and Masterbatches</h1>
+        <h1 class="main-title text-bold">
+          POLYCHEM
+          <span class="subtitle">Advanced Polymer Engineering</span>
+        </h1>
         <figcaption>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          <p class="intro-text">POLYCHEM is a specialist producer of advanced polymer compounds and masterbatches in the Aras Free Zone. With decades of experience and top engineers, we create high-performance materials for modern manufacturing.</p>
         </figcaption>
       </figure>
     </div>
@@ -242,9 +245,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    max-width: 700px;
+    max-width: 600px; /* قبلاً 700px بود */
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 30px;
+    padding: 24px;    /* قبلاً 30px بود */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -299,10 +302,25 @@
     font-size: 40px;
     line-height: 1.5cap;
     text-wrap: balance;
-    color: #ffffff; /* تضمین سفید بودن عنوان */
+    color: #ffffff;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
-  
+
+  /* Make elements with .text-bold actually bold */
+  .text-bold {
+    font-weight: 700;
+  }
+
+  .subtitle {
+    font-size: 22px; /* قبلاً 18px بود */
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+  }
+
   figcaption {
     font-family: "Figtree", sans-serif;
     font-size: 18px;
@@ -313,14 +331,41 @@
     border-left: 1px solid white;
     color: #ffffff;
   }
-  
+
+  .intro-text {
+    margin-bottom: 20px;
+  }
+
+  .what-we-do-title {
+    font-weight: 600;
+    margin-bottom: 12px;
+    margin-top: 16px;
+  }
+
+  .what-we-do-list {
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 16px;
+  }
+
+  .what-we-do-list li {
+    margin-bottom: 8px;
+    display: list-item;
+  }
+
+  .closing-text {
+    margin-top: 16px;
+  }
+
   /* Responsive */
   @media (max-width: 780px) {
     .content-box {
       max-width: 90%;
+      padding: 12px; /* برای موبایل padding کمتر شود */
     }
   }
-  
+
   @media (max-width: 600px) {
     h1 {
       font-size: 32px;
