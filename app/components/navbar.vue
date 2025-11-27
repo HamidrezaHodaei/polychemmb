@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="bg-[#808285] fixed top-0 inset-x-0 z-50 border-b" style="border-bottom-color: #f1f2f2;">
-      <div class="max-w-7xl mx-auto navbar-inner">
+      <div class="navbar-inner navbar-container">
         <div class="flex items-center h-20">
           <!-- Logo & Brand -->
           <div class="flex items-center justify-start border-r border-l border-white pl-8 pr-8 h-full w-[230px] flex-shrink-0">
@@ -720,6 +720,29 @@ nav .flex.items-center.h-20 > * {
   }
 }
 
+/* Navbar container - عرض ثابت برای همه اندازه‌های مانیتور */
+.navbar-container {
+  width: 100%;
+  max-width: 1280px; /* عرض حداکثری */
+  min-width: 1280px; /* عرض حداقلی برای حفظ ظاهر یکسان */
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* اطمینان از ثابت ماندن اندازه‌ها در همه مانیتورها */
+@media (min-width: 768px) {
+  /* حفظ اندازه فونت‌ها */
+  .nav-link {
+    font-size: 13px !important;
+  }
+  
+  /* حفظ اندازه لوگو */
+  .navbar-container img {
+    width: 160px !important;
+    height: 160px !important;
+  }
+}
+
 /* Navbar horizontal shift control:
    تغییر مقدار --navbar-shift برای جابجایی کل navbar به چپ/راست
    مقادیر پیشنهادی: -4px (کم)، -8px (معمول)، -12px (بیشتر به چپ)
@@ -734,6 +757,11 @@ nav .flex.items-center.h-20 > * {
 @media (max-width: 767px) {
   .navbar-inner {
     transform: none;
+  }
+  
+  .navbar-container {
+    max-width: 100%;
+    padding: 0 16px;
   }
 }
 </style>

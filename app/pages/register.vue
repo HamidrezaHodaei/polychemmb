@@ -1,9 +1,9 @@
 <template>
   <div class="min-h-screen flex items-center justify-center bg-[#f1f2f2] p-6 font-sans relative text-[#808285]">
     <!-- Top-left Logo (matching login) -->
-    <div class="absolute top-4 left-4 z-20">
+    <NuxtLink to="/" class="absolute top-4 left-4 z-20" aria-label="Home">
       <img src="/polychem wall B-0۱.png" alt="Logo" class="w-40 h-auto" />
-    </div>
+    </NuxtLink>
 
     <div class="bg-white rounded-xl shadow-lg h-[640px] max-w-5xl w-full flex flex-col md:flex-row overflow-hidden md:h-[580px]">
       <!-- Left Image (Desktop only, matching login) -->

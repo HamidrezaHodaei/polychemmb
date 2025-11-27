@@ -9,10 +9,6 @@
               <a :href="card.link">
                 <div 
                   class="card-hover-container"
-                  @mousemove="handleMouseMove($event, index)"
-                  @touchmove="handleTouchMove($event, index)"
-                  @mouseleave="handleMouseLeave(index)"
-                  @touchend="handleTouchEnd(index)"
                 >
                   <div 
                     class="card-image"
@@ -25,12 +21,6 @@
                     <button class="card-button"><span>Read more</span></button>
                   </div>
                   <div class="card-gradient"></div>
-                  <div 
-                    class="card-bg-characters"
-                    :ref="el => { if (el) charactersRefs[index] = el }"
-                  >
-                    {{ randomTexts[index] }}
-                  </div>
                 </div>
               </a>
             </div>
@@ -44,10 +34,6 @@
               <a :href="card.link">
                 <div 
                   class="card-hover-container"
-                  @mousemove="handleMouseMove($event, index + 4)"
-                  @touchmove="handleTouchMove($event, index + 4)"
-                  @mouseleave="handleMouseLeave(index + 4)"
-                  @touchend="handleTouchEnd(index + 4)"
                 >
                   <div 
                     class="card-image"
@@ -60,12 +46,6 @@
                     <button class="card-button"><span>Read more</span></button>
                   </div>
                   <div class="card-gradient"></div>
-                  <div 
-                    class="card-bg-characters"
-                    :ref="el => { if (el) charactersRefs[index + 4] = el }"
-                  >
-                    {{ randomTexts[index + 4] }}
-                  </div>
                 </div>
               </a>
             </div>
@@ -77,7 +57,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 
 // تعریف کارت‌ها
 const cards = ref([
@@ -138,89 +118,6 @@ const cards = ref([
     image: 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=500'
   }
 ])
-
-const charactersRefs = ref([])
-
-const PARTICLE_LENGTH_INITIAL = 95000   // مقدار اولیه بسیار بزرگ برای پر کردن پس‌زمینه
-const PARTICLE_LENGTH_ON_MOVE = 95000   // مقدار تولید مجدد هنگام حرکت موس/لمس
-
-// تولید رشته‌ای متشکل از نقطه‌ها به جای معادلات شیمیایی
-const randomChemicalString = (length = PARTICLE_LENGTH_ON_MOVE) => {
-  const pair = '· ' // نقطه و فاصله برای بهتر خط‌شدن متن
-  const repeats = Math.ceil(length / pair.length)
-  return pair.repeat(repeats).substring(0, length)
-}
-
-// مقدار اولیه‌ی متون پس‌زمینه را با رشته‌های نقطه پر کن (بالاتر)
-const randomTexts = ref(Array(cards.value.length).fill(randomChemicalString(PARTICLE_LENGTH_INITIAL)))
-
-// مدیریت حرکت موس
-const handleMouseMove = (e, index) => {
-  const card = e.currentTarget
-  const rect = card.getBoundingClientRect()
-  const x = e.clientX - rect.left
-  const y = e.clientY - rect.top
-  
-  if (charactersRefs.value[index]) {
-    // ست کردن نقطه‌ی ماسک برای موضع نور
-    charactersRefs.value[index].style.setProperty('--x', `${x}px`)
-    charactersRefs.value[index].style.setProperty('--y', `${y}px`)
-
-    // محاسبه‌ی ترجمه‌ی کوچک به سمت مکان موس (برای احساس "جلو آمدن")
-    const cx = rect.width / 2
-    const cy = rect.height / 2
-    const maxOffset = 18 // حداکثر جابجایی پیکسل
-    const tx = ((x - cx) / cx) * maxOffset
-    const ty = ((y - cy) / cy) * maxOffset
-
-    charactersRefs.value[index].style.setProperty('--tx', `${tx}px`)
-    charactersRefs.value[index].style.setProperty('--ty', `${ty}px`)
-    charactersRefs.value[index].style.setProperty('--scale', '1.06')
-
-    // به‌روزرسانی متن با طول بزرگ‌تر برای افزایش "تراکم ذرات"
-    randomTexts.value[index] = randomChemicalString(PARTICLE_LENGTH_ON_MOVE)
-  }
-}
-
-// مدیریت لمس
-const handleTouchMove = (e, index) => {
-  const touch = e.touches[0]
-  const card = e.currentTarget
-  const rect = card.getBoundingClientRect()
-  const x = touch.clientX - rect.left
-  const y = touch.clientY - rect.top
-  
-  if (charactersRefs.value[index]) {
-    charactersRefs.value[index].style.setProperty('--x', `${x}px`)
-    charactersRefs.value[index].style.setProperty('--y', `${y}px`)
-
-    const cx = rect.width / 2
-    const cy = rect.height / 2
-    const maxOffset = 18
-    const tx = ((x - cx) / cx) * maxOffset
-    const ty = ((y - cy) / cy) * maxOffset
-
-    charactersRefs.value[index].style.setProperty('--tx', `${tx}px`)
-    charactersRefs.value[index].style.setProperty('--ty', `${ty}px`)
-    charactersRefs.value[index].style.setProperty('--scale', '1.06')
-
-    // به‌روزرسانی متن با طول بزرگ‌تر برای افزایش "تراکم ذرات"
-    randomTexts.value[index] = randomChemicalString(PARTICLE_LENGTH_ON_MOVE)
-  }
-}
-
-// وقتی کارت ترک می‌شود، مقادیر به حالت اولیه بازگردانده شوند
-const handleMouseLeave = (index) => {
-  if (charactersRefs.value[index]) {
-    charactersRefs.value[index].style.setProperty('--tx', `0px`)
-    charactersRefs.value[index].style.setProperty('--ty', `0px`)
-    charactersRefs.value[index].style.setProperty('--scale', '1')
-  }
-}
-
-const handleTouchEnd = (index) => {
-  handleMouseLeave(index)
-}
 </script>
 
 <style scoped>
@@ -316,14 +213,15 @@ const handleTouchEnd = (index) => {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 1; /* قبلا: 0 — حالا تصویر پشت کارت همیشه نمایان است */
-  transition: opacity 0.5s ease;
+  opacity: 1;
+  transition: filter 0.5s ease, opacity 0.5s ease;
   z-index: 1;
+  filter: grayscale(100%); /* make images black & white by default */
 }
 
-/* می‌توان این قاعده را حذف کرد اما گذاشتن همان مقدار اطمینان می‌دهد که در هاور هم تغییر نکند */
 .card-hover-container:hover .card-image {
-  opacity: 0.3;
+  filter: none; /* color on hover */
+  opacity: 1; /* keep visibility; adjust if needed */
 }
 
 .card-content {
@@ -415,46 +313,6 @@ const handleTouchEnd = (index) => {
   pointer-events: none;
   z-index: 3;
   opacity: 0.5;
-}
-
-.card-bg-characters {
-  --x: 0px;
-  --y: 0px;
-  --tx: 0px;
-  --ty: 0px;
-  --scale: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  word-wrap: break-word;
-  font-size: 15px;
-  line-height: 0.5;
-  overflow: hidden;
-  font-family: 'Montserrat', sans-serif;
-  color: #a8a8a8;
-  opacity: 0;
-  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(.2,.9,.3,1);
-  will-change: transform, opacity;
-  -webkit-mask-image: radial-gradient(
-    300px circle at var(--x) var(--y),
-    #000 20%,
-    rgba(0, 0, 0, 0.25),
-    transparent
-  );
-  mask-image: radial-gradient(
-    300px circle at var(--x) var(--y),
-    #000 20%,
-    rgba(0, 0, 0, 0.25),
-    transparent
-  );
-  transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(var(--scale, 1.025));
-  padding: 20px;
-}
-
-.card-hover-container:hover .card-bg-characters {
-  opacity: 1;
 }
 
 @media (max-width: 991px) {

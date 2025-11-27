@@ -5,8 +5,8 @@
       <!-- Globe + Contact us overlay -->
       <div class="relative flex justify-center items-center w-full" style="height: 480px; min-height: 340px;">
         <worldc
-          class="absolute left-1/2 top-0 -translate-x-1/2 z-0"
-          style="width: 600px; height: 480px; max-width: 100vw; filter: drop-shadow(none);"
+          class="absolute top-0 z-0"
+          style="left: calc(50% - 800px); width: 1400px; height: 700px; max-width: 100vw; filter: drop-shadow(none);"
           :scroll-rotate="scrollRotate"
         />
         <div
@@ -502,10 +502,11 @@ button[type="button"].ml-1 > span {
     height: 320px !important;
     min-height: 200px !important;
   }
-  .absolute.left-1\/2.top-0.-translate-x-1\/2.z-0 {
+  .absolute.top-0.z-0[style*="left: calc(50% - 150px)"] {
     width: 100vw !important;
     height: 320px !important;
     min-width: 0 !important;
+    left: calc(50% - 50px) !important;
   }
   .absolute.left-1\/2.top-1\/2.z-10 h1 {
     font-size: 2.5rem !important;

@@ -13,7 +13,7 @@
         >
           <!-- Left: Image (60% on desktop, 100% on mobile) -->
           <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px]">
-            <img src="/white-plastic-polymer.jpg" alt="Product 1" class="w-full h-full object-cover" />
+            <img src="/955w.jpg" alt="Product 1" class="w-full h-full object-cover filter grayscale" />
           </div>
 
           <!-- Right: Content (40% on desktop) -->
@@ -33,7 +33,7 @@
           style="top: 30px; z-index: 3;"
         >
           <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px]">
-            <img src="/white-plastic-polymer.jpg" alt="Product 2" class="w-full h-full object-cover" />
+            <img src="/POLYFILF700.jpg" alt="Product 2" class="w-full h-full object-cover filter grayscale" />
           </div>
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
@@ -90,7 +90,7 @@
           style="top: 120px; z-index: 6;"
         >
           <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px]">
-            <img src="/white-plastic-polymer.jpg" alt="Product 5" class="w-full h-full object-cover" />
+            <img src="/RAFCOLOR.jpg" alt="Product 5" class="w-full h-full object-cove filter grayscale" />
           </div>
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">

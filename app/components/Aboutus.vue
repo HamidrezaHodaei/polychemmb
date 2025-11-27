@@ -52,7 +52,7 @@
           At POLYCHEM, we turn innovation and expertise into reliable, high-quality polymer solutions for industries that demand excellence.
         </p>
         <!-- changed: use same slide-down button style as other pages -->
-        <a href="#" class="btn-slide-down read-more">
+        <a href="/careers" class="btn-slide-down read-more">
           <span class="relative z-10">Join Us...</span>
         </a>
       </div>

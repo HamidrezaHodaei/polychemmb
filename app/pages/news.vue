@@ -1,375 +1,214 @@
 <template>
-  <div class="h-screen bg-[#f1f2f2] flex items-center justify-center bg-cover bg-center bg-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1598322508096-5ca34544d8aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80')">
-    <div 
-      ref="containerRef"
-      :class="['w-full h-full flex overflow-x-auto overflow-y-hidden scroll-smooth bg-[#ffffff] shadow-2xl', {'detail-mode': activeProductIndex !== null}]"
-    >
-      <!-- Navigation Sidebar -->
-      <nav class="w-[60px] lg:w-[100px] bg-[#848484] flex flex-col items-center justify-between py-7 px-4 text-white flex-shrink-0 relative z-10">
-        <div class="w-8 text-yellow-600">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
+  <div>
+    <Navbar />
+    <main class="bg-gray-100">
+    <section class="previews md:flex">
+      <!-- Hero Section with Background Images -->
+      <div class="relative h-[30em] md:fixed md:top-0 md:left-0 md:h-screen md:w-[45%] bg-black">
+        <figure
+          v-for="(image, index) in backgroundImages"
+          :key="index"
+          class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 grayscale-img"
+          :class="{ 'opacity-0': currentImageIndex !== index, 'opacity-100': currentImageIndex === index }"
+          :style="{ backgroundImage: `url(${image})` }"
+        />
+        <div class="absolute inset-0 bg-black/20 transition-all duration-400" />
+        <div class="absolute inset-0 z-10 flex flex-col items-center justify-center text-white p-8">
+          <span class="uppercase tracking-wider text-sm mb-2">Welcome to</span>
+          <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold">Trophy</h1>
         </div>
-        
-        <div class="hidden lg:block [writing-mode:vertical-rl] -rotate-90">
-          <img src="/english logo W1.png" alt="Logo" class="w-20 h-auto object-contain">
-        </div>
-        
-        <div class="relative flex items-center justify-center flex-col">
-          
-        </div>
-      </nav>
-
-      <!-- Cover Image -->
-      <div class="w-[300px] lg:w-[500px] flex items-center justify-center text-5xl text-white font-medium text-center flex-shrink-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1598322508096-5ca34544d8aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80')">
-        <img src="/english logo W.png" alt="Logo" class="max-w-[80%] max-h-[80%] object-contain">
       </div>
 
-      <!-- Products -->
-      <div
-        v-for="(product, index) in products"
-        :key="index"
-        :data-index="index"
-        @click="handleProductClick(index, $event)"
-        :class="['flex flex-col items-center p-9 bg-[#f1f2f2] w-[310px] overflow-y-auto scroll-smooth transition-all duration-500 flex-shrink-0 ml-1.5 relative', {'product-active w-full lg:w-[70%] px-8 lg:px-[70px] pb-0': activeProductIndex === index, 'hover:shadow-[inset_0_-4px_0_0_#FFCD05] cursor-pointer': activeProductIndex !== index}]"
-      >
-        <!-- Close Button -->
-        <button
-          v-if="activeProductIndex === index"
-          @click.stop="closeProduct"
-          class="sticky top-0 ml-auto -mr-10 lg:-mr-10 w-9 h-9 rounded-full bg-black/50 flex items-center justify-center text-white z-10 flex-shrink-0 mb-4"
-        >
-          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"/>
-            <line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
-        </button>
+      <!-- Content Section -->
+      <div class="min-h-screen md:ml-[45%]">
+        <!-- Tabs Header -->
+        <header>
+          <ul class="flex justify-around p-4 md:px-32 xl:px-40 uppercase tracking-wider text-sm">
+            <li
+              v-for="(tab, index) in tabs"
+              :key="index"
+              class="cursor-pointer pb-1 relative"
+              :class="{ 'border-b-3 border-[#FFCD05]': activeTab === index }"
+              @click="changeTab(index)"
+            >
+              <span
+                class="relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:border-b-3 after:border-[#FFCD05] after:transition-all after:duration-400"
+                :class="{ 'hover:after:w-full': activeTab !== index }"
+              >
+                {{ tab }}
+              </span>
+            </li>
+          </ul>
+        </header>
 
-        <!-- Brand -->
-        <div :class="['text-sm tracking-widest transition-all duration-500', activeProductIndex === index && 'text-base']">
-          {{ product.brand }}
-        </div>
+        <!-- Posts Tab -->
+        <div v-show="activeTab === 0" class="tab transition-opacity duration-1000" :class="{ 'opacity-100': activeTab === 0, 'opacity-0': activeTab !== 0 }">
+          <ul>
+            <li
+              v-for="(post, index) in posts"
+              :key="index"
+              class="preview transition-colors duration-200"
+              :class="{ 'bg-white': index % 2 === 1 }"
+              @mouseenter="changeImage(index)"
+            >
+              <a href="#" class="block p-8 md:px-32 md:py-16 xl:px-40">
+                <span class="text-black text-sm">{{ post.date }}</span>
+                <h2 class="text-[#FFCD05] text-2xl md:text-3xl font-bold mb-2 mt-1">{{ post.title }}</h2>
+                <p class="text-black mb-3 leading-relaxed">{{ post.excerpt }}</p>
+                <span
+                  class="btn-slide-down inline-block px-2 py-2 uppercase tracking-wider text-sm text-[#FFCD05] border-3 border-[#FFCD05] rounded-lg relative overflow-hidden"
+                >
+                  <span class="relative z-10">Read More</span>
+                </span>
+              </a>
+            </li>
+          </ul>
 
-        <!-- Title -->
-        <h2 :class="['text-center font-medium my-5 transition-all duration-500', activeProductIndex === index ? 'text-3xl lg:text-[44px] max-w-none' : 'text-xl max-w-[12ch]']">
-          {{ product.title }}
-        </h2>
-
-        <!-- Price -->
-        <div v-if="product.price" :class="['mb-8 transition-all duration-500', activeProductIndex === index && 'text-2xl']">
-          {{ product.price }}
-        </div>
-
-        <!-- Buttons (shown when active) -->
-        <div v-if="activeProductIndex === index" class="flex items-center min-w-[80%] mb-9 animate-fade-up flex-col lg:flex-row" style="animation-delay: 0.2s">
-          <button class="btn-slide-down w-full lg:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors px-5 py-3 text-sm font-medium tracking-widest flex-grow rounded ml-0 lg:ml-4 mt-4 lg:mt-0">
-            <span class="relative z-10">ADD TO CART</span>
-          </button>
-        </div>
-
-        <!-- Subtitle -->
-        <p v-if="activeProductIndex !== index" class="text-gray-700 leading-relaxed text-sm mb-5 whitespace-pre-line">
-          {{ product.subtitle }}
-        </p>
-
-        <!-- Expanded Content (shown when active) -->
-        <template v-if="activeProductIndex === index">
-          <p class="text-gray-700 leading-relaxed text-sm mb-5 animate-fade-up whitespace-pre-line" style="animation-delay: 0.3s">
-            {{ product.subtitle }}
-          </p>
-          
-          <img 
-            src="https://images.unsplash.com/photo-1555919965-a43982be9034?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1900&q=80"
-            alt="Detail"
-            class="block mt-5 -mx-8 lg:-mx-[70px] max-w-none w-[calc(100%+64px)] lg:w-[calc(100%+140px)]"
-          />
-
-          <!-- Technical Specifications Table -->
-          <div class="flex flex-col bg-[#A8A8A8] text-white -mx-8 lg:-mx-[70px] px-8 lg:px-[100px] py-12 lg:py-[70px] w-[calc(100%+64px)] lg:w-[calc(100%+140px)]">
-            <h3 class="font-semibold tracking-widest text-2xl mb-8 text-[#FFCD05]">TECHNICAL SPECIFICATIONS</h3>
+          <!-- Footer -->
+          <footer class="flex flex-col sm:flex-row items-center justify-between px-8 py-8">
+            <a href="#" class="archive-link uppercase tracking-wider text-sm relative pb-1">Archive</a>
             
-            <div v-for="(spec, idx) in product.specs" :key="idx" class="flex flex-col lg:flex-row pt-4 mt-4 border-t border-white/20">
-              <div class="flex-shrink-0 font-semibold tracking-wide w-full lg:w-[280px] text-[#FFCD05] mb-2 lg:mb-0">{{ spec.label }}</div>
-              <div class="leading-relaxed text-sm text-white/90">{{ spec.value }}</div>
-            </div>
-          </div>
+          </footer>
+        </div>
 
-          <!-- Image Grid -->
-          <div class="flex flex-wrap -mx-8 lg:-mx-[70px] w-[calc(100%+64px)] lg:w-[calc(100%+140px)]">
-            <img src="https://images.unsplash.com/photo-1596646912242-80d82d06c463?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="" class="w-1/3 max-h-80 object-cover">
-            <img src="https://images.unsplash.com/photo-1594649537448-8133756764c0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80" alt="" class="w-1/3 max-h-80 object-cover">
-            <img src="https://images.unsplash.com/photo-1582147037191-10d00acdf2d8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="" class="w-1/3 max-h-80 object-cover">
-            <img src="https://images.unsplash.com/photo-1589100984317-79246528923c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80" alt="" class="w-1/2 object-cover">
-            <img src="https://images.unsplash.com/photo-1571068299107-cd63d456bf5d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80" alt="" class="w-1/2 object-cover">
-          </div>
-        </template>
+        <!-- Categories Tab -->
+        <div v-show="activeTab === 1" class="tab transition-opacity duration-1000" :class="{ 'opacity-100': activeTab === 1, 'opacity-0': activeTab !== 1 }">
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 p-6 md:p-8 xl:p-12">
+            <li v-for="(category, index) in categories" :key="index" class="card">
+              <a href="#" class="block bg-white shadow-[0_1px_2px_rgba(10,10,10,0.1),0_1px_2px_rgba(10,10,10,0.2)] transition-all duration-200 group relative h-full flex flex-col">
+                <div class="relative h-56 md:h-64 lg:h-72 bg-black overflow-hidden flex-shrink-0">
+                  <figure
+                    class="absolute inset-0 bg-cover bg-center bg-no-repeat grayscale-img"
+                    :style="{ backgroundImage: `url(${category.image})` }"
+                  />
+                  <div class="absolute inset-0 bg-black/20 transition-all duration-400" />
+                </div>
+                <div class="p-6 md:p-8 flex-1 flex flex-col">
+                  <h2 class="text-[#FFCD05] text-2xl md:text-3xl font-bold mb-2">{{ category.name }}</h2>
+                  <p class="text-black mb-4 text-lg md:text-xl">{{ category.count }} Posts</p>
+                  <span
+                    class="btn-slide-down inline-block px-5 py-3 uppercase tracking-wider text-sm md:text-base text-[#FFCD05] border-2 border-[#FFCD05] rounded-lg relative overflow-hidden mt-auto"
+                  >
+                    <span class="relative z-10">View All</span>
+                  </span>
+                </div>
+              </a>
+            </li>
+          </ul>
 
-        <!-- View Details (shown when not active) -->
-        <button v-else class="mt-auto font-medium text-sm tracking-widest text-[#FFCD05] hover:text-[#e6b800] transition-colors">VIEW DETAILS →</button>
+          <!-- Footer -->
+          <footer class="flex flex-col sm:flex-row items-center justify-between px-8 py-8">
+            <a href="#" class="archive-link uppercase tracking-wider text-sm relative pb-1">Archive</a>
+            
+          </footer>
+        </div>
       </div>
-    </div>
+    </section>
+  </main>
   </div>
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue';
+import { ref } from 'vue'
+import Navbar from '~/components/navbar.vue'
+import Footer from '~/components/footer.vue'
 
-const containerRef = ref(null);
-const activeProductIndex = ref(null);
+const tabs = ['Posts', 'Categories']
+const activeTab = ref(0)
+const currentImageIndex = ref(0)
 
-const products = [
+const backgroundImages = [
+  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=2000&h=1200&fit=crop',
+  'https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?w=2000&h=1200&fit=crop',
+  'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=2000&h=1200&fit=crop',
+  'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=2000&h=1200&fit=crop',
+  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=2000&h=1200&fit=crop'
+]
+
+const posts = [
   {
-    brand: 'POLYFIL',
-    title: 'POLYFIL F700',
-    price: '',
-    subtitle: `POLYFIL F700 is a high-performance polyethylene compound specifically formulated for high-density polyethylene (HDPE) blown film applications. This grade is engineered to deliver superior mechanical properties, excellent film uniformity, and reliable processability, even in ultra-thin film applications.
-It is highly recommended for producing films with thicknesses in the range of 10–25 microns, making it suitable for a wide range of packaging and consumer products such as shopping bags, T-shirt bags, garbage bags, liner bags, and food-contact films.`,
-    specs: [
-      { label: 'MFI (190°C / 5 kg)', value: '0.19 ± 0.1 g/10min (ISO 1133)' },
-      { label: 'Density', value: '0.952 ± 0.003 kg/m³ (ISO 1183)' },
-      { label: 'Moisture Content', value: '≤ 1500 ppm' },
-      { label: 'Melting Point', value: '135 ± 5°C (ASTM D 2117)' },
-      { label: 'Vicat Softening Point', value: '124°C (ASTM D1525)' },
-      { label: 'Tensile Strength @ Yield (MD)', value: '24 MPa (ASTM D638)' },
-      { label: 'Tensile Strength @ Yield (MD, TD)', value: '30, 60 MPa (ASTM D638)' },
-      { label: 'Elongation @ Break (MD, TD)', value: '450, 240 % (ASTM D638)' },
-      { label: 'ESCR (IGEPAL 10%) (F50, 50°C)', value: '> 1000 HR (ASTM D1693)' }
-    ]
+    date: 'Sep 8, 2016',
+    title: 'Roof Party',
+    excerpt: 'Banh mi pug you probably haven\'t heard of them occupy, drinking vinegar humblebrag vinyl locavore master cleanse sartorial bicycle rights 90\'s kickstarter hashtag. 3 wolf moon XOXO man braid chartreuse....'
   },
   {
-    brand: 'POLYFIL',
-    title: 'POLYFIL F800',
-    price: '',
-    subtitle: 'Advanced polyethylene compound designed for superior film processing with enhanced mechanical strength and clarity for demanding packaging applications.',
-    specs: [
-      { label: 'FRAME', value: 'Carbon fiber composite' },
-      { label: 'SEAT BINDER', value: 'Aluminum alloy' },
-      { label: 'REAR SHOCK', value: 'High-performance air suspension' },
-      { label: 'FORK', value: 'Adjustable travel fork system' },
-      { label: 'STEM', value: 'CNC machined aluminum' },
-      { label: 'HANDLEBARS', value: 'Carbon fiber reinforced' },
-      { label: 'GRIPS', value: 'Ergonomic gel compound' },
-      { label: 'SADDLE', value: 'Sport comfort design' }
-    ]
+    date: 'Sep 7, 2016',
+    title: 'Craft Beer',
+    excerpt: 'Tbh vaporware mumblecore iceland echo park DIY. Plaid woke next level enamel pin, vegan cred salvia pug. XOXO sartorial synth gluten-free, cold-pressed mumblecore craft beer helvetica. Vegan lyft squid, vice...'
   },
   {
-    brand: 'POLYFIL',
-    title: 'POLYFIL F900',
-    price: '',
-    subtitle: 'Premium grade polyethylene with exceptional optical properties and processing stability for high-quality packaging solutions.',
-    specs: [
-      { label: 'FRAME', value: 'Lightweight aluminum' },
-      { label: 'SEAT BINDER', value: 'Quick-release system' },
-      { label: 'REAR SHOCK', value: 'Coil spring suspension' },
-      { label: 'FORK', value: 'Rigid carbon fork' },
-      { label: 'STEM', value: 'Adjustable angle stem' },
-      { label: 'HANDLEBARS', value: 'Flat bar design' },
-      { label: 'GRIPS', value: 'Lock-on style' },
-      { label: 'SADDLE', value: 'Racing performance' }
-    ]
+    date: 'Sep 6, 2016',
+    title: 'Next Level Blog',
+    excerpt: 'Humblebrag ramps single-origin coffee, literally jean shorts polaroid mlkshk franzen williamsburg distillery venmo. Skateboard leggings disrupt banjo shoreditch blue bottle. Brooklyn church-key cronut hell of waistcoat, polaroid lomo chambray bitters...'
   },
   {
-    brand: 'POLYFIL',
-    title: 'POLYFIL F1000',
-    price: '',
-    subtitle: 'Innovative polyethylene formulation with optimized melt flow for efficient production of thin gauge films.',
-    specs: [
-      { label: 'FRAME', value: 'Full suspension carbon' },
-      { label: 'SEAT BINDER', value: 'Integrated design' },
-      { label: 'REAR SHOCK', value: 'Remote lockout air shock' },
-      { label: 'FORK', value: 'Triple-crown downhill fork' },
-      { label: 'STEM', value: 'Direct mount' },
-      { label: 'HANDLEBARS', value: 'Wide riser bar' },
-      { label: 'GRIPS', value: 'Soft compound' },
-      { label: 'SADDLE', value: 'Trail enduro saddle' }
-    ]
+    date: 'Sep 5, 2016',
+    title: 'VHS Selfies',
+    excerpt: '8-bit typewriter scenester, crucifix tousled tilde leggings brunch chicharrones salvia deep v man bun. Master cleanse man braid disrupt banjo, deep v cray tumblr cronut. Truffaut street art everyday carry...'
   },
   {
-    brand: 'POLYFIL',
-    title: 'POLYFIL F1100',
-    price: '',
-    subtitle: 'High-density compound offering excellent barrier properties and thermal stability for industrial applications.',
-    specs: [
-      { label: 'FRAME', value: 'Steel hardtail' },
-      { label: 'SEAT BINDER', value: 'Standard clamp' },
-      { label: 'REAR SHOCK', value: 'N/A - Hardtail design' },
-      { label: 'FORK', value: 'Entry-level suspension' },
-      { label: 'STEM', value: 'Forged aluminum' },
-      { label: 'HANDLEBARS', value: 'Alloy riser' },
-      { label: 'GRIPS', value: 'Basic foam' },
-      { label: 'SADDLE', value: 'Comfort cruiser' }
-    ]
-  },
-  {
-    brand: 'POLYFIL',
-    title: 'POLYFIL F1200',
-    price: '',
-    subtitle: 'Versatile polyethylene grade with balanced properties for multi-purpose film applications.',
-    specs: [
-      { label: 'FRAME', value: 'Titanium alloy' },
-      { label: 'SEAT BINDER', value: 'Titanium bolt' },
-      { label: 'REAR SHOCK', value: 'Custom tuned air' },
-      { label: 'FORK', value: 'Boost spacing fork' },
-      { label: 'STEM', value: 'Titanium construction' },
-      { label: 'HANDLEBARS', value: 'Carbon T800' },
-      { label: 'GRIPS', value: 'Premium leather wrap' },
-      { label: 'SADDLE', value: 'Titanium rail saddle' }
-    ]
-  },
-  {
-    brand: 'POLYFIL',
-    title: 'POLYFIL F1300',
-    price: '',
-    subtitle: 'Specialized compound for agricultural and construction film applications with superior puncture resistance.',
-    specs: [
-      { label: 'FRAME', value: 'Chromoly steel' },
-      { label: 'SEAT BINDER', value: 'Micro-adjust' },
-      { label: 'REAR SHOCK', value: 'Progressive coil' },
-      { label: 'FORK', value: 'Dual crown' },
-      { label: 'STEM', value: 'Low-profile design' },
-      { label: 'HANDLEBARS', value: 'BMX style' },
-      { label: 'GRIPS', value: 'Mushroom grip' },
-      { label: 'SADDLE', value: 'Pivotal mount' }
-    ]
-  },
-  {
-    brand: 'POLYFIL',
-    title: 'POLYFIL F1400',
-    price: '',
-    subtitle: 'Next-generation polyethylene with enhanced processability and consistent output for automated production lines.',
-    specs: [
-      { label: 'FRAME', value: 'Composite monocoque' },
-      { label: 'SEAT BINDER', value: 'Aero wedge system' },
-      { label: 'REAR SHOCK', value: 'Electronic suspension' },
-      { label: 'FORK', value: 'Aero road fork' },
-      { label: 'STEM', value: 'Integrated cockpit' },
-      { label: 'HANDLEBARS', value: 'Aero drop bar' },
-      { label: 'GRIPS', value: 'Bar tape premium' },
-      { label: 'SADDLE', value: 'Performance road' }
-    ]
-  },
-  {
-    brand: 'POLYFIL',
-    title: 'POLYFIL F1500',
-    price: '',
-    subtitle: 'Eco-friendly polyethylene formulation with recycled content for sustainable packaging solutions.',
-    specs: [
-      { label: 'FRAME', value: 'Bamboo composite' },
-      { label: 'SEAT BINDER', value: 'Eco-friendly clamp' },
-      { label: 'REAR SHOCK', value: 'Spring steel' },
-      { label: 'FORK', value: 'Recycled carbon' },
-      { label: 'STEM', value: 'Sustainable alloy' },
-      { label: 'HANDLEBARS', value: 'Natural fiber bar' },
-      { label: 'GRIPS', value: 'Cork grips' },
-      { label: 'SADDLE', value: 'Vegan leather' }
-    ]
-  },
-  {
-    brand: 'POLYFIL',
-    title: 'POLYFIL F1600',
-    price: '',
-    subtitle: 'Ultra-thin film specialist compound with exceptional clarity and gloss for premium packaging.',
-    specs: [
-      { label: 'FRAME', value: 'Magnesium alloy' },
-      { label: 'SEAT BINDER', value: 'Quick-flip lever' },
-      { label: 'REAR SHOCK', value: 'Piggyback reservoir' },
-      { label: 'FORK', value: 'Inverted design' },
-      { label: 'STEM', value: 'Precision CNC' },
-      { label: 'HANDLEBARS', value: 'Oversized tubing' },
-      { label: 'GRIPS', value: 'Tacky rubber' },
-      { label: 'SADDLE', value: 'Carbon shell' }
-    ]
-  },
-  {
-    brand: 'POLYFIL',
-    title: 'POLYFIL F1700',
-    price: '',
-    subtitle: 'Industrial-grade polyethylene with excellent chemical resistance for heavy-duty applications.',
-    specs: [
-      { label: 'FRAME', value: 'Reinforced steel' },
-      { label: 'SEAT BINDER', value: 'Industrial clamp' },
-      { label: 'REAR SHOCK', value: 'Heavy-duty coil' },
-      { label: 'FORK', value: 'Rigid steel fork' },
-      { label: 'STEM', value: 'Welded construction' },
-      { label: 'HANDLEBARS', value: 'Reinforced bar' },
-      { label: 'GRIPS', value: 'Industrial rubber' },
-      { label: 'SADDLE', value: 'Durable platform' }
-    ]
+    date: 'Sep 4, 2016',
+    title: 'Four Dollar Toast',
+    excerpt: 'Flexitarian fixie keytar vice craft beer. Forage normcore cred austin brunch, put a bird on it actually. Chia put a bird on it skateboard, salvia paleo heirloom semiotics knausgaard selvage...'
   }
-];
+]
 
-const productWidth = 310;
-
-const getProductOffset = () => {
-  if (!containerRef.value) return 0;
-  return (containerRef.value.offsetWidth - (containerRef.value.offsetWidth * 70) / 100) / 2;
-};
-
-const handleProductClick = async (index, event) => {
-  if (activeProductIndex.value === index) return;
-  
-  activeProductIndex.value = index;
-  
-  await nextTick();
-  
-  const navWidth = 60;
-  const coverWidth = 300;
-  const left = productWidth * index + coverWidth + index * 6 + navWidth - getProductOffset();
-  
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  
-  if (isMobile) {
-    event.currentTarget.scrollIntoView({ inline: 'start', behavior: 'smooth' });
-  } else {
-    containerRef.value.scrollLeft = left;
+const categories = [
+  {
+    name: 'Brunch',
+    count: 3,
+    image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&h=300&fit=crop'
+  },
+  {
+    name: 'Gluten-free',
+    count: 2,
+    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop'
+  },
+  {
+    name: 'Cities',
+    count: 3,
+    image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=300&fit=crop'
+  },
+  {
+    name: 'Juice',
+    count: 2,
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop'
   }
-};
+]
 
-const closeProduct = () => {
-  activeProductIndex.value = null;
-};
+const changeTab = (index) => {
+  activeTab.value = index
+}
+
+const changeImage = (index) => {
+  currentImageIndex.value = index
+}
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
-
-* {
-  font-family: 'Montserrat', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 body {
   font-family: 'Montserrat', sans-serif;
 }
 
-.detail-mode .product-active {
-  opacity: 1;
+h1, h2 {
+  font-family: 'Montserrat', sans-serif;
 }
 
-.detail-mode > div:not(.product-active) {
-  opacity: 0.3;
-  transition: opacity 0.3s;
+.border-b-3 {
+  border-bottom-width: 3px;
 }
 
-.detail-mode > div:not(.product-active):hover {
-  opacity: 0.7;
+.border-3 {
+  border-width: 3px;
 }
 
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.grayscale-img {
+  filter: grayscale(100%);
 }
 
-.animate-fade-up {
-  animation: fade-up 0.6s both;
-}
-
+/* Hover filled slide down button effect */
 .btn-slide-down {
   background-color: transparent;
 }
@@ -393,5 +232,21 @@ body {
 .btn-slide-down:focus-visible {
   color: #ffffff;
   outline: none;
+}
+
+/* Archive link hover underline effect - yellow, from left */
+.archive-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #FFCD05;
+  transition: width 0.4s ease;
+}
+
+.archive-link:hover::after {
+  width: 100%;
 }
 </style>
