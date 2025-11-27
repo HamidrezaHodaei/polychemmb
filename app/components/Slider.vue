@@ -52,7 +52,7 @@
           style="top: 60px; z-index: 4;"
         >
           <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px]">
-            <img src="/white-plastic-polymer.jpg" alt="Product 3" class="w-full h-full object-cover" />
+            <img src="/slimchem.jpg" alt="Product 3" class="w-full h-full object-cover filter grayscale" />
           </div>
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
@@ -71,7 +71,7 @@
           style="top: 90px; z-index: 5;"
         >
           <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px] bg-white-100">
-            <img src="/white-plastic-polymer.jpg" alt="Product 4" class="w-full h-full object-cover" />
+            <img src="/Hdchem.jpg" alt="Product 4" class="w-full h-full object-cover filter grayscale" />
           </div>
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
