@@ -120,7 +120,7 @@
           <h2 class="text-5xl md:text-6xl font-light text-[#848484] mb-12">Vision</h2>
           
           <p class="text-[#848484] text-lg mb-8 leading-relaxed">
-            At PolyChem, we envision a future where advanced polymer materials inspire better products, smarter manufacturing, and a more sustainable plastics industry.
+            At POLYCHEM, we envision a future where advanced polymer materials inspire better products, smarter manufacturing, and a more sustainable plastics industry.
           </p>
           
           <p class="text-[#848484] text-lg mb-8 leading-relaxed">
@@ -132,7 +132,7 @@
         <div class="relative h-[600px] rounded-2xl overflow-hidden">
           <div class="absolute inset-0 bg-gradient-to-t from-yellow-500/30 to-transparent z-10"></div>
           <img 
-            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" 
+            src="/vision.jpg" 
             alt="Factory" 
             class="w-full h-full object-cover grayscale"
           />
