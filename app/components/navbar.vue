@@ -226,23 +226,25 @@
 
             <!-- Menu Items -->
             <div class="space-y-1 max-h-[70vh] overflow-y-auto pr-4 custom-scrollbar">
-              <a 
+              <NuxtLink 
                 v-for="(item, index) in useCases" 
                 :key="index"
                 :ref="el => { if (el) menuItems[index] = el }"
-                href="#"
+                :to="`/product?index=${item.index}`"
                 @mouseenter="handleHover(item, index)"
                 @mouseleave="handleLeave"
-                class="menu-item group flex items-center justify-between border-b border-gray-200 py-6 px-6 hover:bg-gray-50 transition-all duration-300 opacity-0 transform translate-y-[-30px]"
+                @click="toggleFullscreenMenu"
+                class="menu-item group flex items-center justify-between border-b border-gray-200 py-6 px-6 hover:bg-gray-50 transition-all duration-300 transform translate-y-[-30px]"
+                style="opacity: 1 !important;"
               >
-                <div class="flex items-center gap-6">
-                  <span class="text-gray-500 text-[13px] font-mono group-hover:text-yellow-500 transition-colors">{{ item.code }}</span>
-                  <h3 class="text-gray-900 text-xl font-semibold group-hover:translate-x-2 transition-transform">{{ item.title }}</h3>
+                <div class="flex items-center gap-6 menu-item-content" style="opacity: 1 !important; color: #1f2937 !important;">
+                  <span style="color: #6b7280 !important; opacity: 1 !important;" class="text-[13px] font-mono group-hover:text-yellow-500 transition-colors">{{ item.code }}</span>
+                  <h3 style="color: #1f2937 !important; opacity: 1 !important;" class="text-xl font-semibold group-hover:translate-x-2 transition-transform">{{ item.title }}</h3>
                 </div>
                 <svg class="w-6 h-6 text-gray-400 group-hover:text-yellow-500 group-hover:translate-x-2 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
-              </a>
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -270,17 +272,66 @@ const isMenuOpen = ref(false)
 const hoveredItem = ref(null)
 
 const useCases = [
-  { code: ' ', title: 'POLYFIL F700', description: 'POLYFIL F700 is a high-performance polyethylene compound specifically formulated for high-density polyethylene (HDPE)' },
-  { code: '', title: 'Roto 955W', description: 'Manage and monitor user access privileges effectively with advanced controls' },
-  { code: ' ', title: 'Roto 955B', description: 'Stay compliant with latest cybersecurity rergulations and industry standards' },
-  { code: '', title: 'HDCHEM4760', description: 'Protect sensitive data with advanced encryption and security protocols' },
-  { code: '', title: 'Calcichem110FRF', description: 'Monitor and manage third-party security risks and vulnerabilities' },
-  { code: '', title: 'Calcichem126FP', description: 'Real-time threat detection and analysis powered by AI' },
-  { code: '', title: 'Calcichem120FE', description: 'Strengthen your security infrastructure with proactive measures' },
-  { code: '', title: 'Slipchem E178', description: 'Address critical security vulnerabilities before they become threats' },
-  { code: '', title: 'Filcolor 2270', description: 'Rapid response to cyber security incidents with expert support' },
-  { code: '', title: '275PM', description: 'Comprehensive evaluation of your security posture and risk factors' },
-
+  { 
+    code: '', 
+    title: 'ROTOCHEM 0955W', 
+    description: 'Specialized white color plastic compound for rotational molding applications. Linear medium density polyethylene copolymer with narrow molecular weight distribution and TiO2. Ideal for reliable and durable materials that withstand harsh environmental conditions.',
+    index: 0
+  },
+  { 
+    code: '', 
+    title: 'ROTOCHEM 0955B', 
+    description: 'Specialized blue color plastic compound for rotational molding applications. Linear medium density polyethylene copolymer with narrow molecular weight distribution and TiO2. Perfect for industrial and consumer applications requiring consistent and stable materials.',
+    index: 1
+  },
+  { 
+    code: '', 
+    title: 'POLYFIL F700', 
+    description: 'High-performance polyethylene compound for HDPE blown film applications. Engineered for superior mechanical properties, excellent film uniformity, and reliable processability in ultra-thin film applications (10-25 microns). Suitable for shopping bags, T-shirt bags, garbage bags, and food-contact films.',
+    index: 2
+  },
+  { 
+    code: '', 
+    title: 'HDCHEM 4760', 
+    description: 'Specialized plastic compound for blow molding applications. Polyethylene copolymer compound with beneficial characteristics including good flowability, impact strength, ESCR and rigidity. Dependable choice for consistent and stable materials.',
+    index: 3
+  },
+  { 
+    code: '', 
+    title: 'SlIPCHEM E 178', 
+    description: 'High-performance slip masterbatch with high quality slip agent dispersed in polyethylene carrier resin. Reduces coefficient of friction (COF) between polymer film layers during winding, bag-making, and packaging. Excellent dispersion, high thermal stability, and consistent migration performance.',
+    index: 4
+  },
+  { 
+    code: '', 
+    title: 'RAFCOLOR 1560', 
+    description: 'White masterbatch with high proportion of rutile titanium dioxide and thermoplastic polypropylene resin. Highly-concentrated white MB with excellent dispersion and thermal stability. Recommended for raffia, tapes, CF/BCF yarn, and other products.',
+    index: 5
+  },
+  { 
+    code: '', 
+    title: 'CALCICHEM 126 FP', 
+    description: 'Polypropylene-based filler masterbatch containing 80% calcium carbonate (CaCO₃). Features high, very fine, treated CaCO₃ content ensuring excellent dispersion. Designed for direct addition during processing of polyolefins including extrusion and injection molding.',
+    index: 6
+  },
+  { 
+    code: '', 
+    title: 'CALCICHEM 110 FRF', 
+    description: 'Mineral modifier with high, very fine, treated CaCO3 content with excellent dispersion. Designed for films, raffia and ropes. Suitable for general-purpose products with PE and PP carriers. Increases productivity and reduces raw material costs.',
+    index: 7
+  },
+  { 
+    code: '', 
+    title: 'CALCICHEM 275 PM', 
+    description: 'Polypropylene-based mineral masterbatch containing 75% ultra-fine mineral filler. Offers excellent dispersion and high mineral loading for enhanced performance. Formulated for direct addition during extrusion of BOPP, CPP, and OPP films.',
+    index: 8
+  },
+  { 
+    code: '', 
+    title: 'CALCICHEM 120 FE', 
+    description: 'Polyolefins-based filler masterbatch containing 80% calcium carbonate (CaCO₃). Features high, very fine, treated CaCO₃ content ensuring excellent dispersion. Designed for direct addition during processing of polyolefins including extrusion and injection molding.',
+    index: 10
+  },
 ]
 
 const handleHover = (item, index) => {
@@ -465,13 +516,25 @@ const closeMenu = () => {
   }, '-=0.4')
 }
 
-onMounted(() => {
+onMounted(async () => {
+  // Wait for refs to be set
+  await nextTick()
   // Set initial state
-  gsap.set(menuItems.value, { y: -30, opacity: 0 })
-  gsap.set(menuTitle.value, { y: -20, opacity: 0 })
-  gsap.set([previewTitle.value, previewDesc.value], { y: 4, opacity: 0 })
-  gsap.set(previewIcon.value, { scale: 0 })
-  gsap.set(glowingOrb.value, { scale: 0.8, opacity: 0 })
+  if (menuItems.value && menuItems.value.length > 0) {
+    gsap.set(menuItems.value, { y: -30, opacity: 0 })
+  }
+  if (menuTitle.value) {
+    gsap.set(menuTitle.value, { y: -20, opacity: 0 })
+  }
+  if (previewTitle.value && previewDesc.value) {
+    gsap.set([previewTitle.value, previewDesc.value], { y: 4, opacity: 0 })
+  }
+  if (previewIcon.value) {
+    gsap.set(previewIcon.value, { scale: 0 })
+  }
+  if (glowingOrb.value) {
+    gsap.set(glowingOrb.value, { scale: 0.8, opacity: 0 })
+  }
 })
 
 // Close menu on Escape key
@@ -624,6 +687,45 @@ onMounted(() => {
   backface-visibility: hidden;
 }
 
+/* Ensure menu item text is always visible - override any opacity issues */
+.menu-item {
+  color: #1f2937 !important;
+}
+
+.menu-item-content {
+  opacity: 1 !important;
+  position: relative;
+  z-index: 10;
+  isolation: isolate; /* Create new stacking context */
+}
+
+/* Force menu items to be visible even if parent has low opacity */
+.menu-item {
+  isolation: isolate; /* Create new stacking context */
+  will-change: opacity, transform; /* Optimize for animations */
+}
+
+.menu-item h3 {
+  color: #1f2937 !important; /* text-gray-900 */
+  position: relative;
+  z-index: 10;
+  opacity: 1 !important; /* Force visibility */
+}
+
+.menu-item span {
+  color: #6b7280 !important; /* text-gray-500 */
+  position: relative;
+  z-index: 10;
+  opacity: 1 !important; /* Force visibility */
+}
+
+.menu-item svg {
+  color: #9ca3af !important; /* text-gray-400 */
+  position: relative;
+  z-index: 10;
+  opacity: 1 !important; /* Force visibility */
+}
+
 /* Custom Scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
@@ -765,3 +867,4 @@ nav .flex.items-center.h-20 > * {
   }
 }
 </style>
+

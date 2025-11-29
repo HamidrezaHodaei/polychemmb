@@ -14,8 +14,8 @@
         />
         <div class="absolute inset-0 bg-black/20 transition-all duration-400" />
         <div class="absolute inset-0 z-10 flex flex-col items-center justify-center text-white p-8">
-          <span class="uppercase tracking-wider text-sm mb-2">Welcome to</span>
-          <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold">Trophy</h1>
+          <span class="uppercase tracking-wider text-sm mb-2"></span>
+          <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold"></h1>
         </div>
       </div>
 
@@ -118,7 +118,7 @@ const activeTab = ref(0)
 const currentImageIndex = ref(0)
 
 const backgroundImages = [
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=2000&h=1200&fit=crop',
+  '/invitation-2.jpg',
   'https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?w=2000&h=1200&fit=crop',
   'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=2000&h=1200&fit=crop',
   'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=2000&h=1200&fit=crop',
@@ -127,9 +127,9 @@ const backgroundImages = [
 
 const posts = [
   {
-    date: 'Sep 8, 2016',
-    title: 'Roof Party',
-    excerpt: 'Banh mi pug you probably haven\'t heard of them occupy, drinking vinegar humblebrag vinyl locavore master cleanse sartorial bicycle rights 90\'s kickstarter hashtag. 3 wolf moon XOXO man braid chartreuse....'
+    date: 'Dec 3-6, 2025',
+    title: 'Plast Eurasia İstanbul 2025',
+    excerpt: ''
   },
   {
     date: 'Sep 7, 2016',

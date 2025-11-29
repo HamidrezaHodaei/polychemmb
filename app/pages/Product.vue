@@ -158,8 +158,9 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue';
+import { ref, nextTick, onMounted, watch } from 'vue';
 
+const route = useRoute();
 const containerRef = ref(null);
 const activeProductIndex = ref(null);
 
@@ -647,6 +648,56 @@ const handleProductClick = async (index, event) => {
 const closeProduct = () => {
   activeProductIndex.value = null;
 };
+
+const scrollToProduct = async (index) => {
+  if (index === null || index === undefined || index < 0 || index >= products.length) {
+    return;
+  }
+  
+  activeProductIndex.value = index;
+  
+  await nextTick();
+  
+  const navWidth = 60;
+  const coverWidth = 300;
+  const left = productWidth * index + coverWidth + index * 6 + navWidth - getProductOffset();
+  
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  if (isMobile) {
+    const productElement = containerRef.value?.querySelector(`[data-index="${index}"]`);
+    if (productElement) {
+      productElement.scrollIntoView({ inline: 'start', behavior: 'smooth' });
+    }
+  } else {
+    if (containerRef.value) {
+      containerRef.value.scrollLeft = left;
+    }
+  }
+};
+
+// Watch for route query changes
+watch(() => route.query.index, async (newIndex) => {
+  if (newIndex !== undefined) {
+    const index = parseInt(newIndex);
+    if (!isNaN(index)) {
+      await nextTick();
+      scrollToProduct(index);
+    }
+  }
+}, { immediate: true });
+
+// Handle initial load
+onMounted(async () => {
+  await nextTick();
+  const indexParam = route.query.index;
+  if (indexParam !== undefined) {
+    const index = parseInt(indexParam);
+    if (!isNaN(index)) {
+      scrollToProduct(index);
+    }
+  }
+});
 </script>
 
 <style>

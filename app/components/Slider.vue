@@ -20,15 +20,15 @@
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
             <h2 class="text-3xl md:text-4xl uppercase font-[Montserrat] text-[#848484]">Rotochem 0955W</h2>
             <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">Rotochem 0955W – White rotational molding compound based on MDPE copolymer with narrow MWD and TiO₂.Offering exceptional durability and superior UV resistance, it is the perfect choice for demanding industrial and consumer applications.</p>
-            <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
+            <NuxtLink to="/product?index=0" class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px] flex items-center justify-center">
               <span class="relative z-10 font-medium">Technical Data Sheet </span>
-            </button>
+            </NuxtLink>
           </div>
         </div>
 
         <!-- Card 2 -->
         <div
-          ref="card2"س
+          ref="card2"
           class="absolute w-[90%] md:w-[85.5%] h-[76.5vh] rounded-[20px] shadow-2xl flex flex-col md:flex-row items-stretch overflow-hidden"
           style="top: 30px; z-index: 3;"
         >
@@ -39,9 +39,9 @@
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
             <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484]">POLYFIL F700</h2>
             <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">POLYFIL F700 – High-performance HDPE blown film compound offering superior strength, excellent film uniformity, and outstanding processability.</p>
-            <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
+            <NuxtLink to="/product?index=2" class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px] flex items-center justify-center">
               <span class="relative z-10 font-medium">Technical Data Sheet </span>
-            </button>
+            </NuxtLink>
           </div>
         </div>
 
@@ -58,9 +58,9 @@
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
             <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484] uppercase">SlipChem-E 178</h2>
             <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">SlipChem-E 178 – Premium slip masterbatch in PE carrier. Significantly lowers COF with excellent dispersion, high thermal stability, and consistent migration for film winding and packaging.</p>
-            <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
+            <NuxtLink to="/product?index=4" class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px] flex items-center justify-center">
               <span class="relative z-10 font-medium">Technical Data Sheet </span>
-            </button>
+            </NuxtLink>
           </div>
         </div>
 
@@ -77,9 +77,9 @@
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
             <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484]">HDCHEM 4760</h2>
             <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">HDCHEM 4760 – Specialized PE copolymer compound for blow molding applications. This polymer matarials belong and good melt strength, balanced mechanical properties, and superior processability for industrial and consumer parts.</p>
-            <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
+            <NuxtLink to="/product?index=3" class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px] flex items-center justify-center">
               <span class="relative z-10 font-medium">Technical Data Sheet </span>
-            </button>
+            </NuxtLink>
           </div>
         </div>
 
@@ -96,9 +96,9 @@
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
             <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484]">RAFCOLOR 1560</h2>
             <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">RAFCOLOR is a high-quality white masterbatch containing a high loading of rutile titanium dioxide (TiO₂) and thermoplastic polypropylene resin. The selected TiO₂ offers excellent opacity and dispersion properties.</p>
-            <button class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px]">
+            <NuxtLink to="/product?index=5" class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px] flex items-center justify-center">
               <span class="relative z-10 font-medium">Technical Data Sheet </span>
-            </button>
+            </NuxtLink>
           </div>
         </div>
       </div>
