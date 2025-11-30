@@ -6,3 +6,4 @@
 import Landpage from '~/components/landpage.vue'
 </script>
 
+

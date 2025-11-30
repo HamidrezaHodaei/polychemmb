@@ -51,8 +51,11 @@
               :class="{ 'bg-white': index % 2 === 1 }"
               @mouseenter="changeImage(index)"
             >
-              <a href="#" class="block p-8 md:px-32 md:py-16 xl:px-40">
-                <span class="text-black text-sm">{{ post.date }}</span>
+              <NuxtLink :to="post.link || '#'" class="block p-8 md:px-32 md:py-16 xl:px-40">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-black text-sm">{{ post.date }}</span>
+                  <span v-if="post.tag" class="px-2 py-1 text-xs font-semibold uppercase tracking-wider bg-[#FFCD05] text-white rounded">{{ post.tag }}</span>
+                </div>
                 <h2 class="text-[#FFCD05] text-2xl md:text-3xl font-bold mb-2 mt-1">{{ post.title }}</h2>
                 <p class="text-black mb-3 leading-relaxed">{{ post.excerpt }}</p>
                 <span
@@ -60,7 +63,7 @@
                 >
                   <span class="relative z-10">Read More</span>
                 </span>
-              </a>
+              </NuxtLink>
             </li>
           </ul>
 
@@ -118,7 +121,7 @@ const activeTab = ref(0)
 const currentImageIndex = ref(0)
 
 const backgroundImages = [
-  '/invitation-2.jpg',
+  '/news1.jpg',
   'https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?w=2000&h=1200&fit=crop',
   'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=2000&h=1200&fit=crop',
   'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=2000&h=1200&fit=crop',
@@ -129,7 +132,9 @@ const posts = [
   {
     date: 'Dec 3-6, 2025',
     title: 'Plast Eurasia İstanbul 2025',
-    excerpt: ''
+    excerpt: 'POLYCHEM is excited to announce its participation in Plast Eurasia Istanbul 2025, the leading plastics industry trade fair in the region, taking place from 3–6 December 2025 at TÜYAP Fair & Congress Center.',
+    tag: 'event',
+    link: '/news/plast-eurasia-2025'
   },
   {
     date: 'Sep 7, 2016',
@@ -250,3 +255,4 @@ h1, h2 {
   width: 100%;
 }
 </style>
+

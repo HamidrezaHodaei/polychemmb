@@ -41,9 +41,9 @@
       <div
         id="middleEast-section"
         ref="middleEastSection"
-        class="max-w-7xl mx-auto mb-12"
+        class="max-w-7xl mx-auto mb-12 relative z-20"
       >
-        <h2 class="text-4xl font-bold text-[#848484] mb-8 ">Middle East</h2>
+        <h2 class="text-4xl font-bold text-[#848484] mb-8 relative z-20">Middle East</h2>
         <div class="flex overflow-x-auto gap-0 no-scrollbar">
           <div
             v-for="(country, idx) in middleEastCountries"
@@ -103,19 +103,17 @@
             <p class="text-[#848484] mb-6">{{ country.city }}</p>
             <div class="space-y-2 w-full flex flex-col items-center">
               <p class="text-sm text-[#848484]">Email</p>
-              <div class="flex items-center justify-center gap-2">
-                <a :href="`mailto:${country.email}`" class="text-[#848484] hover:underline">
-                  {{ country.email }}
-                </a>
-                <button
-                  type="button"
-                  class="ml-1 px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 text-xs text-[#848484] border border-gray-300 transition"
-                  @click="copyEmail(country.email, cisRefsOffset + idx)"
-                >
-                  <span v-if="copiedIdx === cisRefsOffset + idx && copied">Copied!</span>
-                  <span v-else>Copy</span>
-                </button>
-              </div>
+              <a :href="`mailto:${country.email}`" class="text-[#848484] hover:underline">
+                {{ country.email }}
+              </a>
+              <button
+                type="button"
+                class="px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 text-xs text-[#848484] border border-gray-300 transition"
+                @click="copyEmail(country.email, cisRefsOffset + idx)"
+              >
+                <span v-if="copiedIdx === cisRefsOffset + idx && copied">Copied!</span>
+                <span v-else>Copy</span>
+              </button>
             </div>
             <div
               class="contact-card-bg-characters pointer-events-none"
@@ -178,7 +176,7 @@
         ref="asiaSection"
         class="max-w-7xl mx-auto mb-12"
       >
-        <h2 class="text-4xl font-bold text-[#848484] mb-8 ">Asia</h2>
+        <h2 class="text-4xl font-bold text-[#848484] mb-8 ">Asia Pacific</h2>
         <div class="flex overflow-x-auto gap-0 no-scrollbar">
           <div
             v-for="(country, idx) in asiaCountries"
@@ -276,28 +274,28 @@ const scrollToSection = async (tabKey) => {
 
 // Countries data
 const middleEastCountries = [
-  { name: 'Iraq', city: 'Baghdad', email: 'iraq@neverhack.com' },
-  { name: 'Iran', city: 'Tehran', email: 'iran@neverhack.com' },
-  { name: 'Kuwait', city: 'Kuwait City', email: 'kuwait@neverhack.com' }
+  { name: 'Iraq', city: 'Baghdad', email: 'mea-sales@polychemmb.com' },
+  { name: 'Iran', city: 'Tehran', email: 'mea-sales@polychemmb.com' },
+  { name: 'Kuwait', city: 'Kuwait City', email: 'mea-sales@polychemmb.com' }
 ]
 const cisCountries = [
-  { name: 'Russia', city: 'Moscow', email: 'russia@neverhack.com' },
-  { name: 'Belarus', city: 'Minsk', email: 'belarus@neverhack.com' },
-  { name: 'Kazakhstan', city: 'Astana', email: 'kazakhstan@neverhack.com' },
-  { name: 'Kyrgyzstan', city: 'Bishkek', email: 'kyrgyzstan@neverhack.com' },
-  { name: 'Tajikistan', city: 'Dushanbe', email: 'tajikistan@neverhack.com' },
-  { name: 'Uzbekistan', city: 'Tashkent', email: 'uzbekistan@neverhack.com' },
-  { name: 'Armenia', city: 'Yerevan', email: 'armenia@neverhack.com' },
-  { name: 'Azerbaijan', city: 'Baku', email: 'azerbaijan@neverhack.com' }
+  { name: 'Armenia', city: 'Yerevan', email: 'cis-sales@polychemmb.com' },
+  { name: 'Azerbaijan', city: 'Baku', email: 'cis-sales@polychemmb.com' },
+  { name: 'Belarus', city: 'Minsk', email: 'cis-sales@polychemmb.com' },
+  { name: 'Kazakhstan', city: 'Astana', email: 'cis-sales@polychemmb.com' },
+  { name: 'Kyrgyzstan', city: 'Bishkek', email: 'cis-sales@polychemmb.com' },
+  { name: 'Russia', city: 'Moscow', email: 'cis-sales@polychemmb.com' },
+  { name: 'Tajikistan', city: 'Dushanbe', email: 'cis-sales@polychemmb.com' },
+  { name: 'Uzbekistan', city: 'Tashkent', email: 'cis-sales@polychemmb.com' }
 ]
 const europeCountries = [
-  { name: 'Turkey', city: 'Ankara', email: 'turkey@neverhack.com' },
-  { name: 'Greece', city: 'Athens', email: 'greece@neverhack.com' }
+  { name: 'Turkey', city: 'Ankara', email: 'europe-sales@polychemmb.com' },
+  { name: 'Greece', city: 'Athens', email: 'europe-sales@polychemmb.com' }
 ]
 const asiaCountries = [
-  { name: 'China', city: 'Beijing', email: 'china@neverhack.com' },
-  { name: 'India', city: 'New Delhi', email: 'india@neverhack.com' },
-  { name: 'Pakistan', city: 'Islamabad', email: 'pakistan@neverhack.com' }
+  { name: 'China', city: 'Beijing', email: 'apac-sales@polychemmb.com' },
+  { name: 'India', city: 'New Delhi', email: 'apac-sales@polychemmb.com' },
+  { name: 'Pakistan', city: 'Islamabad', email: 'apac-sales@polychemmb.com' }
 ]
 
 // Offsets for refs/texts
