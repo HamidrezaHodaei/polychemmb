@@ -122,7 +122,7 @@ const currentImageIndex = ref(0)
 
 const backgroundImages = [
   '/news1.jpg',
-  'https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?w=2000&h=1200&fit=crop',
+  '/PolypropyleneandPolypropyleneCompositesMarketzz.jpg',
   'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=2000&h=1200&fit=crop',
   'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=2000&h=1200&fit=crop',
   'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=2000&h=1200&fit=crop'
@@ -137,14 +137,19 @@ const posts = [
     link: '/news/plast-eurasia-2025'
   },
   {
-    date: 'Sep 7, 2016',
-    title: 'Craft Beer',
-    excerpt: 'Tbh vaporware mumblecore iceland echo park DIY. Plaid woke next level enamel pin, vegan cred salvia pug. XOXO sartorial synth gluten-free, cold-pressed mumblecore craft beer helvetica. Vegan lyft squid, vice...'
+    date: 'Nov 30, 2025',
+    title: 'Global Polypropylene and Polypropylene Composites Market Size, Share, and Trends Analysis Report – Industry Overview and Forecast to 2032',
+    excerpt: 'Global Polypropylene and Polypropylene Composites Market, By Product Type (Polypropylene (PP), Polypropylene Composites), Fiber Type (Glass Fiber, Carbon Fiber, Others), Application (Packaging, Building and Construction, Automotive, Electrical and Electronics, Aerospace and Defence, Others) - Industry Trends and Forecast to 2032',
+    tag: 'Report',
+    link: '/news/Global-Polypropylene-and-Composites-Market-Report-2032'
   },
   {
-    date: 'Sep 6, 2016',
-    title: 'Next Level Blog',
-    excerpt: 'Humblebrag ramps single-origin coffee, literally jean shorts polaroid mlkshk franzen williamsburg distillery venmo. Skateboard leggings disrupt banjo shoreditch blue bottle. Brooklyn church-key cronut hell of waistcoat, polaroid lomo chambray bitters...'
+    date: 'Dec 6, 2024',
+    title: 'Global Cast Low-Density Polyethylene Disposable Gloves Market Size, Share, and Trends Analysis Report – Industry Overview and Forecast to 2032',
+    excerpt: 'Global Cast Low-Density Polyethylene Disposable Gloves Market Segmentation, By Size (Small, Medium, Large, and X-Large), End Users (Food and Beverages, Medical, Industrial, and Others), Distribution Channel (Direct Distribution and Via Distributors) – Industry Trends and Forecast to 2032',
+    tag: 'Report',
+    link: '/news/Cast_LowDensity_PE_Gloves_Market_Report_2032',
+
   },
   {
     date: 'Sep 5, 2016',
