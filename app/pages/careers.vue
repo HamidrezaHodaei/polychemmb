@@ -37,7 +37,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="relative">
               <label class="block text-sm text-[#848484] mb-3">3. EMAIL *</label>
-              <input v-model="form.email" type="email" placeholder="johndoe@polychem.com"
+              <input v-model="form.email" type="email" placeholder="johndoe@polychemmb.com"
                 class="effect-input w-full bg-transparent border-b border-[#848484] text-[#848484] placeholder-gray-400 py-3 focus:outline-none" />
               <span class="focus-border"></span>
             </div>
@@ -95,7 +95,7 @@
               <input type="checkbox" id="consent" required
                 class="mt-1 w-5 h-5 border-2 border-[#848484] rounded accent-[#FFCD05]" />
               <label for="consent" class="text-[#848484]">
-                I consent to the use of my data for processing my application by Polychem. *
+                I consent to the use of my data for processing my application by POLYCHEM. *
               </label>
             </div>
           </div>

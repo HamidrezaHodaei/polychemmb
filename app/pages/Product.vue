@@ -637,9 +637,8 @@ specs: [
  title: 'CALCICHEM 120 FE',
     price: '',
     subtitleTitle: 'DESCRIPTION',
-    subtitle: `CALCICHEM 120 FE is a polyolefins-based filler masterbatch containing 80% calcium carbonate (CaCO₃). The CALCICHEM 126 FP features a high, very fine, treated CaCO₃ content, ensuring excellent dispersion within the final product.
-It is specifically designed for direct addition during the processing of polyolefins, including extrusion and injection molding.
-The CALCICHEM 120 FE mineral modifier is designed for direct addition during the processing of polyolefins, including extrusion and injection molding.`,
+    subtitle: `CALCICHEM 120 FE is a polyolefins-based filler masterbatch containing 80% calcium carbonate (CaCO₃). The CALCICHEM 120 FE features a high, very fine, treated CaCO₃ content, ensuring excellent dispersion within the final product.
+It is specifically designed for direct addition during the processing of polyolefins, including extrusion and injection molding.`,
     detailImage: '',
     propertyLabel: 'Item',
     detailSections: [
@@ -678,7 +677,9 @@ const productWidth = 310;
 
 const getProductOffset = () => {
   if (!containerRef.value) return 0;
-  return (containerRef.value.offsetWidth - (containerRef.value.offsetWidth * 70) / 100) / 2;
+  const containerWidth = containerRef.value.offsetWidth;
+  const visibleWidth = (containerWidth * 70) / 100;
+  return (containerWidth - visibleWidth) / 2;
 };
 
 const handleProductClick = async (index, event) => {
@@ -690,12 +691,13 @@ const handleProductClick = async (index, event) => {
   
   const navWidth = 60;
   const coverWidth = 300;
-  const left = productWidth * index + coverWidth + index * 6 + navWidth - getProductOffset();
+  const gap = 6;
+  const left = index * (productWidth + gap) + coverWidth + navWidth - getProductOffset();
   
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   
   if (isMobile) {
-    event.currentTarget.scrollIntoView({ inline: 'start', behavior: 'smooth' });
+    event.currentTarget.scrollIntoView({ inline: 'center', behavior: 'smooth' });
   } else {
     containerRef.value.scrollLeft = left;
   }
@@ -716,14 +718,15 @@ const scrollToProduct = async (index) => {
   
   const navWidth = 60;
   const coverWidth = 300;
-  const left = productWidth * index + coverWidth + index * 6 + navWidth - getProductOffset();
+  const gap = 6;
+  const left = index * (productWidth + gap) + coverWidth + navWidth - getProductOffset();
   
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   
   if (isMobile) {
     const productElement = containerRef.value?.querySelector(`[data-index="${index}"]`);
     if (productElement) {
-      productElement.scrollIntoView({ inline: 'start', behavior: 'smooth' });
+      productElement.scrollIntoView({ inline: 'center', behavior: 'smooth' });
     }
   } else {
     if (containerRef.value) {

@@ -11,10 +11,14 @@
   
   <script setup>
   const baseImages = [
-      "/Olsanbaft.png",
-      "/Reyhaneh.png",
-      "/Paraplastic.png"
-  ];
+   "/27_full-0۱.jpg",    
+  "/Olsanbaft.png",
+  "/Paraplastic.png",    
+  "/Reyhaneh.png",
+  "/logoMegabiz.jpg"
+      
+      
+    ];
   // تکرار آرایه برای اسکرول بی‌نهایت بدون فاصله سفید
   const images = [...baseImages, ...baseImages, ...baseImages, ...baseImages, ...baseImages, ...baseImages, ...baseImages, ...baseImages, ...baseImages, ...baseImages];
   </script>
@@ -47,11 +51,12 @@
     background: white;
     box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
     height: 100px;
-    margin: auto;
+    margin: 0; // حذف فاصله اطراف
+    padding: 0; // حذف padding احتمالی
     overflow: hidden;
     position: relative;
-    width: 100%;
-  
+    width: 100vw; // پر کردن کل عرض صفحه
+
     .slide-track {
       animation: scroll $animationSpeed linear infinite;
       display: flex;
@@ -60,13 +65,12 @@
   
     .slide {
       height: 100px;
-      width: 250px;
+      width: auto;
       flex-shrink: 0;
-      /* changed: center content so logos align vertically */
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 8px; /* slight horizontal padding to avoid touching edges */
+      padding: 0 21px; // فاصله افقی خیلی کم
     }
     
     /* changed: target .logo class and constrain size while preserving aspect ratio */

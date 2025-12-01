@@ -71,7 +71,7 @@ Global Cast Low-Density Polyethylene Disposable Gloves Market Size, Share, and T
       <div class="absolute bottom-[50px] left-[250px] flex gap-6">
         <!-- Instagram Icon -->
         <a 
-          href="http://instagram.com/polychemm" 
+          href="http://instagram.com/polychemmb" 
           class="instagram-icon w-10 h-10 rounded-full border-2 border-[#7B7B7B] flex items-center justify-center hover:border-[#FFCD05] hover:bg-[#FFCD05] transition-all duration-300 active:scale-95"
           aria-label="Instagram"
         >

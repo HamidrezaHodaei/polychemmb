@@ -52,18 +52,18 @@
           style="top: 60px; z-index: 4;"
         >
           <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px]">
-            <img src="/slimchem.jpg" alt="Product 3" class="w-full h-full object-cover filter grayscale" />
+            <img src="/Hdchem.jpg" alt="Product 3" class="w-full h-full object-cover filter grayscale" />
           </div>
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
-            <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484] uppercase">SlipChem-E 178</h2>
-            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">SlipChem-E 178 – Premium slip masterbatch in PE carrier. Significantly lowers COF with excellent dispersion, high thermal stability, and consistent migration for film winding and packaging.</p>
+            <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484] uppercase">HDCHEM 4760</h2>
+            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">HDCHEM 4760 – Specialized PE copolymer compound for blow molding applications. This polymer matarials belong and good melt strength, balanced mechanical properties, and superior processability for industrial and consumer parts.</p>
             <NuxtLink to="/product?index=4" class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px] flex items-center justify-center">
               <span class="relative z-10 font-medium">Technical Data Sheet </span>
             </NuxtLink>
           </div>
         </div>
-
+ 
         <!-- Card 4 -->
         <div
           ref="card4"
@@ -71,12 +71,12 @@
           style="top: 90px; z-index: 5;"
         >
           <div class="card-image w-full md:w-3/5 overflow-hidden rounded-t-[16px] md:rounded-tl-[20px] md:rounded-bl-[20px] md:rounded-tr-[0px] md:rounded-br-[0px] bg-white-100">
-            <img src="/Hdchem.jpg" alt="Product 4" class="w-full h-full object-cover filter grayscale" />
+            <img src="/slimchem.jpg" alt="Product 4" class="w-full h-full object-cover filter grayscale" />
           </div>
 
           <div class="w-full md:w-2/5 p-8 flex flex-col justify-center gap-4 card-content">
-            <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484]">HDCHEM 4760</h2>
-            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">HDCHEM 4760 – Specialized PE copolymer compound for blow molding applications. This polymer matarials belong and good melt strength, balanced mechanical properties, and superior processability for industrial and consumer parts.</p>
+            <h2 class="text-3xl md:text-4xl font-[Montserrat] text-[#848484]">SlipChem-E 178</h2>
+            <p class="text-base md:text-lg text-[#848484] font-[Montserrat]">SlipChem-E 178 – Premium slip masterbatch in PE carrier. Significantly lowers COF with excellent dispersion, high thermal stability, and consistent migration for film winding and packaging.</p>
             <NuxtLink to="/product?index=3" class="btn-slide-down w-full md:w-auto h-12 rounded-lg relative overflow-hidden border-2 border-[#FFCD05] text-[#FFCD05] transition-colors max-w-[220px] flex items-center justify-center">
               <span class="relative z-10 font-medium">Technical Data Sheet </span>
             </NuxtLink>
@@ -107,7 +107,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, onBeforeUnmount } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
@@ -124,6 +124,12 @@ const card5 = ref(null)
 let tl = null
 
 onMounted(() => {
+  // بازیابی موقعیت اسکرول قبلی
+  const savedScrollPosition = sessionStorage.getItem('homeScrollPosition')
+  
+  // Reset ScrollTrigger برای اطمینان از شروع صحیح
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+  
   tl = gsap.timeline({
     scrollTrigger: {
       trigger: cardsContainer.value,
@@ -133,6 +139,10 @@ onMounted(() => {
       start: 'top-=50px top',
       end: '+=4500',
       scrub: 1,
+      onUpdate: (self) => {
+        // ذخیره موقعیت اسکرول جاری
+        sessionStorage.setItem('homeScrollPosition', window.scrollY)
+      }
     },
   })
 
@@ -300,6 +310,19 @@ onMounted(() => {
     },
     '-=0.4'
   )
+
+  // بازیابی موقعیت اسکرول اگر وجود داشته باشد
+  if (savedScrollPosition !== null) {
+    // استفاده از requestAnimationFrame برای اطمینان از اجرا بعد از render
+    requestAnimationFrame(() => {
+      window.scrollTo(0, parseInt(savedScrollPosition))
+    })
+  }
+})
+
+onBeforeUnmount(() => {
+  // ذخیره موقعیت اسکرول قبل از ترک کامپوننت
+  sessionStorage.setItem('homeScrollPosition', window.scrollY)
 })
 
 onUnmounted(() => {

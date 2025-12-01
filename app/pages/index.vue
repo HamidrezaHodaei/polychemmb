@@ -36,6 +36,11 @@ onMounted(() => {
   if (!hasSeenLanding) {
     showLanding.value = true
   }
+  
+  // پاک کردن موقعیت اسکرول قبلی هنگام بارگذاری اول صفحه
+  if (!sessionStorage.getItem('hasSeenLanding')) {
+    sessionStorage.removeItem('homeScrollPosition')
+  }
 })
 
 // Listen for landing page completion event
@@ -44,5 +49,13 @@ if (process.client) {
     sessionStorage.setItem('hasSeenLanding', 'true')
     showLanding.value = false
   })
+  
+  // پاک کردن موقعیت اسکرول هنگام رفتن به صفحات دیگر
+  router.beforeEach((to, from, next) => {
+    if (from.path === '/' && to.path !== '/') {
+      sessionStorage.removeItem('homeScrollPosition')
+    }
+    next()
+  })
 }
-</script> 
+</script>

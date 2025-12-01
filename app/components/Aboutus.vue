@@ -9,25 +9,25 @@
       <div class="row">
         <div class="imgWrapper">
           <img
-            src="https://images.unsplash.com/photo-1687579521048-217e24217d53?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODg5ODcxNzl8&ixlib=rb-4.0.3&q=85"
+            src="/about-5.jpg"
             alt="Gallery image 1"
           />
         </div>
         <div class="imgWrapper">
           <img
-            src="https://images.unsplash.com/photo-1686580546412-80e80519abd7?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODg5ODcyMDN8&ixlib=rb-4.0.3&q=85"
+            src="/about-3.jpg"
             alt="Gallery image 2"
           />
         </div>
         <div class="imgWrapper">
           <img
-            src="https://images.unsplash.com/photo-1688133338995-a394ce7314e4?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODg5ODcyMDN8&ixlib=rb-4.0.3&q=85"
+            src="/aboutus-1.jpeg"
             alt="Gallery image 3"
           />
         </div>
         <div class="imgWrapper">
           <img
-            src="https://images.unsplash.com/photo-1686354715732-7e4685269a25?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODg5ODcyNzN8&ixlib=rb-4.0.3&q=85"
+            src="/about-6.jpg"
             alt="Gallery image 4"
           />
         </div>
@@ -82,7 +82,7 @@ body {
 }
 
 .container {
-  width: 90%;
+  width: 80%;
   max-width: 1170px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
