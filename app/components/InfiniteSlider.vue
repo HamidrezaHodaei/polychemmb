@@ -2,7 +2,8 @@
     <div class="slider">
       <div class="slide-track">
         <div v-for="(img, index) in images" :key="index" class="slide">
-          <img :src="img" height="100" width="250" alt="logo" />
+          <!-- changed: add class and remove fixed height/width attributes -->
+          <img :src="img" alt="logo" class="logo" />
         </div>
       </div>
     </div>
@@ -10,11 +11,12 @@
   
   <script setup>
   const baseImages = [
-
-      "/logoMegabiz.jpg",
+      "/Olsanbaft.png",
+      "/Reyhaneh.png",
+      "/Paraplastic.png"
   ];
-  // تکرار آرایه برای اسکرول بی‌نهایت
-  const images = [...baseImages, ...baseImages, ...baseImages, ...baseImages];
+  // تکرار آرایه برای اسکرول بی‌نهایت بدون فاصله سفید
+  const images = [...baseImages, ...baseImages, ...baseImages, ...baseImages, ...baseImages, ...baseImages, ...baseImages, ...baseImages, ...baseImages, ...baseImages];
   </script>
   
   <style scoped lang="scss">
@@ -37,7 +39,7 @@
       transform: translateX(0);
     }
     100% {
-      transform: translateX(calc(-250px * 7));
+      transform: translateX(calc(-250px * 10));
     }
   }
   
@@ -48,25 +50,38 @@
     margin: auto;
     overflow: hidden;
     position: relative;
-    width: 2000px;
+    width: 100%;
   
     .slide-track {
       animation: scroll $animationSpeed linear infinite;
       display: flex;
-      width: calc(250px * 8); // چون 2 تصویر × 4 تکرار = 8
+      width: calc(250px * 20);
     }
   
     .slide {
       height: 100px;
       width: 250px;
+      flex-shrink: 0;
+      /* changed: center content so logos align vertically */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8px; /* slight horizontal padding to avoid touching edges */
     }
     
-    .slide img {
+    /* changed: target .logo class and constrain size while preserving aspect ratio */
+    .logo {
+      max-height: 72px;
+      max-width: 220px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
       filter: grayscale(100%);
       transition: filter 0.3s ease;
     }
   
-    .slide:hover img {
+    .slide:hover .logo {
       filter: grayscale(0%);
     }
   }

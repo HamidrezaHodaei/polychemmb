@@ -159,14 +159,13 @@
             class="absolute inset-0 flex items-center justify-center p-12 opacity-0"
           >
             <div class="text-center space-y-6">
-              <div 
-                ref="previewIcon"
-                class="w-32 h-32 mx-auto bg-yellow-400/20 rounded-2xl flex items-center justify-center transform scale-0"
-              >
-                <svg class="w-16 h-16 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                </svg>
-              </div>
+              <!-- changed: show preview product image instead of static icon -->
+              <img
+                ref="previewImage"
+                :src="hoveredItem?.image || '/955w-p.jpg'"
+                alt="preview"
+                class="w-32 h-32 mx-auto rounded-2xl object-contain transform scale-0"
+              />
               <div 
                 ref="previewTitle"
                 class="opacity-0 transform translate-y-4"
@@ -263,7 +262,8 @@ const menuContainer = ref(null)
 const menuTitle = ref(null)
 const closeButton = ref(null)
 const previewBox = ref(null)
-const previewIcon = ref(null)
+const previewIcon = ref(null) // keep for backward-compat if used elsewhere
+const previewImage = ref(null)
 const previewTitle = ref(null)
 const previewDesc = ref(null)
 const glowingOrb = ref(null)
@@ -276,60 +276,70 @@ const useCases = [
     code: '', 
     title: 'ROTOCHEM 0955W', 
     description: 'Specialized white color plastic compound for rotational molding applications. Linear medium density polyethylene copolymer with narrow molecular weight distribution and TiO2. Ideal for reliable and durable materials that withstand harsh environmental conditions.',
+    image: '/955w-p.jpg',
     index: 0
   },
   { 
     code: '', 
     title: 'ROTOCHEM 0955B', 
-    description: 'Specialized blue color plastic compound for rotational molding applications. Linear medium density polyethylene copolymer with narrow molecular weight distribution and TiO2. Perfect for industrial and consumer applications requiring consistent and stable materials.',
+    description: 'Specialized blue color plastic compound for rotational molding applications. Linear medium density polyethylene copolymer with narrow molecular weight distribution with TiO2. Perfect for industrial and consumer applications requiring consistent and stable materials.',
+    image: '/955B.jpg',
     index: 1
   },
   { 
     code: '', 
     title: 'POLYFIL F700', 
     description: 'High-performance polyethylene compound for HDPE blown film applications. Engineered for superior mechanical properties, excellent film uniformity, and reliable processability in ultra-thin film applications (10-25 microns). Suitable for shopping bags, T-shirt bags, garbage bags, and food-contact films.',
+    image: '/955w-p.jpg',
     index: 2
   },
   { 
     code: '', 
     title: 'HDCHEM 4760', 
     description: 'Specialized plastic compound for blow molding applications. Polyethylene copolymer compound with beneficial characteristics including good flowability, impact strength, ESCR and rigidity. Dependable choice for consistent and stable materials.',
+    image: '/placeholder.jpg',
     index: 3
   },
   { 
     code: '', 
     title: 'SlIPCHEM E 178', 
     description: 'High-performance slip masterbatch with high quality slip agent dispersed in polyethylene carrier resin. Reduces coefficient of friction (COF) between polymer film layers during winding, bag-making, and packaging. Excellent dispersion, high thermal stability, and consistent migration performance.',
+    image: '/placeholder.jpg',
     index: 4
   },
   { 
     code: '', 
     title: 'RAFCOLOR 1560', 
     description: 'White masterbatch with high proportion of rutile titanium dioxide and thermoplastic polypropylene resin. Highly-concentrated white MB with excellent dispersion and thermal stability. Recommended for raffia, tapes, CF/BCF yarn, and other products.',
+    image: '/Rafcolor-1.jpg',
     index: 5
   },
   { 
     code: '', 
     title: 'CALCICHEM 126 FP', 
     description: 'Polypropylene-based filler masterbatch containing 80% calcium carbonate (CaCO₃). Features high, very fine, treated CaCO₃ content ensuring excellent dispersion. Designed for direct addition during processing of polyolefins including extrusion and injection molding.',
+    image: '/placeholder.jpg',
     index: 6
   },
   { 
     code: '', 
     title: 'CALCICHEM 110 FRF', 
     description: 'Mineral modifier with high, very fine, treated CaCO3 content with excellent dispersion. Designed for films, raffia and ropes. Suitable for general-purpose products with PE and PP carriers. Increases productivity and reduces raw material costs.',
+    image: '/placeholder.jpg',
     index: 7
   },
   { 
     code: '', 
     title: 'CALCICHEM 275 PM', 
     description: 'Polypropylene-based mineral masterbatch containing 75% ultra-fine mineral filler. Offers excellent dispersion and high mineral loading for enhanced performance. Formulated for direct addition during extrusion of BOPP, CPP, and OPP films.',
+    image: '/placeholder.jpg',
     index: 8
   },
   { 
     code: '', 
     title: 'CALCICHEM 120 FE', 
     description: 'Polyolefins-based filler masterbatch containing 80% calcium carbonate (CaCO₃). Features high, very fine, treated CaCO₃ content ensuring excellent dispersion. Designed for direct addition during processing of polyolefins including extrusion and injection molding.',
+    image: '/placeholder.jpg',
     index: 10
   },
 ]
@@ -362,6 +372,14 @@ const handleHover = (item, index) => {
     duration: 0.6,
     ease: 'power2.out'
   })
+
+  // Animate preview image (fade + pop-in)
+  if (previewImage.value) {
+    gsap.fromTo(previewImage.value, 
+      { opacity: 0, scale: 0.85 }, 
+      { opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(1.2)' }
+    )
+  }
 }
 
 const handleLeave = () => {
@@ -437,11 +455,21 @@ const openMenu = () => {
     duration: 0.6
   }, '-=0.8')
   
-  tl.to(previewIcon.value, {
-    scale: 1,
-    duration: 0.6,
-    ease: 'back.out(1.7)'
-  }, '-=0.4')
+  // animate preview image into view (if present)
+  if (previewImage.value) {
+    tl.to(previewImage.value, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.6,
+      ease: 'back.out(1.7)'
+    }, '-=0.4')
+  } else {
+    tl.to(previewIcon.value, {
+      scale: 1,
+      duration: 0.6,
+      ease: 'back.out(1.7)'
+    }, '-=0.4')
+  }
   
   tl.to([previewTitle.value, previewDesc.value], {
     opacity: 1,
@@ -481,7 +509,7 @@ const closeMenu = () => {
   }, '-=0.2')
   
   // Animate preview box out
-  tl.to([previewTitle.value, previewDesc.value, previewIcon.value], {
+  tl.to([previewTitle.value, previewDesc.value, previewIcon.value, previewImage.value], {
     opacity: 0,
     scale: 0.9,
     duration: 0.3
@@ -531,6 +559,9 @@ onMounted(async () => {
   }
   if (previewIcon.value) {
     gsap.set(previewIcon.value, { scale: 0 })
+  }
+  if (previewImage.value) {
+    gsap.set(previewImage.value, { scale: 0.85, opacity: 0 })
   }
   if (glowingOrb.value) {
     gsap.set(glowingOrb.value, { scale: 0.8, opacity: 0 })

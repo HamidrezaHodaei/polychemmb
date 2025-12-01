@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen bg-[#f1f2f2] flex items-center justify-center bg-cover bg-center bg-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1598322508096-5ca34544d8aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80')">
+  <div class="h-screen bg-[#f1f2f2] flex items-center justify-center bg-cover bg-center bg-blend-overlay">
     <div 
       ref="containerRef"
       :class="['w-full h-full flex overflow-x-auto overflow-y-hidden scroll-smooth bg-[#ffffff] shadow-2xl', {'detail-mode': activeProductIndex !== null}]"
@@ -34,8 +34,25 @@
       </nav>
 
       <!-- Cover Image -->
-      <div class="w-[300px] lg:w-[500px] flex items-center justify-center text-5xl text-white font-medium text-center flex-shrink-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1598322508096-5ca34544d8aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80')">
-       
+      <div class="w-[300px] lg:w-[500px] flex items-center justify-center text-5xl text-white font-medium text-center flex-shrink-0 bg-black overflow-hidden">
+        <video
+          ref="leftVideo"
+          class="cover-video w-full h-full"
+          :src="leftVideoSrc"
+          :poster="leftVideoPoster"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          @error="onVideoError"
+          @loadeddata="onVideoLoaded"
+          aria-hidden="true"
+        >
+          <source :src="leftVideoSrc" :type="leftVideoType" />
+          <!-- fallback image if video not supported -->
+          <img src="/955w-p.jpg" alt="" />
+        </video>
       </div>
 
       <!-- Products -->
@@ -88,7 +105,7 @@
         </div>
 
         <!-- Brand -->
-        <div :class="['text-sm tracking-widest transition-all duration-500 mt-2', activeProductIndex === index && 'text-base']">
+        <div :class="['text-sm tracking-widest transition-all duration-500', activeProductIndex === index && 'text-base']">
           {{ product.brand }}
         </div>
 
@@ -192,6 +209,16 @@ import { ref, nextTick, onMounted, watch } from 'vue';
 const route = useRoute();
 const containerRef = ref(null);
 const activeProductIndex = ref(null);
+const leftVideo = ref(null);
+
+// encode path (handles spaces)
+const leftVideoSrc = encodeURI('/Left side.mov');
+const leftVideoPoster = '/955w-p.jpg';
+const leftVideoType = leftVideoSrc.endsWith('.mp4')
+  ? 'video/mp4'
+  : leftVideoSrc.endsWith('.webm')
+    ? 'video/webm'
+    : 'video/quicktime';
 
 const products = [
   {
@@ -272,7 +299,7 @@ const products = [
     subtitleTitle: 'DESCRIPTION',
     subtitle: `POLYFIL F700 is a high-performance polyethylene compound specifically formulated for high-density polyethylene (HDPE) blown film applications. This grade is engineered to deliver superior mechanical properties, excellent film uniformity, and reliable processability, even in ultra-thin film applications.
 It is highly recommended for producing films with thicknesses in the range of 10–25 microns, making it suitable for a wide range of packaging and consumer products such as shopping bags, T-shirt bags, garbage bags, liner bags, and food-contact films.`,
-    detailImage: '/955w-p.jpg',
+    detailImage: '/polyfilf700-2.jpg',
     detailSections: [
       
       {
@@ -352,7 +379,7 @@ specs: [
     price: '',
     subtitleTitle: 'DESCRIPTION',
     subtitle: `SlIPCHEM-E 178 is a high-performance slip masterbatch containing high quality slip agent dispersed in a polyethylene carrier resin. It is specifically developed to reduce the coefficient of friction (COF) between polymer film layers during winding, bag-making, and packaging processes. The product offers excellent dispersion, high thermal stability, and consistent migration performance.`,
-    detailImage: '',
+    detailImage: '/slipchem.jpg',
     detailSections: [
       
       {
@@ -401,7 +428,7 @@ specs: [
     price: '',
     subtitleTitle: 'DESCRIPTION',
     subtitle: `RAFCOLOR is the white masterbatch that consists of a high proportion of rutile titanium dioxide and thermoplastic polypropylene resin. The selected titanium dioxide has good opacity and dispersion performance. Highly-concentrated white MB with excellent dispersion and thermal stability can be applied to general-purpose products. It is recommended for raffia, Tapes, CF/BCF yarn, and other products.`,
-    detailImage: '',
+    detailImage: '/Rafcolor-1.jpg',
     propertyLabel: 'Item',
     detailSections: [
       
@@ -432,7 +459,7 @@ specs: [
     price: '',
     subtitleTitle: 'DESCRIPTION',
     subtitle: `CALCICHEM 126 FP is a polypropylene-based filler masterbatch containing 80% calcium carbonate (CaCO₃) . The CALCICHEM 126 FP features a high, very fine, treated CaCO₃ content, ensuring excellent dispersion within the final product. It is specifically designed for direct addition during the processing of polyolefins, including extrusion and injection molding. The CALCICHEM 126 FP is manufactured using the premium additives and advanced production lines.`,
-    detailImage: '',
+    detailImage: '/public/126.mov',
     propertyLabel: 'Item',
     detailSections: [
       
@@ -453,7 +480,7 @@ specs: [
       },
       {
         title: 'Storage and handling',
-        body: `RAFCOLOR should be stored to prevent direct sunlight and/or heat exposure. The storage area should also be dry and preferably not exceed 50°C; Bad storage conditions may lead to quality deterioration and product performance. It is advisable to process PP resin within 18 months after delivery.RAFCOLOR should be stored to prevent direct sunlight and/or heat exposure. The storage area should also be dry and preferably not exceed 50°C; Bad storage conditions may lead to quality deterioration and product performance. It is advisable to process PP resin within 18 months after delivery.`,
+        body: `RAFCOLOR should be stored to prevent direct sunlight and/or heat exposure. The storage area should also be dry and preferably not exceed 50°C; Bad storage conditions may lead to quality deterioration and product performance. It is advisable to process PP resin within 18 months after delivery.RAFCOLOR should be stored to prevent direct sunlight and/or heat exposure. The storage area should also be dry and preferably not exceed 50°C; Bad storage conditions may lead to quality deterioration and product perfoCALCICHEM 126 FP should be stored to prevent direct sunlight and heat exposure. The storage area should also be dry and preferably not exceed 50°C; Bad storage conditions may lead to quality deterioration and product performance. It is advisable to pre-dry before use and process within 18 months after production date.rmance. It is advisable to process PP resin within 18 months after delivery.`,
       },
    
     ],
@@ -508,7 +535,7 @@ specs: [
     subtitleTitle: 'DESCRIPTION',
     subtitle: `CALCICHEM 275 PM is a polypropylene-based mineral masterbatch containing 75% ultra-fine mineral filler. It offers excellent dispersion and high mineral loading for enhanced performance in final products.
 Specifically with formulated for direct addition during the extrusion of BOPP, CPP, and OPP films, CALCICHEM 275 PM delivers consistent performance and superior quality this product Manufactured with premium additives and produced on advanced production lines, it meets the highest industry standards for reliability and efficiency.`,
-    detailImage: '',
+    detailImage: '/275.jpg',
     propertyLabel: 'Item',
     detailSections: [
       
@@ -747,6 +774,34 @@ const navigateToProduct = async (index) => {
   await router.replace({ query: { index: index.toString() } });
   await scrollToProduct(index);
 };
+
+// Video handling
+const onVideoLoaded = (e) => {
+  // try to play (some browsers require a user gesture, but attempt anyway)
+  const v = leftVideo.value;
+  if (!v) return;
+  const p = v.play();
+  if (p && typeof p.then === 'function') {
+    p.catch(err => {
+      // silent failure; poster will remain visible
+      // console.warn('Video play prevented:', err);
+    });
+  }
+};
+
+const onVideoError = (e) => {
+  // fallback behavior: leave poster visible; developer can check console
+  // console.error('Left video failed to load', e);
+};
+
+onMounted(() => {
+  // attempt immediate play if loaded earlier
+  nextTick().then(() => {
+    if (leftVideo.value && leftVideo.value.readyState >= 2) {
+      onVideoLoaded();
+    }
+  });
+});
 </script>
 
 <style>
@@ -811,5 +866,14 @@ body {
 .btn-slide-down:focus-visible {
   color: #ffffff;
   outline: none;
+}
+
+/* ensure the left cover video fills its container and keeps aspect via cover */
+.cover-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none; /* avoid intercepting clicks */
 }
 </style>
