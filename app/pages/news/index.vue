@@ -123,8 +123,8 @@ const currentImageIndex = ref(0)
 const backgroundImages = [
   '/news1.jpg',
   '/PolypropyleneandPolypropyleneCompositesMarketzz.jpg',
-  'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=2000&h=1200&fit=crop',
-  'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=2000&h=1200&fit=crop',
+  '/dynamic-data-visualization-3d.jpg',
+  '/Visit-of-the-CEO-of-Bank-of-Industry.png',
   'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=2000&h=1200&fit=crop'
 ]
 
@@ -152,9 +152,12 @@ const posts = [
 
   },
   {
-    date: 'Sep 5, 2016',
-    title: 'VHS Selfies',
-    excerpt: '8-bit typewriter scenester, crucifix tousled tilde leggings brunch chicharrones salvia deep v man bun. Master cleanse man braid disrupt banjo, deep v cray tumblr cronut. Truffaut street art everyday carry...'
+    date: 'Nov 24, 2025',
+    title: 'Visit of the Head of the Central Branch of Bank of Industry and Mine to Company POLYCHEM',
+    excerpt: 'The visit was attended by several vice presidents and senior managers of the bank, as well as the managers of POLYCHEM Company (the operator of the Polychem brand). Dr. Rezavi closely inspected the company’s advanced production lines for engineering polymers, specialized composites, masterbatches, polymeric additives, and the new generation of products, while reviewing the latest research and production achievements.',
+    tag: 'News',
+    link: '/news/Visit-of-the-CEO-of-Bank-of-Industry',
+
   },
   {
     date: 'Sep 4, 2016',
@@ -165,24 +168,24 @@ const posts = [
 
 const categories = [
   {
-    name: 'Brunch',
-    count: 3,
-    image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&h=300&fit=crop'
+    name: 'Events',
+    count: 1,
+    image: backgroundImages[0]
   },
   {
-    name: 'Gluten-free',
+    name: 'Reports',
     count: 2,
-    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop'
+    image: backgroundImages[1]
   },
   {
-    name: 'Cities',
-    count: 3,
-    image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=300&fit=crop'
-  },
-  {
-    name: 'Juice',
+    name: 'News',
     count: 2,
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop'
+    image: backgroundImages[3]
+  },
+  {
+    name: 'Market Analysis',
+    count: 1,
+    image: backgroundImages[2]
   }
 ]
 

@@ -58,8 +58,37 @@
           </svg>
         </button>
 
+        <!-- Navigation Buttons (shown when active) -->
+        <div v-if="activeProductIndex === index" class="flex items-center justify-between w-full mb-6 gap-4 animate-fade-up sticky top-0 z-10 bg-[#f1f2f2] py-2" style="animation-delay: 0.1s">
+          <button
+            @click.stop="previousProduct"
+            :disabled="activeProductIndex === 0"
+            class="flex items-center justify-center w-12 h-12 rounded-full border-2 border-[#FFCD05] text-[#FFCD05] hover:bg-[#FFCD05] hover:text-black transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="Previous product"
+          >
+            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          
+          <div class="text-sm text-gray-600 font-medium min-w-[80px] text-center">
+            {{ activeProductIndex + 1 }} / {{ products.length }}
+          </div>
+          
+          <button
+            @click.stop="nextProduct"
+            :disabled="activeProductIndex === products.length - 1"
+            class="flex items-center justify-center w-12 h-12 rounded-full border-2 border-[#FFCD05] text-[#FFCD05] hover:bg-[#FFCD05] hover:text-black transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="Next product"
+          >
+            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
         <!-- Brand -->
-        <div :class="['text-sm tracking-widest transition-all duration-500', activeProductIndex === index && 'text-base']">
+        <div :class="['text-sm tracking-widest transition-all duration-500 mt-2', activeProductIndex === index && 'text-base']">
           {{ product.brand }}
         </div>
 
@@ -424,7 +453,7 @@ specs: [
       },
       {
         title: 'Storage and handling',
-        body: `RAFCOLOR should be stored to prevent direct sunlight and/or heat exposure. The storage area should also be dry and preferably not exceed 50°C; Bad storage conditions may lead to quality deterioration and product performance. It is advisable to process PP resin within 18 months after delivery.RAFCOLOR should be stored to prevent direct sunlight and/or heat exposure. The storage area should also be dry and preferably not exceed 50°C; Bad storage conditions may lead to quality deterioration and product perfoCALCICHEM 126 FP should be stored to prevent direct sunlight and heat exposure. The storage area should also be dry and preferably not exceed 50°C; Bad storage conditions may lead to quality deterioration and product performance. It is advisable to pre-dry before use and process within 18 months after production date.rmance. It is advisable to process PP resin within 18 months after delivery.`,
+        body: `RAFCOLOR should be stored to prevent direct sunlight and/or heat exposure. The storage area should also be dry and preferably not exceed 50°C; Bad storage conditions may lead to quality deterioration and product performance. It is advisable to process PP resin within 18 months after delivery.RAFCOLOR should be stored to prevent direct sunlight and/or heat exposure. The storage area should also be dry and preferably not exceed 50°C; Bad storage conditions may lead to quality deterioration and product performance. It is advisable to process PP resin within 18 months after delivery.`,
       },
    
     ],
@@ -698,6 +727,26 @@ onMounted(async () => {
     }
   }
 });
+
+const previousProduct = async () => {
+  if (activeProductIndex.value > 0) {
+    const newIndex = activeProductIndex.value - 1;
+    await navigateToProduct(newIndex);
+  }
+};
+
+const nextProduct = async () => {
+  if (activeProductIndex.value < products.length - 1) {
+    const newIndex = activeProductIndex.value + 1;
+    await navigateToProduct(newIndex);
+  }
+};
+
+const navigateToProduct = async (index) => {
+  const router = useRouter();
+  await router.replace({ query: { index: index.toString() } });
+  await scrollToProduct(index);
+};
 </script>
 
 <style>

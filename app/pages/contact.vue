@@ -21,7 +21,7 @@
       <!-- Header & Tabs -->
       <div class="text-center mb-16 mt-[-120px] relative z-20">
         <!-- Navigation Tabs -->
-        <div class="grid grid-cols-5 w-7xl mx-auto bg-white overflow-hidden shadow-sm">
+        <div class="grid grid-cols-6 w-7xl mx-auto bg-white overflow-hidden shadow-sm">
           <button
             v-for="(tab, idx) in tabs"
             :key="tab.key"
@@ -215,6 +215,80 @@
         </div>
       </div>
 
+      <!-- Our Address Section -->
+      <div
+        id="address-section"
+        ref="addressSection"
+        class="max-w-7xl mx-auto mb-12 relative z-10"
+      >
+        <h2 class="text-4xl font-bold text-[#848484] mb-8">Our Address</h2>
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <div class="flex flex-col lg:flex-row gap-8 items-start">
+            <!-- Address Information -->
+            <div class="flex-1 space-y-6">
+              <div>
+                <h3 class="text-2xl font-semibold text-[#848484] mb-4">Aras Free Trade</h3>
+                <p class="text-[#848484] leading-relaxed">
+                  Plots 437 & 438,South C Street<br />
+                  Industrial Town Phase 2<br />
+                Aras Free Trade-Industrial Zone
+
+                </p>
+              </div>
+              
+              <div>
+                <h4 class="text-lg font-semibold text-[#848484] mb-2">Contact Information</h4>
+                <div class="space-y-2">
+                  <p class="text-[#848484]">
+                    <span class="font-medium">Email:</span> 
+                    <a href="mailto:info@polychemmb.com" class="text-[#848484] hover:text-[#FFD700] transition-colors">
+                      info@polychemmb.com
+                    </a>
+                  </p>
+                  <p class="text-[#848484]">
+                    <span class="font-medium">Phone:</span> +98 21 2289 8979-80
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="text-lg font-semibold text-[#848484] mb-2">Business Hours</h4>
+                <p class="text-[#848484]">
+                  Saturday - Wedensday: 8:00 AM - 5:00 PM<br />
+                  Thursday - Friday: 8:00 AM - 1:00 PM
+                </p>
+              </div>
+
+              <div>
+                <h4 class="text-lg font-semibold text-[#848484] mb-2">Sales Department Contact Information</h4>
+                <div class="space-y-2">
+                  <p class="text-[#848484]">
+                    <span class="font-medium inline-block w-16">Email:</span> 
+                    <a href="mailto:info@polychemmb.com" class="text-[#848484] hover:text-[#FFD700] transition-colors">
+                      Sales@polychemmb.com
+                    </a>
+                  </p>
+                  <p class="text-[#848484]">
+                    <span class="font-medium inline-block w-16">Phone:</span> +98 914 460 50 66
+                  </p>
+                  <p class="text-[#848484]">
+                    <span class="font-medium inline-block w-16">Phone:</span> +98 900 460 50 66
+                  </p>
+                  <p class="text-[#848484]">
+                    <span class="font-medium inline-block w-16">Phone:</span> +90 531 286 66 66
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Map Component -->
+            <div class="flex-1 w-full">
+              <MapComponent />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Send us a message (Form) Section -->
       <div
         id="form-section"
@@ -231,6 +305,7 @@
 <script setup>
 import { ref, nextTick, onMounted, onUnmounted } from 'vue'
 import FormComponent from '~/components/form.vue'
+import MapComponent from '~/components/map.vue'
 import navbar from '~/components/navbar.vue'
 import footer2 from '~/components/footer.vue'
 import worldc from '~/components/worldc.vue'
@@ -241,6 +316,7 @@ const tabs = [
   { key: 'cis', label: 'CIS & Caucasus' },
   { key: 'europe', label: 'Europe' },
   { key: 'asia', label: 'Asia' },
+  { key: 'address', label: 'Our Address' },
   { key: 'form', label: 'Send us a message' }
 ]
 
@@ -264,6 +340,7 @@ const scrollToSection = async (tabKey) => {
     case 'cis': sectionId = 'cis-section'; break
     case 'europe': sectionId = 'europe-section'; break
     case 'asia': sectionId = 'asia-section'; break
+    case 'address': sectionId = 'address-section'; break
     case 'form': sectionId = 'form-section'; break
   }
   const el = document.getElementById(sectionId)
@@ -519,13 +596,13 @@ button[type="button"].ml-1 > span {
 }
 
 /* Tab button hover effect */
-.grid.grid-cols-5 button {
+.grid.grid-cols-6 button {
   position: relative;
   overflow: hidden;
   transition: color 300ms ease;
 }
 
-.grid.grid-cols-5 button::before {
+.grid.grid-cols-6 button::before {
   content: '';
   position: absolute;
   left: 0;
@@ -538,19 +615,31 @@ button[type="button"].ml-1 > span {
   z-index: 0;
 }
 
-.grid.grid-cols-5 button:hover::before,
-.grid.grid-cols-5 button:focus-visible::before {
+.grid.grid-cols-6 button:hover::before,
+.grid.grid-cols-6 button:focus-visible::before {
   transform: translateY(0);
 }
 
-.grid.grid-cols-5 button:hover,
-.grid.grid-cols-5 button:focus-visible {
+.grid.grid-cols-6 button:hover,
+.grid.grid-cols-6 button:focus-visible {
   color: #ffffff;
   outline: none;
 }
 
-.grid.grid-cols-5 button span {
+.grid.grid-cols-6 button span {
   position: relative;
   z-index: 1;
+}
+
+/* Responsive tabs for mobile */
+@media (max-width: 768px) {
+  .grid.grid-cols-6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid.grid-cols-6 button {
+    font-size: 14px;
+    padding: 1rem;
+  }
 }
 </style>

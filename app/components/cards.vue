@@ -59,63 +59,70 @@
 <script setup>
 import { ref } from 'vue'
 
-// تعریف کارت‌ها
+const backgroundImages = [
+  '/news1.jpg',
+  '/PolypropyleneandPolypropyleneCompositesMarketzz.jpg',
+  '/dynamic-data-visualization-3d.jpg',
+  '/Visit-of-the-CEO-of-Bank-of-Industry.png',
+  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=2000&h=1200&fit=crop'
+]
+
 const cards = ref([
+  {
+    badge: 'Event',
+    title: 'Plast Eurasia İstanbul 2025',
+    date: 'Dec 3-6, 2025',
+    link: '/news/plast-eurasia-2025',
+    image: backgroundImages[0]
+  },
+  {
+    badge: 'Report',
+    title: 'Global Polypropylene and Polypropylene Composites Market',
+    date: 'Nov 30, 2025',
+    link: '/news/Global-Polypropylene-and-Composites-Market-Report-2032',
+    image: backgroundImages[1]
+  },
+  {
+    badge: 'Report',
+    title: 'Global Cast Low-Density Polyethylene Disposable Gloves Market',
+    date: 'Dec 6, 2024',
+    link: '/news/Cast_LowDensity_PE_Gloves_Market_Report_2032',
+    image: backgroundImages[2]
+  },
+  {
+    badge: 'News',
+    title: 'Visit of the Head of the Central Branch of Bank of Industry',
+    date: 'Nov 24, 2025',
+    link: '/news/Visit-of-the-CEO-of-Bank-of-Industry',
+    image: backgroundImages[3]
+  },
+  {
+    badge: 'News',
+    title: 'Four Dollar Toast',
+    date: 'Sep 4, 2016',
+    link: '#',
+    image: backgroundImages[4]
+  },
   {
     badge: 'News',
     title: 'Discover the factors influencing recycled PET',
     date: 'November 25, 2025',
     link: '#',
-    image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500'
+    image: backgroundImages[0]
   },
   {
-    badge: 'Chemical Analysis',
-    title: 'Organic Chemistry Reactions Study',
-    date: 'November 10, 2025',
-    link: '#',
-    image: 'https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=500'
-  },
-  {
-    badge: 'Laboratory Report',
-    title: 'Synthesis of Complex Compounds',
-    date: 'November 8, 2025',
-    link: '#',
-    image: 'https://images.unsplash.com/photo-1578496480157-697fc14d2e55?w=500'
-  },
-  {
-    badge: 'Research Paper',
-    title: 'Catalytic Reactions in Chemistry',
-    date: 'November 5, 2025',
-    link: '#',
-    image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=500'
-  },
-  {
-    badge: 'Scientific Study',
-    title: 'Thermodynamic Equilibrium Analysis',
-    date: 'November 3, 2025',
-    link: '#',
-    image: 'https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=500'
-  },
-  {
-    badge: 'Technical Report',
-    title: 'Electrochemistry Applications',
-    date: 'November 1, 2025',
-    link: '#',
-    image: 'https://images.unsplash.com/photo-1610725664285-7c57e6eeac3f?w=500'
-  },
-  {
-    badge: 'Case Study',
+    badge: 'Report',
     title: 'Polymer Chemistry Advances',
     date: 'October 28, 2025',
     link: '#',
-    image: 'https://images.unsplash.com/photo-1564325724739-bae0bd08762c?w=500'
+    image: backgroundImages[1]
   },
   {
-    badge: 'White Paper',
+    badge: 'News',
     title: 'Molecular Structure Investigation',
     date: 'October 25, 2025',
     link: '#',
-    image: 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=500'
+    image: backgroundImages[2]
   }
 ])
 </script>
